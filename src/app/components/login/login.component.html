@@ -1,0 +1,32 @@
+
+<div class="login text-light">
+  <div class="logo">
+    <img src="/assets/logo.png" alt="logocic">
+    <h2 class="head fw-bolder">Request Management System</h2>
+  </div>
+  <div class="login-form p-4">
+    <h5 class="mb-4">Please login to your account</h5>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="form-group ">
+        <label class="head-text" for="username">Username:</label>
+        <input type="text" class="form-control d-inline-block py-2 mt-2" id="username" placeholder="Please, add your username" formControlName="name" required>
+      </div>
+      <div class="form-group ">
+        <label class="head-text" for="password">Password:</label>
+        <input type="password" class="form-control d-inline-block py-2 mt-2" id="password" placeholder="Please, add your password" formControlName="password" required>
+      </div>
+      <button type="submit" class="btn text-light fw-bolder btn-block mt-4 w-100 py-2">Login</button>
+    </form>
+  </div>
+</div>
+<!-- <mat-form-field>
+  <mat-label>Message</mat-label>
+  <input matInput value="Disco party!" #message>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Action</mat-label>
+  <input matInput value="Dance" #action>
+</mat-form-field>
+
+<button mat-stroked-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button> -->

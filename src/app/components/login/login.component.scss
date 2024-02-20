@@ -1,0 +1,45 @@
+.login {
+  background: url('/assets/bg.jpg') center/cover no-repeat; 
+  height: 631px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  .head{
+    width: 80%;
+  }
+  .logo{
+  width: 500px; 
+  height: auto; 
+  }
+  .login-form{
+    border: 2px solid #C5C4E3;
+    width: 80%;
+    border-radius: 5px;
+    background-color: #8384BF;
+    .btn{
+      background-color: #3E406E;
+      &:hover{
+        background-color: #363864
+      }
+    }
+    .form-group{
+      border-radius: 5px;
+      padding-bottom: 10px;
+      .head-text{
+        font-size: 14px;
+        font-weight: 600;
+      }
+      ::placeholder {
+        opacity: 0.5;
+        color: rgb(255, 255, 255); 
+        font-size: 13px;
+      }
+      .form-control{
+        border: 2px solid #C5C4E3;
+        background-color: #B5B4E9;
+      }
+    }
+  }
+}
