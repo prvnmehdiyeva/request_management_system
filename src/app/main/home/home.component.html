@@ -1,0 +1,126 @@
+<div class="text-left ">
+  <div class="row">
+    <div class="col-2 nav_side p-5 pt-4">
+      <ul class="nav flex-column gap-3">
+        <li class="nav-item">
+          <a class="icon-link text-decoration-none gap-3" href="#">
+            <i class="fas fa-file"></i>
+            Inquiries
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="icon-link text-decoration-none gap-3" href="#">
+            <i class="fas fa-flag"></i>
+            Reports
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="icon-link text-decoration-none gap-3" href="#">
+            <i class="fas fa-user"></i>
+            Profil
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-10 nav_second p-4">
+      <div class="container text-left">
+        <h3>Inquiries</h3>
+        <div class="row header1">
+          <div class="col p-0">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>All options</option>
+              <option value="pending">Opened</option>
+                <option value="in_progress">In Execution</option>
+                <option value="completed">Closed</option>
+                <option value="completed">on Hold</option>
+                <option value="completed">Approved</option>
+                <option value="completed">Refused</option>
+            </select>
+          </div>
+          <div class="col">
+            <button mat-fab extended class="btn btn-create text-light">
+            <mat-icon ><i class="fas fa-plus text-light"></i></mat-icon>
+            Create inquiries
+          </button></div>
+        </div>
+        <div class="row bg-white mt-3 pl-3 pt-3">
+          <div class="col-12 pl-6">
+            <ul class="list-group list-group-horizontal mb-3">
+              <button class="list-group-item d-flex justify-content-between align-items-center"  
+                  (click)="changeStatus(null)" 
+                  [class.active]="!selectedStatus">
+                All
+                <span class="badge">14</span>
+              </button>
+              <button class="list-group-item d-flex justify-content-between align-items-center"  
+                  *ngFor="let s of status" 
+                  (click)="changeStatus(s)" 
+                  [class.active]="selectedStatus && selectedStatus === s">
+                {{s}}
+                <span class="badge">6</span>
+              </button>
+            </ul>
+            <div class="container mt-5">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Sender</th>
+                    <th>Title</th>
+                    <th>Text</th>
+                    <th>Category</th>
+                    <th>Executor</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td>
+                      <select class="form-control custom-select custom-select-bg">
+                        <option value="">Select</option>
+                        <option value="pending">Opened</option>
+                        <option value="in_progress">In Execution</option>
+                        <option value="completed">Closed</option>
+                        <option value="completed">on Hold</option>
+                        <option value="completed">Approved</option>
+                        <option value="completed">Refused</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr *ngFor="let card of filteredInquiries">
+                    <td>{{card.ID}}</td>
+                    <td>{{card.Sender}}</td>
+                    <td>{{card.Title}}</td>
+                    <td>{{card.Text}}</td>
+                    <td>{{card.Category}}</td>
+                    <td>{{card.Executor}}</td>
+                    <td>{{card.Date}}</td>
+                    <td><button type="button" class="btn"
+                      [class.btn-outline-info]="card.Status === 'Opened'" 
+                      [class.btn-outline-primary]="card.Status === 'Execution'" 
+                      [class.btn-outline-success]="card.Status === 'Closed'" 
+                      [class.btn-outline-secondary]="card.Status === 'Hold'" 
+                      [class.btn-outline-warning]="card.Status === 'Approved'"
+                      [class.btn-outline-danger]="card.Status === 'Refused'">
+                      {{card.Status}}</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

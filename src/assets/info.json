@@ -1,0 +1,152 @@
+[
+  {
+    "ID": 874365,
+    "Sender": "John Doe",
+    "Title": "Urgent Issue",
+    "Text": "Need immediate attention",
+    "Category": "Technical",
+    "Executor": "Alice Smith",
+    "Date": "2024-02-22",
+    "Status": "Opened"
+  },
+  {
+    "ID": 624179,
+    "Sender": "Jane Smith",
+    "Title": "Feedback",
+    "Text": "Positive feedback on recent updates",
+    "Category": "Feedback",
+    "Executor": "Bob Johnson",
+    "Date": "2024-02-21",
+    "Status": "Execution"
+  },
+  {
+    "ID": 912837,
+    "Sender": "Emily Davis",
+    "Title": "Bug Report",
+    "Text": "Unable to login",
+    "Category": "Technical",
+    "Executor": "Chris Brown",
+    "Date": "2024-02-20",
+    "Status": "Closed"
+  },
+  {
+    "ID": 497128,
+    "Sender": "Alex Johnson",
+    "Title": "Feature Request",
+    "Text": "Requesting a new feature",
+    "Category": "Feature Request",
+    "Executor": "Emma Lee",
+    "Date": "2024-02-19",
+    "Status": "Hold"
+  },
+  {
+    "ID": 231947,
+    "Sender": "Michael Wilson",
+    "Title": "Complaint",
+    "Text": "Experiencing issues with the product",
+    "Category": "Customer Support",
+    "Executor": "David Brown",
+    "Date": "2024-02-18",
+    "Status": "Approved"
+  },
+  {
+    "ID": 812394,
+    "Sender": "Sophia Martinez",
+    "Title": "Question",
+    "Text": "Seeking clarification on a feature",
+    "Category": "General Inquiry",
+    "Executor": "Olivia Garcia",
+    "Date": "2024-02-17",
+    "Status": "Refused"
+  },
+  {
+    "ID": 481923,
+    "Sender": "Sophia Martinez",
+    "Title": "Question",
+    "Text": "Seeking clarification on a feature",
+    "Category": "General Inquiry",
+    "Executor": "Olivia Garcia",
+    "Date": "2024-02-17",
+    "Status": "Refused"
+  },
+  {
+    "ID": 751298,
+    "Sender": "Emma Johnson",
+    "Title": "Technical Support",
+    "Text": "Need help with technical issue",
+    "Category": "Technical",
+    "Executor": "John Smith",
+    "Date": "2024-02-16",
+    "Status": "Opened"
+  },
+  {
+    "ID": 123847,
+    "Sender": "David Brown",
+    "Title": "New Feature Proposal",
+    "Text": "Suggesting a new feature",
+    "Category": "Feature Request",
+    "Executor": "Michael Wilson",
+    "Date": "2024-02-15",
+    "Status": "Execution"
+  },
+  {
+    "ID": 823749,
+    "Sender": "Olivia Garcia",
+    "Title": "Login Issue",
+    "Text": "Unable to login to the system",
+    "Category": "Technical",
+    "Executor": "Sophia Martinez",
+    "Date": "2024-02-14",
+    "Status": "Closed"
+  },
+  {
+    "ID": 571823,
+    "Sender": "John Doe",
+    "Title": "Product Feedback",
+    "Text": "Providing feedback on recent updates",
+    "Category": "Feedback",
+    "Executor": "Jane Smith",
+    "Date": "2024-02-13",
+    "Status": "Hold"
+  },
+  {
+    "ID": 198273,
+    "Sender": "Jane Smith",
+    "Title": "Service Complaint",
+    "Text": "Unsatisfactory service experience",
+    "Category": "Customer Support",
+    "Executor": "Alex Johnson",
+    "Date": "2024-02-12",
+    "Status": "Approved"
+  },
+  {
+    "ID": 732184,
+    "Sender": "Emily Davis",
+    "Title": "Feature Query",
+    "Text": "Seeking information about a feature",
+    "Category": "General Inquiry",
+    "Executor": "Michael Wilson",
+    "Date": "2024-02-11",
+    "Status": "Refused"
+  },
+  {
+    "ID": 612349,
+    "Sender": "Alex Johnson",
+    "Title": "Software Issue",
+    "Text": "Encountering technical problem with the software",
+    "Category": "Technical",
+    "Executor": "David Brown",
+    "Date": "2024-02-10",
+    "Status": "Opened"
+  },
+  {
+    "ID": 192837,
+    "Sender": "Michael Wilson",
+    "Title": "Feature Addition",
+    "Text": "Requesting addition of new feature",
+    "Category": "Feature Request",
+    "Executor": "John Doe",
+    "Date": "2024-02-09",
+    "Status": "Execution"
+  }
+]
