@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { InquiriesInfo } from '../../models/inquiries-info';
 import { InfoService } from '../../services/info/info.service';
 import { Status } from '../../models/status';
@@ -30,16 +30,10 @@ export class HomeComponent implements OnInit {
     this.getAllStatus()
   }
   openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '400px';
-    dialogConfig.position = {
-      top: '50%',
-      left: '50%',
-    };
-  
-    const dialogRef = this.dialog.open(CreateNewComponent, dialogConfig);
-  
-    dialogRef.afterClosed().subscribe((res) => {
+    const dialog = this.dialog.open(CreateNewComponent, {
+      width: '400px',
+    });
+    dialog.afterClosed().subscribe((res) => {
       if (res) {
       }
     });
