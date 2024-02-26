@@ -27,18 +27,12 @@
         <h3>Inquiries</h3>
         <div class="row header1">
           <div class="col p-0">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>All options</option>
-              <option value="pending">Opened</option>
-                <option value="in_progress">In Execution</option>
-                <option value="completed">Closed</option>
-                <option value="completed">on Hold</option>
-                <option value="completed">Approved</option>
-                <option value="completed">Refused</option>
-            </select>
+            <select class="form-select" name="status" [(ngModel)]="selectedStatus" (ngModelChange)="changeStatus($event)" aria-label="Default select example">
+              <option *ngFor="let s of status" [ngValue]="s">{{s}}</option>
+          </select>
           </div>
           <div class="col">
-            <button mat-fab extended class="btn btn-create text-light">
+            <button mat-fab extended class="btn btn-create text-light"  (click)="openDialog()">
             <mat-icon ><i class="fas fa-plus text-light"></i></mat-icon>
             Create inquiries
           </button></div>
@@ -46,53 +40,52 @@
         <div class="row bg-white mt-3 pl-3 pt-3">
           <div class="col-12 pl-6">
             <ul class="list-group list-group-horizontal mb-3">
-              <button class="list-group-item d-flex justify-content-between align-items-center"  
-                  (click)="changeStatus(null)" 
-                  [class.active]="!selectedStatus">
-                All
-                <span class="badge">14</span>
-              </button>
+              
               <button class="list-group-item d-flex justify-content-between align-items-center"  
                   *ngFor="let s of status" 
                   (click)="changeStatus(s)" 
                   [class.active]="selectedStatus && selectedStatus === s">
                 {{s}}
-                <span class="badge">6</span>
+                <span class="badge">
+                  {{getStatusCount(s)}}</span>
               </button>
             </ul>
+            <br>
+            <p>Showing 
+              <select class="form-select form-select-pagination" aria-label="Default select example">
+                <option selected>10</option>
+                <option value="5">5</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+              </select>
+           inquiries</p>
             <div class="container mt-5">
               <table class="table">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Sender</th>
-                    <th>Title</th>
-                    <th>Text</th>
-                    <th>Category</th>
-                    <th>Executor</th>
-                    <th>Date</th>
-                    <th>Status</th>
+                    <th class="search-head">ID</th>
+                    <th class="search-head">Sender</th>
+                    <th class="search-head">Title</th>
+                    <th class="search-head">Text</th>
+                    <th class="search-head">Category</th>
+                    <th class="search-head">Executor</th>
+                    <th class="search-head">Date</th>
+                    <th class="search-head">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><input type="text" class="form-control" placeholder="Search"></td>
-                    <td><input type="text" class="form-control" placeholder="Search"></td>
-                    <td><input type="text" class="form-control" placeholder="Search"></td>
-                    <td><input type="text" class="form-control" placeholder="Search"></td>
-                    <td><input type="text" class="form-control" placeholder="Search"></td>
-                    <td><input type="text" class="form-control" placeholder="Search"></td>
-                    <td><input type="text" class="form-control" placeholder="Search"></td>
+                    <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByID" (input)="searchID(searchByID)"></td>
+                    <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchBySender" (input)="searchSender(searchBySender)"></td>
+                    <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByTitle" (input)="searchTitle(searchByTitle)"></td>
+                    <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByText" (input)="searchText(searchByText)"></td>
+                    <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByCategory" (input)="searchCategory(searchByCategory)"></td>
+                    <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByExecutor" (input)="searchExecutor(searchByExecutor)"></td>
+                    <td><input type="date" class="form-control" placeholder="Search" [(ngModel)]="searchByDate" (input)="searchDate(searchByDate)"></td>
                     <td>
-                      <select class="form-control custom-select custom-select-bg">
-                        <option value="">Select</option>
-                        <option value="pending">Opened</option>
-                        <option value="in_progress">In Execution</option>
-                        <option value="completed">Closed</option>
-                        <option value="completed">on Hold</option>
-                        <option value="completed">Approved</option>
-                        <option value="completed">Refused</option>
-                      </select>
+                      <select class="form-control custom-select custom-select-bg" name="status" [(ngModel)]="selectedStatus" (ngModelChange)="changeStatus($event)" aria-label="Default select example">
+                        <option *ngFor="let s of status" [ngValue]="s">{{s}}</option>
+                    </select>
                     </td>
                   </tr>
                   <tr *ngFor="let card of filteredInquiries">
@@ -103,13 +96,13 @@
                     <td>{{card.Category}}</td>
                     <td>{{card.Executor}}</td>
                     <td>{{card.Date}}</td>
-                    <td><button type="button" class="btn"
-                      [class.btn-outline-info]="card.Status === 'Opened'" 
-                      [class.btn-outline-primary]="card.Status === 'Execution'" 
-                      [class.btn-outline-success]="card.Status === 'Closed'" 
-                      [class.btn-outline-secondary]="card.Status === 'Hold'" 
-                      [class.btn-outline-warning]="card.Status === 'Approved'"
-                      [class.btn-outline-danger]="card.Status === 'Refused'">
+                    <td><button type="button" class="btn btn-create-table" [style.width.px]="150" disabled
+                      [class.btn-outline-info]="card.Status === 'Opened'"  disabled
+                      [class.btn-outline-primary]="card.Status === 'Execution'"  disabled
+                      [class.btn-outline-success]="card.Status === 'Closed'"  disabled
+                      [class.btn-outline-secondary]="card.Status === 'Hold'"  disabled
+                      [class.btn-outline-warning]="card.Status === 'Approved'" disabled
+                      [class.btn-outline-danger]="card.Status === 'Refused'" disabled>
                       {{card.Status}}</button>
                     </td>
                   </tr>

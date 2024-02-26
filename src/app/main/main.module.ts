@@ -12,11 +12,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { CreateNewComponent } from './create-new/create-new.component';
+
 @NgModule({
   declarations: [
     MainComponent,
     HeaderComponent,
     HomeComponent,
+    CreateNewComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatIconModule,
     MatTooltipModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule
   ]
 })
 export class MainModule { }

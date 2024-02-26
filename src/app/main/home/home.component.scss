@@ -87,10 +87,24 @@
     background-color: #6045E2;
     color: #fff;
   }
+  .search-head{
+    font-weight: 500;
+    font-size: 14px;
+  }
 }
+// Pagination
+.form-select-pagination{
+  width: 10%;
+  display: inline;
+}
+
 // btn
+.btn-create-table{
+  padding:0rem 2.5rem;
+  border-radius: 5px;
+}
 .btn-create{
-  background-color: #55539F;
-  padding: 0.375rem 2.25rem 0.375rem 0.75rem ;
+  background-color:#55539F;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   border-radius: 5px;
 }
