@@ -14,6 +14,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { CreateNewComponent } from './create-new/create-new.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { CreateNewComponent } from './create-new/create-new.component';
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    MatDialogModule
   ]
 })
 export class MainModule { }

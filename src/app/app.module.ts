@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RoutingModule } from './routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     ReactiveFormsModule,
     RoutingModule,
-    FontAwesomeModule,    
+    FontAwesomeModule, 
+    MatPaginatorModule,
+    BrowserAnimationsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

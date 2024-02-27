@@ -3,7 +3,7 @@
     <div class="col-2 nav_side p-5 pt-4">
       <ul class="nav flex-column gap-3">
         <li class="nav-item">
-          <a class="icon-link text-decoration-none gap-3" href="#">
+          <a routerLink="/main" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
             <i class="fas fa-file"></i>
             Inquiries
           </a>
@@ -31,15 +31,16 @@
               <option *ngFor="let s of status" [ngValue]="s">{{s}}</option>
           </select>
           </div>
-          <div class="col">
-            <button mat-fab extended class="btn btn-create text-light"  (click)="openDialog()">
-            <mat-icon ><i class="fas fa-plus text-light"></i></mat-icon>
+          <div class="col col-btn">
+            <button mat-fab extended class="btn btn-create text-light"
+            color="primary" (click)="openDialog()">
+            <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
             Create inquiries
           </button></div>
         </div>
         <div class="row bg-white mt-3 pl-3 pt-3">
           <div class="col-12 pl-6">
-            <ul class="list-group list-group-horizontal mb-3">
+            <ul class="list-group list-group-horizontal mb-3 p-3">
               
               <button class="list-group-item d-flex justify-content-between align-items-center"  
                   *ngFor="let s of status" 
@@ -50,15 +51,11 @@
                   {{getStatusCount(s)}}</span>
               </button>
             </ul>
-            <br>
-            <p>Showing 
-              <select class="form-select form-select-pagination" aria-label="Default select example">
-                <option selected>10</option>
-                <option value="5">5</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-              </select>
-           inquiries</p>
+
+              <mat-paginator [length]="cards.length" [pageSize]="10" [showFirstLastButtons]="false" [pageSizeOptions]="[5,10,20]" [pageIndex]="currentPage" (page)="handlePageEvent($event)"
+              >
+             </mat-paginator>
+           
             <div class="container mt-5">
               <table class="table">
                 <thead>
@@ -75,7 +72,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByID" (input)="searchID(searchByID)"></td>
+                    <td><input type="text" class="form-control" placeholder="ID" [(ngModel)]="searchByID" (input)="searchID(searchByID)"></td>
                     <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchBySender" (input)="searchSender(searchBySender)"></td>
                     <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByTitle" (input)="searchTitle(searchByTitle)"></td>
                     <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByText" (input)="searchText(searchByText)"></td>
@@ -108,7 +105,6 @@
                   </tr>
                 </tbody>
               </table>
-              
             </div>
             
           </div>

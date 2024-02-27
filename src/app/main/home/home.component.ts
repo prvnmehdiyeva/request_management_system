@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 import { InquiriesInfo } from '../../models/inquiries-info';
 import { InfoService } from '../../services/info/info.service';
 import { Status } from '../../models/status';
-import { FormControl } from '@angular/forms';
 import { CreateNewComponent } from '../create-new/create-new.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+
 })
 export class HomeComponent implements OnInit {
+  currentPage=0
+  pageSizeOptions = [5, 10, 20];
+  pageSize = this.pageSizeOptions[0];
   searchByID: string = '';
   searchBySender: string = '';
   searchByText: string = '';
@@ -23,18 +28,17 @@ export class HomeComponent implements OnInit {
   public status!: Status[] ;
   public selectedStatus: any | null = "All";
   filteredInquiries: InquiriesInfo[] = [];
-  constructor(public infoService:InfoService, public dialog: MatDialog
+  constructor(public infoService:InfoService, private dialog: MatDialog
     ){}
   ngOnInit(): void {
     this.getAllInfo()
     this.getAllStatus()
   }
   openDialog() {
-    const dialog = this.dialog.open(CreateNewComponent, {
-      width: '400px',
-    });
-    dialog.afterClosed().subscribe((res) => {
+    const dialogRef = this.dialog.open(CreateNewComponent);
+    dialogRef.afterClosed().subscribe((res) => {
       if (res) {
+        console.log(`Dialog result: ${res}`);
       }
     });
   }
@@ -106,6 +110,18 @@ export class HomeComponent implements OnInit {
       this.filteredInquiries = this.cards.filter((i)=>{
       return i.Date.toString().includes(searchByDate.toString())
       })
+    }
+
+    handlePageEvent(pageEvent:PageEvent){
+      console.log('handlePageEvent',pageEvent);
+      this.pageSize = pageEvent.pageSize;
+      this.currentPage=pageEvent.pageIndex
+      this.filterData()
+    }
+    filterData(): void {
+      const startIndex = this.currentPage * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      this.filteredInquiries = this.cards.slice(startIndex, endIndex);
     }
   }
   

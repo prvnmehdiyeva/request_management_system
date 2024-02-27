@@ -1,35 +1,58 @@
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1"></span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-</div>
+<h2 mat-dialog-title>Create new inquiry</h2>
+<mat-dialog-content class="mat-typography">
+  
+  <form class="row g-3 p-4">
+    <div class="col-md-4">
+      <label for="inputState" class="form-label">Category</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>Human Resources</option>
+        <option>Finance</option>
+        <option>Marketing</option>
+        <option>Operations</option>
+        <option>Information Technology</option>
+        <option>Customer Service</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label">Category</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label">Category</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>General Inquiry</option>
+        <option>Technical Support</option>
+        <option>Feature Request</option>
+        <option>Bug Report</option>
+        <option>Complaint</option>
+        <option>Feedback</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="inputTitle" class="form-label">Title</label>
+      <input type="text" class="form-control" id="inputTitle" placeholder="Enter Title">
+    </div>
+    <div class="col-12">
+      <label for="inputText" class="form-label">Text</label>
+      <textarea class="form-control" id="inputText" rows="5" placeholder="Enter Text"></textarea>
+    </div>
+    <div class="input-group mb-3">
+      <input type="file" class="form-control" id="inputGroupFile02">
+      <label class="input-group-text" for="inputGroupFile02">Upload</label>
+    </div>
+    
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>
 
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-text" id="basic-addon2">example.com</span>
-</div>
 
-<div class="mb-3">
-  <label for="basic-url" class="form-label">Your vanity URL</label>
-  <div class="input-group">
-    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-  </div>
-  <div class="form-text" id="basic-addon4">Example p text goes outside the input group.</div>
-</div>
-
-<div class="input-group mb-3">
-  <span class="input-group-text">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-text">.00</span>
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-  <span class="input-group-text"></span>
-  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-</div>
-
-<div class="input-group">
-  <span class="input-group-text">With textarea</span>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
