@@ -71,7 +71,7 @@
       color:#6045E2;
       gap: 31px;
       padding:0.5rem;
-      padding:0.5rem 1.3rem 0.5rem 1.3rem;
+      padding:0.5rem 1rem;
       border: none;
       border-bottom: 1px solid #6045E2;
       border-top-left-radius: 5px;
@@ -92,6 +92,18 @@
     }
   }
 }
+// 
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+
+.table-bordered td {
+  vertical-align: middle;
+  
+}
+
 .table{
   .custom-select-bg option:checked {
     background-color: #6045E2;

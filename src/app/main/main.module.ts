@@ -16,7 +16,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { CreateNewComponent } from './create-new/create-new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule} from '@angular/material/dialog';
-
+import { RouterModule } from '@angular/router'; // Import RouterModule
 @NgModule({
   declarations: [
     MainComponent,
@@ -36,7 +36,8 @@ import { MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
   ]
 })
 export class MainModule { }

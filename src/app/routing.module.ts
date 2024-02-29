@@ -8,12 +8,14 @@ import { MainComponent } from './main/main.component';
 import { PasswordComponent } from './components/password/password.component';
 
 const routes: Routes = [
-  { path: 'main', component: MainComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'changepassword', component: PasswordComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
-  { path: '**', redirectTo: '/login' }
-];
+  { 
+    path: 'users/:id', 
+    component: MainComponent, 
+    children: [
+      { path: 'changePassword', component: PasswordComponent }
+    ] 
+  },
+]
 
 @NgModule({
   exports: [RouterModule],

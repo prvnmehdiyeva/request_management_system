@@ -26,18 +26,16 @@ export class LoginComponent implements OnInit {
   const name = this.myForm.get('name')?.value;
   const password = this.myForm.get('password')?.value;
   console.log(name , password);
-  this.authService.getData().subscribe(data=> {
-    console.log("🚀 ~ LoginComponent ~ this.authService.getData ~ data:", data)
+  this.authService.getUsers().subscribe(data=> {
+    console.log("🚀 ~ LoginComponent ~ this.authService.getUsers ~ data:", data)
     const user = data.find((user: any) => user.name === name && user.password === password)
     if(user){
       this.isSubmitting = true;
-
-      
       console.log("success");
       setTimeout(() => {
         this.myForm.reset();
         this.isSubmitting = false;
-        this.router.navigate(['/main'],{queryParams:{name:user.name}});
+        this.router.navigate(['/users', user.id],{queryParams:{name:user.name}});
       }, 2000);
     } else{
       console.log("error");

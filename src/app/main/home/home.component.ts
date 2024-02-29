@@ -6,6 +6,8 @@ import { InfoService } from '../../services/info/info.service';
 import { Status } from '../../models/status';
 import { CreateNewComponent } from '../create-new/create-new.component';
 import { PageEvent } from '@angular/material/paginator';
+import { UsersInfo } from '../../models/users-info';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -24,15 +26,17 @@ export class HomeComponent implements OnInit {
   searchByCategory: string = '';
   searchByExecutor: string = '';
   searchByDate: string = '';
-  public cards: InquiriesInfo[]=[]
-  public status!: Status[] ;
-  public selectedStatus: any | null = "All";
+  public inquiries: InquiriesInfo[]=[]
+  public users: UsersInfo[]=[]
   filteredInquiries: InquiriesInfo[] = [];
-  constructor(public infoService:InfoService, private dialog: MatDialog
+  public status: Status[]=[] ;
+  public selectedStatus: any | null = "All";
+  constructor(public infoService:InfoService, public authService:AuthService, private dialog: MatDialog
     ){}
   ngOnInit(): void {
-    this.getAllInfo()
-    this.getAllStatus()
+    this.getUsers()
+    this.getInquiries()
+    this.getStatus()
   }
   openDialog() {
     const dialogRef = this.dialog.open(CreateNewComponent);
@@ -42,22 +46,29 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-  getAllInfo(){
-    this.infoService.getInfo().subscribe((data)=>{
-      this.cards=data
-      this.filteredInquiries = data
-    })
+  getUsers(){
+    this.authService.getUsers().subscribe(users => {
+      this.users = users;
+    });
   }
-  getAllStatus(){
-    this.infoService.getStatus().subscribe((data)=>this.status=data)
+  getInquiries(){
+    this.authService.getInquiries().subscribe(inquiries => {
+      this.inquiries = inquiries;
+      this.filteredInquiries=inquiries
+    });
+  }
+  getStatus(){
+    this.authService.getStatus().subscribe(status => {
+      this.status=status
+    });
   }
 
   getStatusCount(status:any){
     let count =0
     if(status==="All"){
-      count = this.cards.length;
+      count = this.inquiries.length;
     } else{
-      count = this.cards.filter(inquiry => inquiry.Status === status).length;
+      count = this.inquiries.filter(inquiry => inquiry.Status === status).length;
     }
     return count
     }
@@ -68,48 +79,22 @@ export class HomeComponent implements OnInit {
       console.log('Selected Status:', status);
       if (status === null || status === 'All') {
         this.selectedStatus = 'All';
-        this.filteredInquiries = this.cards;
+        this.filteredInquiries = this.inquiries;
       } else {
         this.selectedStatus = status;
-        this.filteredInquiries = this.cards.filter(c => c.Status === status);
+        this.filteredInquiries = this.inquiries.filter(c => c.Status === status);
       }
       console.log('Filtered Inquiries:', this.filteredInquiries);
     }
-    
-    searchID(searchByID:string){
-      this.filteredInquiries = this.cards.filter((i)=>{
-      return i.ID.toString().includes(searchByID.toString())
-      })
-    }
-    searchSender(searchBySender:string){
-      this.filteredInquiries = this.cards.filter((i)=>{
-      return i.Sender.toLowerCase().includes(searchBySender.toLowerCase())
-      })
-    }
-    searchTitle(searchByTitle:string){
-      this.filteredInquiries = this.cards.filter((i)=>{
-      return i.Title.toLowerCase().includes(searchByTitle.toLowerCase())
-      })
-    }
-    searchText(searchByText:string){
-      this.filteredInquiries = this.cards.filter((i)=>{
-      return i.Text.toLowerCase().includes(searchByText.toLowerCase())
-      })
-    }
-    searchCategory(searchByCategory:string){
-      this.filteredInquiries = this.cards.filter((i)=>{
-      return i.Category.toLowerCase().includes(searchByCategory.toLowerCase())
-      })
-    }
-    searchExecutor(searchByExecutor:string){
-      this.filteredInquiries = this.cards.filter((i)=>{
-      return i.Executor.toLowerCase().includes(searchByExecutor.toLowerCase())
-      })
-    }
-    searchDate(searchByDate:string){
-      this.filteredInquiries = this.cards.filter((i)=>{
-      return i.Date.toString().includes(searchByDate.toString())
-      })
+
+    search(filterData:string, searchData:string) {
+      this.filteredInquiries = this.inquiries.filter((i:any) => {
+        if (filterData === "ID" || filterData === "Date") {
+          return i[filterData].toString().includes(searchData.toString());
+        } else {
+          return i[filterData].toLowerCase().includes(searchData.toLowerCase());
+        }
+      });
     }
 
     handlePageEvent(pageEvent:PageEvent){
@@ -121,7 +106,7 @@ export class HomeComponent implements OnInit {
     filterData(): void {
       const startIndex = this.currentPage * this.pageSize;
       const endIndex = startIndex + this.pageSize;
-      this.filteredInquiries = this.cards.slice(startIndex, endIndex);
+      this.filteredInquiries = this.inquiries.slice(startIndex, endIndex);
     }
   }
   

@@ -9,6 +9,7 @@ import { RoutingModule } from './routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RoutingModule,
     FontAwesomeModule, 
     MatPaginatorModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
