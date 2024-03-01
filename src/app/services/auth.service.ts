@@ -8,17 +8,17 @@ import { UsersInfo } from '../models/users-info';
 })
 export class AuthService {
   handleError: any;
- 
+
 
   private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/users`);
+    return this.http.get<any>(`${this.baseUrl}/user`);
   }
   updateUser(userId: string, newPassword: string): Observable<any> {
-    const url = `${this.baseUrl}/users/${userId}`;
+    const url = `${this.baseUrl}/user/${userId}`;
     return this.http.put<any>(url, { password: newPassword });
   }
 

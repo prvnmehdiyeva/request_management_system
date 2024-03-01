@@ -8,15 +8,15 @@ const fs = require('fs');
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
-server.put('/users/:id', (req: { params: { id: any; }; body: { password: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: string; }): void; new(): any; }; }; }) => {
+server.put('/user/:id', (req: { params: { id: any; }; body: { password: any; }; }, res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { error: string; }): void; new(): any; }; }; }) => {
   const userId = req.params.id;
   const newPassword = req.body.password;
 
-  const userIndex = db.users.findIndex((user: { id: number; }) => user.id === parseInt(userId));
+  const userIndex = db.user.findIndex((user: { id: number; }) => user.id === parseInt(userId));
   if (userIndex !== -1) {
-    db.users[userIndex].password = newPassword;
+    db.user[userIndex].password = newPassword;
 
-    const updatedUser = db.users[userIndex];
+    const updatedUser = db.user[userIndex];
 
     fs.writeFileSync('./server/db.json', JSON.stringify(db, null, 2));
 
@@ -28,7 +28,7 @@ server.put('/users/:id', (req: { params: { id: any; }; body: { password: any; };
 
 
 
-server.post('/login', (req: any, res: any, next: any) => { 
+server.post('/login', (req: any, res: any, next: any) => {
   // Your existing login endpoint logic
 });
 
@@ -36,7 +36,7 @@ server.post('/register', (req: any, res: any) => {
   // Your existing register endpoint logic
 });
 
-server.use('/users', (req: any, res: any, next: any) => {
+server.use('/user', (req: any, res: any, next: any) => {
   // Your existing authorization middleware
 });
 
