@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { InquiriesInfo } from '../../models/inquiries-info';
-import { InfoService } from '../../services/info/info.service';
 import { Status } from '../../models/status';
 import { CreateNewComponent } from '../create-new/create-new.component';
 import { PageEvent } from '@angular/material/paginator';
 import { UsersInfo } from '../../models/users-info';
 import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -26,18 +26,22 @@ export class HomeComponent implements OnInit {
   searchByCategory: string = '';
   searchByExecutor: string = '';
   searchByDate: string = '';
+  @Input() id: string = '';
   public inquiries: InquiriesInfo[]=[]
   public users: UsersInfo[]=[]
   filteredInquiries: InquiriesInfo[] = [];
   public status: Status[]=[] ;
   public selectedStatus: any | null = "All";
-  constructor(public infoService:InfoService, public authService:AuthService, private dialog: MatDialog
+  constructor(public authService:AuthService, private dialog: MatDialog,private route: ActivatedRoute
     ){}
-  ngOnInit(): void {
-    this.getUsers()
-    this.getInquiries()
-    this.getStatus()
-  }
+    ngOnInit(): void {
+      this.route.params.subscribe(params => {
+        this.id = params['id'];
+        this.getUsers();
+        this.getInquiries();
+        this.getStatus();
+      });
+    }
   openDialog() {
     const dialogRef = this.dialog.open(CreateNewComponent);
     dialogRef.afterClosed().subscribe((res) => {

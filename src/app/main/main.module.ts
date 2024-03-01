@@ -17,12 +17,14 @@ import { CreateNewComponent } from './create-new/create-new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule} from '@angular/material/dialog';
 import { RouterModule } from '@angular/router'; // Import RouterModule
+import { PasswordComponent } from './password/password.component';
 @NgModule({
   declarations: [
     MainComponent,
     HeaderComponent,
     HomeComponent,
     CreateNewComponent,
+    PasswordComponent
   ],
   imports: [
     CommonModule,

@@ -1,17 +1,17 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "John Doe",
-      "password": "password1"
+      "password": "password1",
+      "name":"John Doe",
+      "id": "1"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Jane Smith",
       "password": "password2"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Alice Johnson",
       "password": "password3"
     }
@@ -25,7 +25,8 @@
       "Category": "Technical",
       "Executor": "Alice Smith",
       "Date": "2024-02-22",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "5dd8"
     },
     {
       "ID": 624179,
@@ -35,7 +36,8 @@
       "Category": "Feedback",
       "Executor": "Bob Johnson",
       "Date": "2024-02-21",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "7c5a"
     },
     {
       "ID": 912837,
@@ -45,7 +47,8 @@
       "Category": "Technical",
       "Executor": "Chris Brown",
       "Date": "2024-02-20",
-      "Status": "Closed"
+      "Status": "Closed",
+      "id": "c148"
     },
     {
       "ID": 497128,
@@ -55,7 +58,8 @@
       "Category": "Feature Request",
       "Executor": "Emma Lee",
       "Date": "2024-02-19",
-      "Status": "Hold"
+      "Status": "Hold",
+      "id": "f1b7"
     },
     {
       "ID": 231947,
@@ -65,7 +69,8 @@
       "Category": "Customer Support",
       "Executor": "David Brown",
       "Date": "2024-02-18",
-      "Status": "Approved"
+      "Status": "Approved",
+      "id": "bf77"
     },
     {
       "ID": 812394,
@@ -75,7 +80,8 @@
       "Category": "General Inquiry",
       "Executor": "Olivia Garcia",
       "Date": "2024-02-17",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "bc1d"
     },
     {
       "ID": 481923,
@@ -85,7 +91,8 @@
       "Category": "General Inquiry",
       "Executor": "Olivia Garcia",
       "Date": "2024-02-17",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "8489"
     },
     {
       "ID": 751298,
@@ -95,7 +102,8 @@
       "Category": "Technical",
       "Executor": "John Smith",
       "Date": "2024-02-16",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "02a4"
     },
     {
       "ID": 123847,
@@ -105,7 +113,8 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "8f0e"
     },
     {
       "ID": 823749,
@@ -115,7 +124,8 @@
       "Category": "Technical",
       "Executor": "Sophia Martinez",
       "Date": "2024-02-14",
-      "Status": "Closed"
+      "Status": "Closed",
+      "id": "8178"
     },
     {
       "ID": 571823,
@@ -125,7 +135,8 @@
       "Category": "Feedback",
       "Executor": "Jane Smith",
       "Date": "2024-02-13",
-      "Status": "Hold"
+      "Status": "Hold",
+      "id": "6ca1"
     },
     {
       "ID": 198273,
@@ -135,7 +146,8 @@
       "Category": "Customer Support",
       "Executor": "Alex Johnson",
       "Date": "2024-02-12",
-      "Status": "Approved"
+      "Status": "Approved",
+      "id": "04fc"
     },
     {
       "ID": 732184,
@@ -145,7 +157,8 @@
       "Category": "General Inquiry",
       "Executor": "Michael Wilson",
       "Date": "2024-02-11",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "9b3c"
     },
     {
       "ID": 612349,
@@ -155,7 +168,8 @@
       "Category": "Technical",
       "Executor": "David Brown",
       "Date": "2024-02-10",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "d1c4"
     },
     {
       "ID": 192837,
@@ -165,7 +179,8 @@
       "Category": "Feature Request",
       "Executor": "John Doe",
       "Date": "2024-02-09",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "fb9e"
     },
     {
       "ID": 123847,
@@ -175,9 +190,10 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Execution"
-  },
-  {
+      "Status": "Execution",
+      "id": "31e6"
+    },
+    {
       "ID": 123848,
       "Sender": "John Doe",
       "Title": "New Feature Proposal",
@@ -185,9 +201,10 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Closed"
-  },
-  {
+      "Status": "Closed",
+      "id": "63b5"
+    },
+    {
       "ID": 123849,
       "Sender": "Jane Smith",
       "Title": "New Feature Proposal",
@@ -195,28 +212,31 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Refused"
-  },
-  {
-    "ID": 123847,
-    "Sender": "David Brown",
-    "Title": "New Feature Proposal",
-    "Text": "Suggesting a new feature",
-    "Category": "Feature Request",
-    "Executor": "Michael Wilson",
-    "Date": "2024-02-15",
-    "Status": "Opened"
-  },
-  {
-    "ID": 123848,
-    "Sender": "John Doe",
-    "Title": "New Feature Proposal",
-    "Text": "Suggesting a new feature",
-    "Category": "Feature Request",
-    "Executor": "Michael Wilson",
-    "Date": "2024-02-15",
-    "Status": "Approved"
-  },
+      "Status": "Refused",
+      "id": "afff"
+    },
+    {
+      "ID": 123847,
+      "Sender": "David Brown",
+      "Title": "New Feature Proposal",
+      "Text": "Suggesting a new feature",
+      "Category": "Feature Request",
+      "Executor": "Michael Wilson",
+      "Date": "2024-02-15",
+      "Status": "Opened",
+      "id": "065c"
+    },
+    {
+      "ID": 123848,
+      "Sender": "John Doe",
+      "Title": "New Feature Proposal",
+      "Text": "Suggesting a new feature",
+      "Category": "Feature Request",
+      "Executor": "Michael Wilson",
+      "Date": "2024-02-15",
+      "Status": "Approved",
+      "id": "ed89"
+    },
     {
       "ID": 874365,
       "Sender": "John Doe",
@@ -225,7 +245,8 @@
       "Category": "Technical",
       "Executor": "Alice Smith",
       "Date": "2024-02-22",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "b08e"
     },
     {
       "ID": 624179,
@@ -235,7 +256,8 @@
       "Category": "Feedback",
       "Executor": "Bob Johnson",
       "Date": "2024-02-21",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "de38"
     },
     {
       "ID": 912837,
@@ -245,7 +267,8 @@
       "Category": "Technical",
       "Executor": "Chris Brown",
       "Date": "2024-02-20",
-      "Status": "Closed"
+      "Status": "Closed",
+      "id": "f76b"
     },
     {
       "ID": 497128,
@@ -255,7 +278,8 @@
       "Category": "Feature Request",
       "Executor": "Emma Lee",
       "Date": "2024-02-19",
-      "Status": "Hold"
+      "Status": "Hold",
+      "id": "c9bd"
     },
     {
       "ID": 231947,
@@ -265,7 +289,8 @@
       "Category": "Customer Support",
       "Executor": "David Brown",
       "Date": "2024-02-18",
-      "Status": "Approved"
+      "Status": "Approved",
+      "id": "7ffc"
     },
     {
       "ID": 812394,
@@ -275,7 +300,8 @@
       "Category": "General Inquiry",
       "Executor": "Olivia Garcia",
       "Date": "2024-02-17",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "79b7"
     },
     {
       "ID": 481923,
@@ -285,7 +311,8 @@
       "Category": "General Inquiry",
       "Executor": "Olivia Garcia",
       "Date": "2024-02-17",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "c766"
     },
     {
       "ID": 751298,
@@ -295,7 +322,8 @@
       "Category": "Technical",
       "Executor": "John Smith",
       "Date": "2024-02-16",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "8a79"
     },
     {
       "ID": 123847,
@@ -305,7 +333,8 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "b485"
     },
     {
       "ID": 823749,
@@ -315,7 +344,8 @@
       "Category": "Technical",
       "Executor": "Sophia Martinez",
       "Date": "2024-02-14",
-      "Status": "Closed"
+      "Status": "Closed",
+      "id": "3c5f"
     },
     {
       "ID": 571823,
@@ -325,7 +355,8 @@
       "Category": "Feedback",
       "Executor": "Jane Smith",
       "Date": "2024-02-13",
-      "Status": "Hold"
+      "Status": "Hold",
+      "id": "864b"
     },
     {
       "ID": 198273,
@@ -335,7 +366,8 @@
       "Category": "Customer Support",
       "Executor": "Alex Johnson",
       "Date": "2024-02-12",
-      "Status": "Approved"
+      "Status": "Approved",
+      "id": "9537"
     },
     {
       "ID": 732184,
@@ -345,7 +377,8 @@
       "Category": "General Inquiry",
       "Executor": "Michael Wilson",
       "Date": "2024-02-11",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "3a4f"
     },
     {
       "ID": 612349,
@@ -355,7 +388,8 @@
       "Category": "Technical",
       "Executor": "David Brown",
       "Date": "2024-02-10",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "e01a"
     },
     {
       "ID": 192837,
@@ -365,7 +399,8 @@
       "Category": "Feature Request",
       "Executor": "John Doe",
       "Date": "2024-02-09",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "46e4"
     },
     {
       "ID": 123847,
@@ -375,7 +410,8 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "8d21"
     },
     {
       "ID": 123848,
@@ -385,7 +421,8 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Closed"
+      "Status": "Closed",
+      "id": "98c8"
     },
     {
       "ID": 123849,
@@ -395,7 +432,8 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "f0f1"
     },
     {
       "ID": 123847,
@@ -405,7 +443,8 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "f20a"
     },
     {
       "ID": 123848,
@@ -415,7 +454,8 @@
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Approved"
+      "Status": "Approved",
+      "id": "d7fe"
     },
     {
       "ID": 123850,
@@ -425,7 +465,8 @@
       "Category": "Feature Request",
       "Executor": "Bob Johnson",
       "Date": "2024-02-15",
-      "Status": "Execution"
+      "Status": "Execution",
+      "id": "b0bf"
     },
     {
       "ID": 123851,
@@ -435,7 +476,8 @@
       "Category": "Technical",
       "Executor": "Chris Davis",
       "Date": "2024-02-15",
-      "Status": "Opened"
+      "Status": "Opened",
+      "id": "a696"
     },
     {
       "ID": 123852,
@@ -445,7 +487,8 @@
       "Category": "Feature Request",
       "Executor": "David Brown",
       "Date": "2024-02-15",
-      "Status": "Hold"
+      "Status": "Hold",
+      "id": "7f89"
     },
     {
       "ID": 123853,
@@ -455,7 +498,8 @@
       "Category": "Feedback",
       "Executor": "Emma Lee",
       "Date": "2024-02-15",
-      "Status": "Approved"
+      "Status": "Approved",
+      "id": "a388"
     },
     {
       "ID": 123854,
@@ -465,7 +509,8 @@
       "Category": "Technical",
       "Executor": "Frank Johnson",
       "Date": "2024-02-15",
-      "Status": "Closed"
+      "Status": "Closed",
+      "id": "3f5c"
     },
     {
       "ID": 123855,
@@ -475,7 +520,8 @@
       "Category": "Customer Support",
       "Executor": "Grace Smith",
       "Date": "2024-02-15",
-      "Status": "Hold"
+      "Status": "Hold",
+      "id": "677a"
     },
     {
       "ID": 123856,
@@ -485,36 +531,37 @@
       "Category": "General Inquiry",
       "Executor": "Henry Wilson",
       "Date": "2024-02-15",
-      "Status": "Refused"
+      "Status": "Refused",
+      "id": "9218"
     }
   ],
   "status": [
     {
-      "id": 1,
+      "id": "1",
       "name": "All"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Opened"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Execution"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Closed"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Hold"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Approved"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Refused"
     }
   ]

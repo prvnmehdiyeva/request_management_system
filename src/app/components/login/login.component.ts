@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SessionstorageService } from '../../services/sessionstorage.service';
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,13 @@ export class LoginComponent implements OnInit {
   myForm: FormGroup ;
   isSubmitting: boolean = false;
 
-  constructor(private authService:AuthService,private fb: FormBuilder,private router:Router){
+  constructor(private authService:AuthService,private fb: FormBuilder,private router:Router,private sessionStorageService:SessionstorageService){
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
   ngOnInit(): void {
-   
   }
   onSubmit() {
     this.isSubmitting = true;
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     console.log("🚀 ~ LoginComponent ~ this.authService.getUsers ~ data:", data)
     const user = data.find((user: any) => user.name === name && user.password === password)
     if(user){
+      this.sessionStorageService.setItem("currentUser",user)
       this.isSubmitting = true;
       console.log("success");
       setTimeout(() => {
@@ -45,6 +46,10 @@ export class LoginComponent implements OnInit {
         this.isSubmitting = false;
       }, 2000);
     }
+  },
+  (error) => {
+    console.error("Error getting user data:", error);
+    // Handle error (e.g., show error message to user)
   })
   }
   
