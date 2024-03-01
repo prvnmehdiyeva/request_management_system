@@ -53,7 +53,8 @@ export class PasswordComponent implements OnInit {
               () => {
                 this.successMessage = 'Password updated successfully.';
                 this.changePasswordForm.reset();
-                this.router.navigate(['/login']);
+                console.log(user);
+                // this.router.navigate(['/login']);
               },
               error => {
                 this.errorMessage = 'An error occurred while updating the password.';

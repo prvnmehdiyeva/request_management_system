@@ -18,13 +18,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule} from '@angular/material/dialog';
 import { RouterModule } from '@angular/router'; // Import RouterModule
 import { PasswordComponent } from './password/password.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     MainComponent,
     HeaderComponent,
     HomeComponent,
     CreateNewComponent,
-    PasswordComponent
+    PasswordComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
