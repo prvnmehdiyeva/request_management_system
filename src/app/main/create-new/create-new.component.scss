@@ -1,0 +1,15 @@
+.grid-head {
+  display: grid;
+  grid-template-columns: 20fr 1fr; 
+  align-items: center; 
+}
+  .back-link{
+    text-decoration: none;
+    text-decoration-line: none;
+    color: #6359EC;
+  }
+  .btn-create{
+    background-color:#55539F;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    border-radius: 5px;
+  }

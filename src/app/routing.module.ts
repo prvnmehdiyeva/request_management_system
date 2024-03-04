@@ -6,10 +6,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './main/header/header.component';
 import { MainComponent } from './main/main.component';
 import { PasswordComponent } from './main/password/password.component';
+import { CreateNewComponent } from './main/create-new/create-new.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'create-new', component: CreateNewComponent },
   { path: 'users/:id/password', component: PasswordComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'users/:id', component: MainComponent},

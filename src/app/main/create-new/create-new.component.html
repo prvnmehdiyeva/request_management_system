@@ -1,7 +1,14 @@
-<h2 mat-dialog-title>Create new inquiry</h2>
+<div class="grid-head container pb-3">
+<h3 mat-dialog-title>Create new inquiry</h3>
+<div class="back-link">
+  <a [routerLink]="'/users/' + id" (click)="goBack()" routerLinkActive="active" class="back-link">
+    <i class="fas fa-chevron-left"></i> Back
+  </a>
+</div>
+</div>
 <mat-dialog-content class="mat-typography">
   
-  <form class="row g-3 p-4">
+  <form class="row g-3 p-4 pb-0">
     <div class="col-md-4">
       <label for="inputState" class="form-label">Category</label>
       <select id="inputState" class="form-select">
@@ -47,12 +54,13 @@
       <input type="file" class="form-control" id="inputGroupFile02">
       <label class="input-group-text" for="inputGroupFile02">Upload</label>
     </div>
-    
+    <mat-dialog-actions class="d-flex justify-content-end">
+      <button mat-fab extended class="btn btn-create text-light" mat-align="center">
+      Create inquiries
+    </button>
+</mat-dialog-actions>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
-</mat-dialog-actions>
+
 
 

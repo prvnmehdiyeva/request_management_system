@@ -19,6 +19,7 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { RouterModule } from '@angular/router'; // Import RouterModule
 import { PasswordComponent } from './password/password.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 @NgModule({
   declarations: [
     MainComponent,
@@ -26,7 +27,8 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     CreateNewComponent,
     PasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    SidemenuComponent
   ],
   imports: [
     CommonModule,

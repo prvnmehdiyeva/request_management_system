@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { InquiriesInfo } from '../../models/inquiries-info';
@@ -7,7 +7,7 @@ import { CreateNewComponent } from '../create-new/create-new.component';
 import { PageEvent } from '@angular/material/paginator';
 import { UsersInfo } from '../../models/users-info';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 
 })
 export class HomeComponent implements OnInit {
+  @Output() openDialogEvent = new EventEmitter<void>();
   currentPage=0
   pageSizeOptions = [5, 10, 20];
   pageSize = this.pageSizeOptions[0];
@@ -32,24 +33,20 @@ export class HomeComponent implements OnInit {
   filteredInquiries: InquiriesInfo[] = [];
   public status: Status[]=[] ;
   public selectedStatus: any | null = "All";
-  constructor(public authService:AuthService, private dialog: MatDialog,private route: ActivatedRoute
-    ){}
+  constructor(public authService:AuthService, private dialog: MatDialog,private route: ActivatedRoute,
+    private router:Router){}
     ngOnInit(): void {
       this.route.params.subscribe(params => {
         this.id = params['id'];
         this.getUsers();
-        this.getInquiries();
+        this.getInquiries(); 
         this.getStatus();
       });
     }
-  openDialog() {
-    const dialogRef = this.dialog.open(CreateNewComponent);
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res) {
-        console.log(`Dialog result: ${res}`);
-      }
-    });
-  }
+    openDialog() {
+      console.log("object");
+      this.openDialogEvent.emit();
+    }
   getUsers(){
     this.authService.getUsers().subscribe(users => {
       this.users = users;
