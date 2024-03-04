@@ -27,7 +27,7 @@ constructor(private fb:FormBuilder ,private route: ActivatedRoute,
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });  
-  }
+  } 
   goBack() {
     this.backEvent.emit();
   }

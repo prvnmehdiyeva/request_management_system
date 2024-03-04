@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
 import { PasswordComponent } from './password/password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     MainComponent,
@@ -43,7 +44,8 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
     MatPaginatorModule,
     ReactiveFormsModule,
     MatDialogModule,
-    RouterModule
+    RouterModule,
+    MatSnackBarModule
   ]
 })
 export class MainModule { }

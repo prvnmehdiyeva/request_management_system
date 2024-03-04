@@ -26,7 +26,7 @@ import { PasswordComponent } from './main/password/password.component';
     FontAwesomeModule, 
     MatPaginatorModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

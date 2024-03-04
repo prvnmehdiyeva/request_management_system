@@ -10,12 +10,15 @@ server.put('/user/:id', function (req, res) {
 
   var userId = req.params.id;
   var newPassword = req.body.password;
+  var name = req.body.name;
 
   var userIndex = db.user.findIndex(function (user) {
     return user.id === parseInt(userId);
   });
   if (userIndex !== -1) {
     db.user[userIndex].password = newPassword;
+    db.user[userIndex].name = name;
+
     var updatedUser = db.user[userIndex];
 
     fs.writeFileSync('./server/db.json', JSON.stringify(db, null, 2));
