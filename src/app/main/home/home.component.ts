@@ -16,7 +16,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 
 })
 export class HomeComponent implements OnInit {
-  @Output() openDialogEvent = new EventEmitter<void>();
+  @Output() menuItemSelected = new EventEmitter<string>();
   currentPage=0
   pageSizeOptions = [5, 10, 20];
   pageSize = this.pageSizeOptions[0];
@@ -43,9 +43,8 @@ export class HomeComponent implements OnInit {
         this.getStatus();
       });
     }
-    openDialog() {
-      console.log("object");
-      this.openDialogEvent.emit();
+    selectMenuItem(menuItem: string) {
+      this.menuItemSelected.emit(menuItem);
     }
   getUsers(){
     this.authService.getUsers().subscribe(users => {

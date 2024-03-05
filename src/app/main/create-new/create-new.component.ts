@@ -8,10 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './create-new.component.scss'
 })
 export class CreateNewComponent implements OnInit {
-  @Output() backEvent = new EventEmitter<void>();
   form: FormGroup;
-  currentComponent: string = 'create-new'; 
   id: string = '';
+  currentComponent: string = 'create-new'; 
 
 constructor(private fb:FormBuilder ,private route: ActivatedRoute,
   ){
@@ -28,8 +27,6 @@ constructor(private fb:FormBuilder ,private route: ActivatedRoute,
       this.id = params['id'];
     });  
   } 
-  goBack() {
-    this.backEvent.emit();
-  }
+  
 
 }

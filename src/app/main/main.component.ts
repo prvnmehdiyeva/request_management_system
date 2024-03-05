@@ -7,16 +7,11 @@ import { Router } from '@angular/router';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-  currentComponent: string = 'home'; 
-  id: any;
+  currentComponent: string = 'home';
 
   constructor(private router: Router){}
   
-  openDialog() {
-    this.currentComponent = 'create-new';
-  }
-  goBack() {
-    this.currentComponent = 'home';
-    this.router.navigate(['/users', this.id]);
+  onMenuItemSelected(menuItem: string) {
+    this.currentComponent = menuItem;
   }
 }

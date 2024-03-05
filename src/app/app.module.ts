@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RoutingModule } from './routing.module';
+// import { RoutingModule } from './routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,7 +22,7 @@ import { PasswordComponent } from './main/password/password.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RoutingModule,
+    // RoutingModule,
     FontAwesomeModule, 
     MatPaginatorModule,
     BrowserAnimationsModule,

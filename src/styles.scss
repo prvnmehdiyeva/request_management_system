@@ -19,3 +19,6 @@ body{
 .bg-password{
   overflow: hidden;
 }
+input::placeholder {
+  font-size: 13px; 
+}

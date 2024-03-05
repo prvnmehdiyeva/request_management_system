@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,8 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './sidemenu.component.scss'
 })
 export class SidemenuComponent implements OnInit {
-  @Input() id: string = '';
+  @Output() menuItemSelected = new EventEmitter<string>();
 
+  @Input() id: string = '';
+ 
   constructor(private route: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -16,5 +18,8 @@ export class SidemenuComponent implements OnInit {
       this.id = params['id'];
   })
 }
+  selectMenuItem(menuItem: string) {
+    this.menuItemSelected.emit(menuItem);
+  }
 
 }

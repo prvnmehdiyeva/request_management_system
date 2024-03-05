@@ -16,9 +16,5 @@ export class ProfileComponent implements OnInit {
       this.id = params['id'];
     });  
   }
-  @Output() backEvent = new EventEmitter<void>();
-
-  goBack() {
-    this.backEvent.emit();
-  }
+  
 }

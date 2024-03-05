@@ -6,12 +6,12 @@
 <div class="text-left ">
   <div class="row">
     <div class="col-2 nav_side p-5 pt-4">
-    <app-sidemenu></app-sidemenu>
+    <app-sidemenu (menuItemSelected)="onMenuItemSelected($event)"></app-sidemenu>
   </div> 
   <div class="col-10 nav_second pt-4">
-    <app-home *ngIf="currentComponent === 'home'" (openDialogEvent)="openDialog()"></app-home>
-    <app-create-new *ngIf="currentComponent === 'create-new'"  (click)="goBack()"></app-create-new>
-    <app-profile *ngIf="currentComponent === 'profile'" (click)="goBack()"></app-profile>
+    <app-home *ngIf="currentComponent === 'home'" (menuItemSelected)="onMenuItemSelected($event)"></app-home> 
+    <app-create-new *ngIf="currentComponent === 'create-new'"></app-create-new>
+    <app-profile *ngIf="currentComponent === 'profile'"></app-profile>
   </div>
   </div>
   </div>
