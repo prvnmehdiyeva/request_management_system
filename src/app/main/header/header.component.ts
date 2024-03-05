@@ -34,6 +34,8 @@ export class HeaderComponent implements OnInit {
   }
   getUserName(): void {
     this.route.params.subscribe(params => {
+      console.log("🚀 ~ HeaderComponent ~ getUserName ~ params:", params['name'])
+
       this.userId = params['id'];
       console.log(this.userId);  // 1
   

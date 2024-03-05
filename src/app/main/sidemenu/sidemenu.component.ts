@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './sidemenu.component.scss'
 })
 export class SidemenuComponent implements OnInit {
-  @Output() menuItemSelected = new EventEmitter<string>();
 
   @Input() id: string = '';
  
@@ -18,8 +17,6 @@ export class SidemenuComponent implements OnInit {
       this.id = params['id'];
   })
 }
-  selectMenuItem(menuItem: string) {
-    this.menuItemSelected.emit(menuItem);
-  }
+  
 
 }

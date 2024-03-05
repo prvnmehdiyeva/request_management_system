@@ -7,11 +7,6 @@ import { Router } from '@angular/router';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-  currentComponent: string = 'home';
-
   constructor(private router: Router){}
   
-  onMenuItemSelected(menuItem: string) {
-    this.currentComponent = menuItem;
-  }
 }
