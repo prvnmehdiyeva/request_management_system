@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { PasswordChangeSuccessDialogComponent } from './password/password-change-success-dialog/password-change-success-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     CreateNewComponent,
     PasswordComponent,
     ProfileComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    PasswordChangeSuccessDialogComponent
   ],
   imports: [
     CommonModule,

@@ -16,9 +16,9 @@ export class SidemenuComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
         this.id = params['id'];
-    });
+    }); 
     this.route.queryParams.subscribe(params => {
-        this.userName = params['name'];
+        this.userName = params['name'];  
     });
   }
 }

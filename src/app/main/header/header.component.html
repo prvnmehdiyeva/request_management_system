@@ -8,8 +8,8 @@
           {{name}}
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" [routerLink]="['/main/profile']">Profil</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/main/password']">Change your password</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/main/users', id, 'profile']">Profil</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/main/users', id, 'password']">Change your password</a></li>
           <li><a class="dropdown-item" [routerLink]="['/main']">Log out</a></li>
         </ul>
       </div>

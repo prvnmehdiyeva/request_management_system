@@ -4,6 +4,8 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { PasswordChangeSuccessDialogComponent } from './password-change-success-dialog/password-change-success-dialog.component';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
@@ -20,7 +22,8 @@ export class PasswordComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', Validators.required],
@@ -53,10 +56,9 @@ export class PasswordComponent implements OnInit {
           if (newPassword === confirmPassword) {
             this.authService.updateUser(user.id, newPassword, user.name).subscribe(
               () => {
-                this.successMessage = 'Password updated successfully.';
+                this.openSuccessDialog();
                 this.changePasswordForm.reset();
-                console.log(user);
-                this.router.navigate(['/login']);
+                
               },
               error => {
                 this.errorMessage = 'An error occurred while updating the password.';
@@ -78,8 +80,14 @@ export class PasswordComponent implements OnInit {
   }
   openSnackBar(message: string) {
     this.snackBar.open(message, 'Close', {
-      duration: 3000, 
+      duration: 4000, 
       verticalPosition: 'top' 
+    });
+  }
+  openSuccessDialog() {
+    this.dialog.open(PasswordChangeSuccessDialogComponent, {
+      width: '400px',
+      position: { top: '20%' }
     });
   }
 }
