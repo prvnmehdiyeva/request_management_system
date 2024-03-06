@@ -8,7 +8,7 @@
           </div>
           <div class="col col-btn">
             <button mat-fab extended class="btn btn-create text-light"
-            color="primary" (click)="selectMenuItem('create-new')">
+            color="primary" [routerLink]="['/main/users', id, 'create-new']">
             <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
             Create inquiries
           </button></div>

@@ -8,20 +8,21 @@ import { PasswordComponent } from './password/password.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  {
-  path: '',
-  component:MainComponent,
-  children:[
-    { path: 'inquiries', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'create-new', component: CreateNewComponent },
-    { path: 'profile', component: ProfileComponent },
-    { path: 'users/:id/password', component: PasswordComponent },
-    { path: 'users/:id', component: HomeComponent }
-  ]
-}
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: 'login', component: LoginComponent },
+  { 
+    path: '',
+    component: MainComponent,
+    children:[
+      { path: 'inquiries', component: HomeComponent },
+      { path: 'profile', component: ProfileComponent }, 
+      { path: 'users/:id/create-new', component: CreateNewComponent },
+      { path: 'users/:id/password', component: PasswordComponent },
+      { path: 'users/:id', component: HomeComponent }
+    ]
+  }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

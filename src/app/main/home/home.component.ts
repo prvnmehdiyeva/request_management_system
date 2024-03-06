@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   public selectedStatus: any | null = "All";
   constructor(public authService:AuthService, private dialog: MatDialog,private route: ActivatedRoute,
     private router:Router){}
-    ngOnInit(): void {
+    ngOnInit(): void {  
       this.route.params.subscribe(params => {
         this.id = params['id'];
         this.getUsers();

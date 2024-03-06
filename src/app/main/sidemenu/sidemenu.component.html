@@ -1,6 +1,6 @@
 <ul class="nav flex-column gap-3">
     <li class="nav-item">
-      <a [routerLink]="'/users/' + id" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
+      <a [routerLink]="['/main/users', id, 'inquiries']" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
         <i class="fas fa-file"></i>
         Inquiries 
       </a>
@@ -12,7 +12,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="icon-link text-decoration-none gap-3">
+      <a [routerLink]="['/main/users', id, 'create-new']" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
         <i class="fas fa-user"></i>
         Profil
     </a>    

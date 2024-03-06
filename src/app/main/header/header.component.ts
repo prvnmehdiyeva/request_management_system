@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoginComponent } from '../../components/login/login.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileComponent } from '../profile/profile.component';
@@ -11,43 +11,21 @@ import { ProfileComponent } from '../profile/profile.component';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  @Output() openDialogEvent = new EventEmitter<void>();
 
   @Input() name:string=''
-  @Input() id: string = '';
-  userId: any;
-  currentComponent: string = 'home';
-  userName: any;
-  constructor(private route: ActivatedRoute, private dialog: MatDialog, private authService:AuthService){}
+  @Input() id: string | null = '';
+  constructor(private route: ActivatedRoute, private dialog: MatDialog, private authService:AuthService,private router: Router){}
  
   
     ngOnInit(): void {
-      this.route.params.subscribe(params => {
-        this.id = params['id'];
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        this.id = params.get('id') || ''; 
+        console.log('ID', this.id);
       });
-   this.getUserName()
-  }
 
-  openDialog(page:string) {
-      this.currentComponent=page
-    this.openDialogEvent.emit();
-  }
-  getUserName(): void {
-    this.route.params.subscribe(params => {
-      console.log("🚀 ~ HeaderComponent ~ getUserName ~ params:", params['name'])
-
-      this.userId = params['id'];
-      console.log(this.userId);  // 1
-  
-      this.authService.getUsers().subscribe(users => {
-        const user = users.find((user: any) => {
-          return user.id === this.userId;
-        });
-        if (user) {
-          this.userName = user.name;
-          console.log(this.userName);
-        }
-      });
-    });
+      this.route.queryParams.subscribe(params => {
+    this.name = params['name'];
+    console.log('Name:', this.name);
+  });
   }
 }

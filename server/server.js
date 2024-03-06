@@ -6,7 +6,7 @@ var db = require('./db.json');
 var fs = require('fs');
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
-server.put('/user/:id', function (req, res) {
+server.put('user/:id', function (req, res) {
 
   var userId = req.params.id;
   var newPassword = req.body.password;
