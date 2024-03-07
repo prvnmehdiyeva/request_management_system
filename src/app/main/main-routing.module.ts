@@ -11,14 +11,14 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, 
   { path: 'login', component: LoginComponent },
   { 
-    path: '',
+    path: 'users/:id',
     component: MainComponent,
     children:[
+      { path: '', redirectTo: 'inquiries', pathMatch: 'full' }, // Redirect empty path to home
       { path: 'inquiries', component: HomeComponent },
       { path: 'profile', component: ProfileComponent }, 
-      { path: 'users/:id/create-new', component: CreateNewComponent },
-      { path: 'users/:id/password', component: PasswordComponent },
-      { path: 'users/:id', component: HomeComponent }
+      { path: 'create-new', component: CreateNewComponent },
+      { path: 'password', component: PasswordComponent },
     ]
   }
 ];

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -12,10 +12,11 @@ export class MainComponent implements OnInit {
   constructor(private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id') || '';
-
-      console.log('ID', this.id);
-  
+    this.route.params.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      console.log(this.id);
+    });  
   }
 
 }

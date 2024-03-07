@@ -14,11 +14,18 @@ export class SidemenuComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    if (!this.id) {
+      this.route.params.subscribe(params => {
         this.id = params['id'];
-    }); 
-    this.route.queryParams.subscribe(params => {
-        this.userName = params['name'];  
-    });
+        console.log(this.id);
+      });
+    }
+
+    if (!this.userName) {
+      this.route.queryParams.subscribe(params => {
+        this.userName = params['name'] || '';
+        console.log(this.userName);
+      });
+    }
   }
 }
