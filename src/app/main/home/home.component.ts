@@ -7,7 +7,7 @@ import { CreateNewComponent } from '../create-new/create-new.component';
 import { PageEvent } from '@angular/material/paginator';
 import { UsersInfo } from '../../models/users-info';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -30,19 +30,20 @@ export class HomeComponent implements OnInit {
   @Input() id: string = '';
   public inquiries: InquiriesInfo[]=[]
   public users: UsersInfo[]=[]
-  filteredInquiries: InquiriesInfo[] = [];
+  public filteredInquiries: InquiriesInfo[] = [];
   public status: Status[]=[] ;
   public selectedStatus: any | null = "All";
   constructor(public authService:AuthService, private dialog: MatDialog,private route: ActivatedRoute,
     private router:Router){}
     ngOnInit(): void {  
-      this.route.params.subscribe(params => {
-        this.id = params['id'];
+      this.route.parent?.paramMap.subscribe(params => {
+        this.id = params.get('id')!;
+        console.log('IDHome', this.id);
         this.getUsers();
         this.getInquiries(); 
         this.getStatus();
       });
-    }
+    } 
     selectMenuItem(menuItem: string) {
       this.menuItemSelected.emit(menuItem);
     }
@@ -55,6 +56,7 @@ export class HomeComponent implements OnInit {
     this.authService.getInquiries().subscribe(inquiries => {
       this.inquiries = inquiries;
       this.filteredInquiries=inquiries
+      
     });
   }
   getStatus(){

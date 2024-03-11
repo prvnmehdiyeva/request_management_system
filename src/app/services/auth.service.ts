@@ -7,9 +7,8 @@ import { UsersInfo } from '../models/users-info';
   providedIn: 'root'
 })
 export class AuthService {
+  
   handleError: any;
-
-
   private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }

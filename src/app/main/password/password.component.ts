@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { ParamMap, Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { PasswordChangeSuccessDialogComponent } from './password-change-success-
   styleUrls: ['./password.component.scss']
 })
 export class PasswordComponent implements OnInit {
-  id: string = '';
+  @Input() id: string = '';
   changePasswordForm: FormGroup;
   successMessage: string | null = null;
   errorMessage: string | null = null;
@@ -34,8 +34,8 @@ export class PasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = params.get('id') || ''; 
     });
   }
 

@@ -238,17 +238,6 @@
       "id": "ed89"
     },
     {
-      "ID": 874365,
-      "Sender": "John Doe",
-      "Title": "Urgent Issue",
-      "Text": "Need immediate attention",
-      "Category": "Technical",
-      "Executor": "Alice Smith",
-      "Date": "2024-02-22",
-      "Status": "Opened",
-      "id": "b08e"
-    },
-    {
       "ID": 624179,
       "Sender": "Jane Smith",
       "Title": "Feedback",

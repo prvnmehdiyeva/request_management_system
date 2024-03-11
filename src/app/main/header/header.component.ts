@@ -21,11 +21,16 @@ export class HeaderComponent implements OnInit {
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.id = params.get('id') || ''; 
         console.log('ID', this.id);
+        this.getUserName()
       });
 
-      this.route.queryParams.subscribe(params => {
-    this.name = params['name'];
-    console.log('Name:', this.name);
-  });
+  }
+  getUserName(){
+    this.authService.getUsers().subscribe((data) => {
+      const user = data.find((user: any) => user.id === this.id);
+      if (user) {
+        this.name = user.name;
+      }
+    });
   }
 }

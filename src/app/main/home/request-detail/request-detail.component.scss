@@ -1,0 +1,166 @@
+.title{
+  display: grid;
+  align-items: center;
+  text-align: end;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+    .back-link{
+      text-decoration: none;
+      text-decoration-line: none;
+      color: #6359EC;
+    }
+    .head{
+      display: flex;
+      align-items: baseline;
+      gap:10px;
+    }
+}
+.small{
+  opacity: 50%;
+  font-size: 12px;
+}
+
+.list-group{
+  --bs-list-group-border-radius:0;
+  width: 100%;
+  .list-group-item{
+    background: none;
+    color:#6045E2;
+    gap: 31px;
+    padding:0.5rem;
+    padding:0.5rem 1rem;
+    border: none;
+    border-bottom: 1px solid #6045E2;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    &.active{
+      color:#6045E2;
+      background: none;
+      border-top: 1px solid #6045E2;
+      border-right: 1px solid #6045E2;
+      border-left: 1px solid #6045E2;
+      border-bottom: none;
+    }
+    .badge {
+      background-color: #ebebfa;
+      color: #6045E2;
+      font-weight: 500;
+  }
+  }
+}
+.grid-message {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 20px;
+  align-items: start;
+  }
+  .message { grid-area: 1 / 1 / 5 / 6; }
+  .reply-message { grid-area: 4 / 3 / 9 / 6; }
+.message{
+  display: flex;
+  gap: 20px;
+ 
+  .card{
+    padding: 25px;
+    .name{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: end;
+      .head{
+        display: flex;
+        gap: 20px;
+        align-items: baseline;
+      }
+    }
+    .button {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px; 
+    }
+    
+    .info {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-end;
+      padding: 0;
+    }
+    
+    .btn {
+      text-align: left; 
+      text-decoration: none;
+    }
+    
+  }
+}
+.last-side{
+  display: flex;
+  justify-content: space-between;
+  
+  .password {
+    display: inline-block;
+    padding: 10px; 
+    border-radius: 5px; 
+     a {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6562b8;
+    text-decoration: none; 
+  }
+   .icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px; 
+    text-align: center;
+    line-height: 30px;
+    margin-right: 5px; 
+    background-color: #ccc;
+    color: #55539F;
+    border-radius: 5px;
+  }
+  .icon i {
+    color: #fff;
+  }
+  }
+  .btn{
+    margin-left: 20px;
+  }
+}
+// Buttons
+.buttons{
+  
+  .btn-submit{
+    background-color: #6359EC;
+    color: white;
+  }
+}
+
+.profile{
+  background-color: #6045E2;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #ffffff;
+  border-radius: 5px;
+  object-fit: fill;
+}
+
+// CommentButton
+
+.comment{
+  .form-control{
+    vertical-align: top;
+    height: 10rem;
+  }
+}
+
+// History
+
+.card-history{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  .name{
+    .head{
+      display: flex;
+    }
+  }
+}

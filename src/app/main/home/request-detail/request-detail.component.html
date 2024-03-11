@@ -1,0 +1,133 @@
+<div class="grid-head container pb-3" *ngFor="let card of filteredInquiries">
+  <div class="title" >
+    <div class="head">
+      <h3 mat-dialog-title>{{card.ID}}</h3>
+    <span class="align-middle small">{{card.Category}}</span>
+    </div>
+    <div class="back-link">
+       <a class="back-link">
+           Status:{{card.Status}}
+       </a>
+    </div>
+  </div>
+ 
+  <ul class="list-group list-group-horizontal mb-3 p-3">
+    <button id="requestButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('requestButton')" [class.active]="activeItem === 'requestButton'">
+      Request
+    </button>
+    <button id="commentButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('commentButton')" [class.active]="activeItem === 'commentButton'">
+      Comment
+      <span class="badge">1</span>
+    </button>
+    <button id="historyButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('historyButton')" [class.active]="activeItem === 'historyButton'" >
+      History
+    </button>
+    <button class="list-group-item d-flex justify-content-between align-items-center">
+      Request information
+    </button>
+  </ul>
+  <aside *ngIf="activeItem==='requestButton'">
+<div class="grid-message">
+  <div class="message">
+    <img class="profile" src="../../../assets/profile.png" alt="profile">
+    <div class="card">
+       <div class="name">
+        <div class="head">
+          <h6>{{card.Executor}}</h6>
+          <p>{{card.Sender}}</p>
+       </div>
+       <p class="small">{{card.Date}} / {{now}}</p>
+      </div>
+      <div>
+        <h6>{{card.Title}}</h6>
+        <p>{{card.Text}}
+        </p>
+      </div>
+      <div class="button">
+        <a class="btn btn-link" disabled>Connect</a>
+        <div class="info">
+          <p class="small">App New Requirement |&nbsp; </p>
+          <p class="small">Medium</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="message reply-message">
+    <img class="profile" src="../../../assets/profile.png" alt="profile">
+    <div class="card">
+       <div class="name">
+        <div class="head">
+          <h6>Alex Rodrigez</h6>
+          <p>John Doe</p>
+       </div>
+       <p class="small">20/12/2023 / 12:00</p>
+      </div>
+      <div>
+        <h6>Title</h6>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae porro voluptatum velit eum animi quo
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="last-side pt-4">
+  <div class="password">
+    <a href="#">
+      <span class="icon">
+        <i class="fas fa-print"></i> 
+      </span>
+      Print...
+    </a>
+  </div>
+<div class="buttons">
+  <a [routerLink]="'/users/' + id" routerLinkActive="active" class="btn btn-secondary" type="button">Cancel</a>
+      <button class="btn btn-submit" type="submit">Lock it</button>
+</div>
+</div>
+</aside>
+
+<div *ngIf="activeItem ==='commentButton'">
+  <div class="message reply-message">
+    <img class="profile" src="../../../assets/profile.png" alt="profile">
+    <div class="card">
+       <div class="name">
+        <div class="head">
+          <h6>Alex Rodrigez</h6>
+          <p>John Doe</p>
+       </div>
+       <p class="small">20/12/2023 / 12:00</p>
+      </div>
+      <div>
+        <h6>Title</h6>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae porro voluptatum velit eum animi quo
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="comment mt-5 mb-3">
+    <label for="comment">Comment</label>
+    <input type="text" class="form-control" text-start >
+  </div>
+  <div class="input-group mt-4 mb-5">
+    <input type="file" class="form-control" id="inputGroupFile02">
+    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+  </div>
+  <div class="buttons">
+    <button class="btn btn-submit" type="submit">Lock it</button>
+  </div>
+</div>
+
+<div *ngIf="activeItem === 'historyButton'">
+  <div class="card-history">
+    <div class="name">
+      <div class="head">
+          <img class="profile" src="../../../assets/profile.png" alt="profile">
+          <h6>{{card.Executor}}</h6>
+          <p>{{card.Sender}}</p>
+       </div>
+      </div>
+      <p class="small">{{card.Date}} / {{now}}</p>
+    </div>
+</div>
+<p class="copyright pt-2" disabled>Copyright &copy; CIC LLC</p>
+</div>
