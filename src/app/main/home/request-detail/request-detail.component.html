@@ -2,7 +2,7 @@
   <div class="title" >
     <div class="head">
       <h3 mat-dialog-title>{{card.ID}}</h3>
-    <span class="align-middle small">{{card.Category}}</span>
+    <span class="align-middle small opacity-50 small">{{card.Category}}</span>
     </div>
     <div class="back-link">
        <a class="back-link">
@@ -22,7 +22,7 @@
     <button id="historyButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('historyButton')" [class.active]="activeItem === 'historyButton'" >
       History
     </button>
-    <button class="list-group-item d-flex justify-content-between align-items-center">
+    <button id="infoButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('infoButton')" [class.active]="activeItem === 'infoButton'">
       Request information
     </button>
   </ul>
@@ -52,7 +52,7 @@
       </div>
     </div>
   </div>
-  <div class="message reply-message">
+  <div class="message reply-message mt-3">
     <img class="profile" src="../../../assets/profile.png" alt="profile">
     <div class="card">
        <div class="name">
@@ -118,16 +118,142 @@
 </div>
 
 <div *ngIf="activeItem === 'historyButton'">
-  <div class="card-history">
+  <div class="card card-history p-3 mb-3">
     <div class="name">
+      <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
-          <img class="profile" src="../../../assets/profile.png" alt="profile">
-          <h6>{{card.Executor}}</h6>
-          <p>{{card.Sender}}</p>
-       </div>
+          <h6 class="m-0 mb-1">{{card.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{card.Category}}</p>
       </div>
-      <p class="small">{{card.Date}} / {{now}}</p>
     </div>
+    <div class="vertical-line">
+      <div class="line"></div>
+      <p class="m-0">Create new request</p>
+    </div>
+      <p class="small m-0">{{card.Date}} / {{now}}</p>
+  </div>
+  <div class="card card-history p-3 mb-3">
+    <div class="name">
+      <img class="profile" src="../../../assets/profile.png" alt="profile">
+      <div class="head">
+          <h6 class="m-0 mb-1">{{card.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{card.Category}}
+          </p>
+      </div>
+    </div>
+    <div class="vertical-line">
+      <div class="line"></div>
+      <p class="m-0">Create new request</p>
+    </div>
+      <p class="small m-0">{{card.Date}} / {{now}}</p>
+  </div>
+  <div class="card card-history p-3 mb-3">
+    <div class="name">
+      <img class="profile" src="../../../assets/profile.png" alt="profile">
+      <div class="head">
+          <h6 class="m-0 mb-1">{{card.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{card.Category}}</p>
+      </div>
+    </div>
+    <div class="vertical-line">
+      <div class="line"></div>
+      <p class="m-0">Create new request</p>
+    </div>
+    <p class="small m-0">{{card.Date}} / {{now}}</p>
+  </div>
+</div>
+
+<div *ngIf="activeItem === 'infoButton'">
+  <form class="row g-3">
+    <div class="col-md-6">
+      <label for="inputState" class="form-label">State</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="inputState" class="form-label">State</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress2" class="form-label">Address 2</label>
+      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+    <div class="col-md-12">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label" for="inlineRadio1">Application Development</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">Application Development</label>
+      </div>
+  </div>
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-md-12">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label class="form-check-label" for="inlineRadio1">Email</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">Phone</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2"> Request</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">Request</label>
+    </div>
+</div>
+<div class="col-12">
+  <label for="inputAddress" class="form-label">Address</label>
+  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+</div>
+<div class="col-12">
+  <label for="inputAddress2" class="form-label">Address 2</label>
+  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+</div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Routine
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="buttons">
+        <button class="btn btn-submit" type="submit">Send</button>
+      </div>
+    </div>
+  </form>
 </div>
 <p class="copyright pt-2" disabled>Copyright &copy; CIC LLC</p>
 </div>

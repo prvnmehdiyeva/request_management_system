@@ -63,6 +63,7 @@
  
   .card{
     padding: 25px;
+    width: 100%;
     .name{
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -157,10 +158,25 @@
 
 .card-history{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr  1fr;
+  justify-content: space-between;
+  text-align: end;
+  align-items: center;
   .name{
-    .head{
-      display: flex;
+    display: flex;
+    text-align: left;
+    gap: 1rem;
+  }
+  .vertical-line{
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    font-size: 14px;
+    .line{
+      height: 2rem;
+      width: 0.09rem;
+      background-color: #ececec;
     }
   }
 }

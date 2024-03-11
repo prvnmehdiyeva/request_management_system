@@ -12,9 +12,8 @@ export class RequestDetailComponent implements OnInit {
   @Input() id: string = '';
   public filteredInquiries: InquiriesInfo[] = [];
   public inquiries: InquiriesInfo[] = [];
-
-  now: Date = new Date();
-  activeItem: string = 'historyButton'; 
+now:string=''
+  activeItem: string = 'infoButton'; 
 
 
   constructor(private route: ActivatedRoute, public authService: AuthService) {}
@@ -24,8 +23,15 @@ export class RequestDetailComponent implements OnInit {
       this.id = params.get('id') || '';
       console.log('Inquiry ID:', this.id);
       this.getInquiries(); 
+      this.nowDate()
     });
-    this.now = new Date();
+
+    
+  }
+  nowDate(){
+    const now = new Date();
+    const formattedDate = now.toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
+    return formattedDate
   }
   toggleActive(buttonId: string) {
     this.activeItem = buttonId;

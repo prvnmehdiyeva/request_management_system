@@ -69,7 +69,7 @@
                     <td>{{card.ID}}</td>
                     <td>{{card.Sender}}</td>
                     <td>{{card.Title}}</td>
-                    <td>{{card.Text}}</td>
+                    <td>{{ card.Text | slice:0:30 }}</td>
                     <td>{{card.Category}}</td>
                     <td>{{card.Executor}}</td>
                     <td>{{card.Date}}</td>
