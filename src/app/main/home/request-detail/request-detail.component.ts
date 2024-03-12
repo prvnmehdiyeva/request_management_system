@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InquiriesInfo } from '../../../models/inquiries-info';
 import { AuthService } from '../../../services/auth.service';
+import { Comment } from '../../../models/comment';
 
 @Component({
   selector: 'app-request-detail',
@@ -12,6 +13,7 @@ export class RequestDetailComponent implements OnInit {
   @Input() id: string = '';
   public filteredInquiries: InquiriesInfo[] = [];
   public inquiries: InquiriesInfo[] = [];
+  public comments: Comment[] = [];
   now:string=''
   activeItem: string = 'requestButton'; 
 
@@ -23,6 +25,7 @@ export class RequestDetailComponent implements OnInit {
       this.id = params.get('id') || '';
       console.log('Inquiry ID:', this.id);
       this.getInquiries(); 
+      this.getCommnets()
       this.nowDate()
     });
 
@@ -39,8 +42,14 @@ export class RequestDetailComponent implements OnInit {
   getInquiries() {
     this.authService.getInquiries().subscribe(inquiries => {
     this.inquiries = inquiries;
-    this.filteredInquiries = inquiries.filter((inquiry: { ID: { toString: () => string; }; }) => inquiry.ID.toString() === this.id);
+    this.filteredInquiries = inquiries.filter((inquiry: { ID: any }) => inquiry.ID && inquiry.ID.toString() === this.id);
     console.log(this.filteredInquiries);
     });
   } 
+  getCommnets(){
+    this.authService.getComments().subscribe(comments =>{
+      this.comments = comments
+      console.log(comments);
+    })
+  }
 }

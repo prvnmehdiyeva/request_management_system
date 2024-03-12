@@ -55,8 +55,9 @@
   gap: 20px;
   align-items: start;
   }
-  .message { grid-area: 1 / 1 / 5 / 6; }
-  .reply-message { grid-area: 4 / 3 / 9 / 6; }
+  .message { grid-area: 1 / 1 / 5 / 6;
+  margin-bottom: 40px; }
+  .reply-message { grid-area: 4 / 2 / 9 / 6; }
 .message{
   display: flex;
   gap: 20px;

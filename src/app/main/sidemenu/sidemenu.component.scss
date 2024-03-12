@@ -23,3 +23,18 @@
     transition: color 0.3s;
   }
 }
+
+@media screen and (max-width: 390px){
+  .nav{
+    display: flex;
+    flex-direction: row !important;
+    gap: 100px !important;
+  }
+  .icon-link {
+    width: 20px;
+    height: 20px;
+    i {
+      padding: 8px;
+    }
+  }
+}

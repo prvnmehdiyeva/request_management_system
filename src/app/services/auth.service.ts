@@ -33,9 +33,14 @@ export class AuthService {
   }
 
   //post
-
   addRequest(request: InquiriesInfo): Observable<InquiriesInfo> {
     const url = `${this.baseUrl}/inquiries`;
     return this.http.post<InquiriesInfo>(url, request)
+  }
+
+  //comment
+
+  getComments(){
+    return this.http.get<any>(`${this.baseUrl}/comments`);
   }
 }

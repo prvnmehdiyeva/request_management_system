@@ -52,19 +52,19 @@
       </div>
     </div>
   </div>
-  <div class="message reply-message mt-3">
+  <div class="message reply-message mt-6" *ngFor="let comment of comments">
     <img class="profile" src="../../../assets/profile.png" alt="profile">
     <div class="card">
        <div class="name">
         <div class="head">
-          <h6>Alex Rodrigez</h6>
-          <p>John Doe</p>
+          <h6>{{comment.Name}}</h6>
+          <p>{{comment.Job}}</p>
        </div>
        <p class="small">20/12/2023 / 12:00</p>
       </div>
       <div>
-        <h6>Title</h6>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae porro voluptatum velit eum animi quo
+        <h6>{{comment.Title}}</h6>
+        <p>{{comment.Text}}
         </p>
       </div>
     </div>

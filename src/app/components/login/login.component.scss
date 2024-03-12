@@ -43,3 +43,24 @@
     }
   }
 }
+@media screen and (max-width: 390px){
+  .login {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: center;
+    .head{
+      margin-top: 10px;
+      font-size: 22px;
+      text-align: center;
+    }
+    .logo{
+      display: grid;
+      align-items: center; 
+      justify-items: center;
+    }
+    .login-form{
+      width: 70%;
+    }
+  }
+}
