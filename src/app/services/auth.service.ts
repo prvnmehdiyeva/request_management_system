@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { UsersInfo } from '../models/users-info';
+import { InquiriesInfo } from '../models/inquiries-info';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,12 @@ export class AuthService {
   }
   getStatus(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/status`);
+  }
+
+  //post
+
+  addRequest(request: InquiriesInfo): Observable<InquiriesInfo> {
+    const url = `${this.baseUrl}/inquiries`;
+    return this.http.post<InquiriesInfo>(url, request)
   }
 }

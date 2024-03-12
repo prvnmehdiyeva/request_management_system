@@ -1,19 +1,18 @@
 <div class="grid-head container pb-3">
 <h3 mat-dialog-title>Create new inquiry</h3>
 <div class="back-link">
-  <a [routerLink]="'/users/' + id" routerLinkActive="active" class="back-link">
+  <a [routerLink]="'../inquiries'" routerLinkActive="active" class="back-link">
     <i class="fas fa-chevron-left"></i> Back
   </a>
 </div>
 </div>
 <mat-dialog-content class="mat-typography">
   
-  <form class="row g-3 p-4 pb-0">
+  <form [formGroup]="form" class="row g-3 p-4 pb-0">
     <div class="col-md-4">
-      <label for="inputState" class="form-label">Category</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>Human Resources</option>
+      <label for="Category" class="form-label">Category</label>
+      <select id="Category" class="form-select" formControlName="Category">
+        <option selected>Human Resources</option>
         <option>Finance</option>
         <option>Marketing</option>
         <option>Operations</option>
@@ -22,19 +21,17 @@
       </select>
     </div>
     <div class="col-md-4">
-      <label for="inputState" class="form-label">Category</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option value="low">Low</option>
+      <label for="Sender" class="form-label">Prioritet</label>
+      <select id="Sender" class="form-select" formControlName="Sender">
+        <option selected value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
       </select>
     </div>
     <div class="col-md-4">
-      <label for="inputState" class="form-label">Category</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>General Inquiry</option>
+      <label for="Executor" class="form-label">Request Type</label>
+      <select id="Executor" class="form-select" formControlName="Executor">
+        <option selected>General Inquiry</option>
         <option>Technical Support</option>
         <option>Feature Request</option>
         <option>Bug Report</option>
@@ -43,21 +40,21 @@
       </select>
     </div>
     <div class="col-12">
-      <label for="inputTitle" class="form-label">Title</label>
-      <input type="text" class="form-control" id="inputTitle" placeholder="Enter Title">
+      <label for="Title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="Title" formControlName="Title" placeholder="Enter Title">
     </div>
     <div class="col-12">
-      <label for="inputText" class="form-label">Text</label>
-      <textarea class="form-control" id="inputText" rows="5" placeholder="Enter Text"></textarea>
+      <label for="Text" class="form-label">Text</label>
+      <textarea class="form-control" id="Text" rows="5" formControlName="Text" placeholder="Enter Text"></textarea>
     </div>
     <div class="input-group mb-3">
       <input type="file" class="form-control" id="inputGroupFile02">
       <label class="input-group-text" for="inputGroupFile02">Upload</label>
     </div>
     <mat-dialog-actions class="d-flex justify-content-end">
-      <button mat-fab extended class="btn btn-create text-light" mat-align="center">
-      Create inquiries
-    </button>
+      <button mat-fab extended class="btn btn-create text-light" mat-align="center" [routerLink]="['../inquiries']" routerLinkActive="router-link-active"  (click)="addRequest()">
+        Create Request
+      </button>
 </mat-dialog-actions>
   </form>
 </mat-dialog-content>

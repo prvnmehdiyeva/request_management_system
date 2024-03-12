@@ -12,8 +12,8 @@ export class RequestDetailComponent implements OnInit {
   @Input() id: string = '';
   public filteredInquiries: InquiriesInfo[] = [];
   public inquiries: InquiriesInfo[] = [];
-now:string=''
-  activeItem: string = 'infoButton'; 
+  now:string=''
+  activeItem: string = 'requestButton'; 
 
 
   constructor(private route: ActivatedRoute, public authService: AuthService) {}
