@@ -15,9 +15,9 @@
     <button id="requestButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('requestButton')" [class.active]="activeItem === 'requestButton'">
       Request
     </button>
-    <button id="commentButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('commentButton')" [class.active]="activeItem === 'commentButton'">
+    <button id="commentButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('commentButton')" [class.active]="activeItem === 'commentButton'" r="let comment of comments" >
       Comment
-      <span class="badge">1</span>
+      <span class="badge">{{comments.length}}</span>
     </button>
     <button id="historyButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('historyButton')" [class.active]="activeItem === 'historyButton'" >
       History
@@ -57,14 +57,14 @@
     <div class="card">
        <div class="name">
         <div class="head">
-          <h6>{{comment.Name}}</h6>
-          <p>{{comment.Job}}</p>
+          <h6>{{userName}}</h6>
+          <p class='text-secondary small'>{{userJob}}</p>
        </div>
        <p class="small">20/12/2023 / 12:00</p>
       </div>
       <div>
-        <h6>{{comment.Title}}</h6>
-        <p>{{comment.Text}}
+        <h6>{{comment.title}}</h6>
+        <p>{{comment.text}}
         </p>
       </div>
     </div>
@@ -86,36 +86,47 @@
 </div>
 </aside>
 
-<div *ngIf="activeItem ==='commentButton'">
-  <div class="message reply-message">
+<div *ngIf="activeItem === 'commentButton'">
+  <div class="message reply-message" *ngFor="let comment of comments">
     <img class="profile" src="../../../assets/profile.png" alt="profile">
     <div class="card">
        <div class="name">
         <div class="head">
-          <h6>Alex Rodrigez</h6>
-          <p>John Doe</p>
-       </div>
-       <p class="small">20/12/2023 / 12:00</p>
+          <h6>{{ userName }}</h6>
+          <p class='text-secondary small'>{{ userJob }}</p>
+        </div>
+        <p class="small">{{ now }}</p>
       </div>
       <div>
-        <h6>Title</h6>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae porro voluptatum velit eum animi quo
-        </p>
+        <h6>{{ comment.title }}</h6>
+        <p>{{ comment.text }}</p>
       </div>
     </div>
   </div>
-  <div class="comment mt-5 mb-3">
-    <label for="comment">Comment</label>
-    <input type="text" class="form-control" text-start >
-  </div>
-  <div class="input-group mt-4 mb-5">
-    <input type="file" class="form-control" id="inputGroupFile02">
-    <label class="input-group-text" for="inputGroupFile02">Upload</label>
-  </div>
-  <div class="buttons">
-    <button class="btn btn-submit" type="submit">Lock it</button>
-  </div>
+  <form class="comment-form mt-5 mb-3" [formGroup]="form" >
+    <!-- Form inputs with formControlName -->
+    <div class="align-items-left mb-3">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title" required>
+    </div>
+    <div class="comment">
+      <label for="text">Comment</label>
+      <input type="text" class="form-control" id="text" formControlName="text" required>
+    </div>    
+    <!-- Other form elements -->
+    <div class="input-group mt-4 mb-5">
+      <input type="file" class="form-control" id="upload">
+      <label class="input-group-text" for="upload">Upload</label>
+    </div>
+    <div class="buttons">
+      <button mat-fab extended class="btn btn-submit" mat-align="center" routerLinkActive="router-link-active"  (click)="addComment()">
+        Submit
+      </button>
+    </div>
+  </form>
+  
 </div>
+
 
 <div *ngIf="activeItem === 'historyButton'">
   <div class="card card-history p-3 mb-3">

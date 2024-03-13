@@ -23,7 +23,6 @@ constructor(private fb:FormBuilder ,private route: ActivatedRoute, private authS
     type: ['', Validators.required],
     title: ['', Validators.required],
     text: ['', Validators.required],
-
   });
 }
 ngOnInit(): void {

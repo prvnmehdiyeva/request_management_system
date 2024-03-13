@@ -6,6 +6,20 @@ var db = require('./db.json');
 var fs = require('fs');
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
+
+server.post('/comments', function (req, res) {
+  var newComment = req.body;
+
+  // Add the new comment to the comments array in db.json
+  db.comments.push(newComment);
+
+  // Write the updated data back to db.json
+  fs.writeFileSync('./server/db.json', JSON.stringify(db, null, 2));
+
+  // Respond with the newly added comment
+  res.status(201).json(newComment);
+});
+
 server.put('user/:id', function (req, res) {
 
   var userId = req.params.id;

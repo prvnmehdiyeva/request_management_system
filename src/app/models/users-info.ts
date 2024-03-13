@@ -1,4 +1,5 @@
 export interface UsersInfo {
   name:string;
-  password:any
+  password:any;
+  job:any
 }

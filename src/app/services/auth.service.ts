@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { UsersInfo } from '../models/users-info';
 import { InquiriesInfo } from '../models/inquiries-info';
+import { AppComment } from '../models/appcomment';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,9 @@ export class AuthService {
 
   getComments(){
     return this.http.get<any>(`${this.baseUrl}/comments`);
+  }
+
+  addComment(comment: AppComment): Observable<AppComment> {
+    return this.http.post<AppComment>(`${this.baseUrl}/comments`, comment);
   }
 }
