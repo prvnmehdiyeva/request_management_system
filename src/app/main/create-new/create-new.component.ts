@@ -29,14 +29,12 @@ constructor(private fb:FormBuilder ,private route: ActivatedRoute, private authS
     Executor:  ['', Validators.required],
     Category: ['', Validators.required],
     Date:this.now,
-    Status:['opened', Validators.required],
+    Status:['Opened', Validators.required],
     Prioritet: ['', Validators.required],
     Type: ['', Validators.required],
   });
 }
-generateRandomNumber(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString();
-}
+
 ngOnInit(): void {
   if(isPlatformBrowser(this.platformId)){
     const currentUserString = sessionStorage.getItem('currentUser');
@@ -67,7 +65,14 @@ addRequest() {
     console.log(response);
   });
 }
-nowDate(){
-  return this.now.toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
+nowDate() {
+  return this.now.toLocaleString('en-US', {
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric'
+  });
+}
+generateRandomNumber(): string {
+  return Math.floor(100000 + Math.random() * 900000).toString();
 }
 }

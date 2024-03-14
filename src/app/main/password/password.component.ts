@@ -54,7 +54,7 @@ export class PasswordComponent implements OnInit {
         const user = data.find(user => user.id === this.id && user.password === currentPassword);
         if (user) {
           if (newPassword === confirmPassword) {
-            this.authService.updateUser(user.id, newPassword, user.name).subscribe(
+            this.authService.updateUserPassword(user.id, newPassword, user.name).subscribe(
               () => {
                 this.openSuccessDialog();
                 this.changePasswordForm.reset();

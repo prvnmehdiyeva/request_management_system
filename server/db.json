@@ -4,19 +4,34 @@
       "id": "1",
       "name": "John Doe",
       "userJob": "Software Developer",
-      "password": "pass"
+      "password": "pass",
+      "department": "Engineering",
+      "mission": "Create innovative software solutions",
+      "internalTelephone": "1234567",
+      "mobileTelephone": "+1234567890",
+      "image": "john_doe.jpg"
     },
     {
       "id": "2",
       "name": "Jane Smith",
       "userJob": "Software Developer",
-      "password": "password2"
+      "password": "password2",
+      "department": "Engineering",
+      "mission": "Develop scalable software applications",
+      "internalTelephone": "234567",
+      "mobileTelephone": "+1987654321",
+      "image": "jane_smith.jpg"
     },
     {
       "id": "3",
       "name": "Alice Johnson",
       "userJob": "Software Developer",
-      "password": "password3"
+      "password": "password3",
+      "department": "Engineering",
+      "mission": "Optimize software performance",
+      "internalTelephone": "345678",
+      "mobileTelephone": "+1122334455",
+      "image": "alice_johnson.jpg"
     }
   ],
   "inquiries": [
@@ -131,17 +146,30 @@
       "request_id": "012345"
     },
     {
-      "id": "OhOUXRl",
-      "request_id": "176001",
+      "id": "zwEMxB4",
+      "request_id": "782899",
       "Sender": "John Doe",
-      "Title": "Bug api",
-      "Text": "Need to rewrite the codes",
+      "Title": "Urgent bug",
+      "Text": "Need to rewrite",
       "Executor": "John Doe",
-      "Category": "Finance",
-      "Date": "2024-03-14T08:58:10.345Z",
-      "Status": "opened",
-      "Prioritet": "medium",
+      "Category": "Human Resources",
+      "Date": "2024-03-14T11:18:05.213Z",
+      "Status": "Opened",
+      "Prioritet": "high",
       "Type": "Technical Support"
+    },
+    {
+      "id": "R__xlNh",
+      "request_id": "509644",
+      "Sender": "John Doe",
+      "Title": "dd",
+      "Text": "dd",
+      "Executor": "John Doe",
+      "Category": "Information Technology",
+      "Date": "2024-03-14T13:10:22.292Z",
+      "Status": "Opened",
+      "Prioritet": "high",
+      "Type": "Bug Report"
     }
   ],
   "status": [

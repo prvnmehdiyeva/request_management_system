@@ -6,7 +6,7 @@
       <div class="image-side">
         <div class="image">
           <div class="photo">
-             <img src="../../../assets/profile.png" alt="profile">
+             <img src="../../../assets/{{image}}" alt="profile">
           </div>
         <a href="#" class="icon-link">
           <i class="fas fa-edit"></i> Change image
@@ -20,24 +20,24 @@
           <p>Allowed file types: png, jpg, jpeg.</p>
         </div>
       </div>
-      <form class="form">
+      <form class="form"  [formGroup]="changeProfileForm" (ngSubmit)="onSubmit()">
         <div class="inputs">
           <div class="col-12">
-            <label for="inputDepartment" class="form-label">Department</label>
-            <input type="text" class="form-control" id="inputDepartment" placeholder="Enter Title">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" class="form-control" formControlName="newDepartment" id="department" placeholder="{{department}}">
           </div>
           <div class="col-12">
-            <label for="inputMission" class="form-label">Mission</label>
-            <input type="text" class="form-control" id="inputMission" placeholder="Software Consultant">
+            <label for="mission" class="form-label">Mission</label>
+            <input type="text" class="form-control" formControlName="newMission" id="mission" placeholder="{{mission}}">
           </div>
           <div class="col-12">
-            <label for="inputInternal" class="form-label">Internal Telephone</label>
-            <input type="text" class="form-control" id="inputInternal" placeholder="12345">
+            <label for="internalTelephone" class="form-label">Internal Telephone</label>
+            <input type="text" class="form-control" formControlName="newInternalTelephone" id="internalTelephone" placeholder="{{internalTelephone}}">
           </div>
           
           <div class="col-12">
-            <label for="inputMobile" class="form-label">Mobile Telephone</label>
-            <input type="text" class="form-control" id="inputMobile" placeholder="+994 50 000 00 00">
+            <label for="mobileTelephone" class="form-label">Mobile Telephone</label>
+            <input type="text" class="form-control" formControlName="newMobileTelephone" id="mobileTelephone" placeholder="{{mobileTelephone}}">
           </div>
         </div>
         <div class="permission">
