@@ -24,9 +24,10 @@
           path: 'inquiries', 
           component: HomeComponent,
           
+          
         },
         { path: 'create-new', component: CreateNewComponent },
-        { path: 'request-detail/:requestId', component: RequestDetailComponent },
+        { path: ':requestId', component: RequestDetailComponent },
         { path: 'profile', component: ProfileComponent }, 
         { path: 'password', component: PasswordComponent },
       ]

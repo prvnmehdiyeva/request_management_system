@@ -1,12 +1,12 @@
-<div class="grid-head container pb-3" *ngFor="let item of request">
+<div class="grid-head container pb-3" *ngFor="let request of request">
   <div class="title" >
     <div class="head">
-      <h3 mat-dialog-title>{{item.ID}}</h3>
-    <span class="align-middle small opacity-50 small">{{item.Category}}</span>
+      <h3 mat-dialog-title>{{request.id}}</h3>
+    <span class="align-middle small opacity-50 small">{{request.Category}}</span>
     </div>
     <div class="back-link">
        <a class="back-link">
-           Status:{{item.Status}}
+           Status:{{request.Status}}
        </a>
     </div>
   </div>
@@ -33,14 +33,14 @@
     <div class="card">
        <div class="name">
         <div class="head">
-          <h6>{{item.Executor}}</h6>
-          <p>{{item.Sender}}</p>
+          <h6>{{request.Executor}}</h6>
+          <p>{{request.Sender}}</p>
        </div>
-       <p class="small">{{item.Date}} / {{now}}</p>
+       <p class="small">{{request.Date}} / {{now}}</p>
       </div>
       <div>
-        <h6>{{item.Title}}</h6>
-        <p>{{item.Text}}
+        <h6>{{request.Title}}</h6>
+        <p>{{request.Text}}
         </p>
       </div>
       <div class="button">
@@ -133,22 +133,22 @@
     <div class="name">
       <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
-          <h6 class="m-0 mb-1">{{item.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{item.Category}}</p>
+          <h6 class="m-0 mb-1">{{request.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{request.Category}}</p>
       </div>
     </div>
     <div class="vertical-line">
       <div class="line"></div>
-      <p class="m-0">Create new item</p>
+      <p class="m-0">Create new request</p>
     </div>
-      <p class="small m-0">{{item.Date}} / {{now}}</p>
+      <p class="small m-0">{{request.Date}} / {{now}}</p>
   </div>
   <div class="card card-history p-3 mb-3">
     <div class="name">
       <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
-          <h6 class="m-0 mb-1">{{item.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{item.Category}}
+          <h6 class="m-0 mb-1">{{request.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{request.Category}}
           </p>
       </div>
     </div>
@@ -156,21 +156,21 @@
       <div class="line"></div>
       <p class="m-0">Create new request</p>
     </div>
-      <p class="small m-0">{{item.Date}} / {{now}}</p>
+      <p class="small m-0">{{request.Date}} / {{now}}</p>
   </div>
   <div class="card card-history p-3 mb-3">
     <div class="name">
       <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
-          <h6 class="m-0 mb-1">{{item.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{item.Category}}</p>
+          <h6 class="m-0 mb-1">{{request.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{request.Category}}</p>
       </div>
     </div>
     <div class="vertical-line">
       <div class="line"></div>
       <p class="m-0">Create new request</p>
     </div>
-    <p class="small m-0">{{item.Date}} / {{now}}</p>
+    <p class="small m-0">{{request.Date}} / {{now}}</p>
   </div>
 </div>
 

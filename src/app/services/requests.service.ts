@@ -22,7 +22,7 @@ export class RequestsService {
   }
 
   //byId
-  getRequestById(userId: string, id: string): Observable<InquiriesInfo> {
-    return this.http.get<InquiriesInfo>(`${this.baseUrl}/users/${userId}/request-detail/${id}`);
+  getRequestById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/inquiries/${id}`);
 }
 }

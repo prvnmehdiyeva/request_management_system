@@ -65,8 +65,8 @@
                     </select>
                     </td>
                   </tr>
-                  <tr *ngFor="let card of filteredInquiries" [routerLink]="['/main/users', id, 'request-detail', card.ID]">
-                    <td>{{card.ID}}</td>
+                  <tr *ngFor="let card of filteredInquiries" [routerLink]="['/main/users', id, card.id]">
+                    <td>{{card.id}}</td>
                     <td>{{card.Sender}}</td>
                     <td>{{card.Title}}</td>
                     <td>{{ card.Text | slice:0:30 }}</td>

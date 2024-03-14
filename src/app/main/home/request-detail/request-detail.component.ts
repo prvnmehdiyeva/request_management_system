@@ -56,15 +56,21 @@ export class RequestDetailComponent implements OnInit {
           console.log('Inquiry ID:', this.inquiryId);
           console.log('User ID:', this.id);
 
-          this.requestService.getRequestById(this.id, this.inquiryId).subscribe(
-            (request: any) => { 
-                this.request = request;
-                console.log("Request Detail:", request);
-            },
-            (error) => {
-                console.error("Error fetching request detail:", error);
-            }
-        );
+
+// request ID
+            this.requestService.getRequestById(this.inquiryId).subscribe(
+              (request: InquiriesInfo | any) => { 
+                  if (Array.isArray(request)) {
+                      this.request = request;
+                  } else {
+                      this.request = [request];
+                  }
+                  console.log("Request Detail:", this.request);
+              },
+              (error) => {
+                  console.error("Error fetching request detail:", error);
+              }
+            );
           this.getComments();
           this.nowDate();
         } else {
@@ -73,6 +79,8 @@ export class RequestDetailComponent implements OnInit {
       }
       })
   }
+
+
   nowDate(){
     const now = new Date();
     this.now = now.toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
