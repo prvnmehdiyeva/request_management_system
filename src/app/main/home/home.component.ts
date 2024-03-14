@@ -8,6 +8,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { UsersInfo } from '../../models/users-info';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
   public filteredInquiries: InquiriesInfo[] = [];
   public status: Status[]=[] ;
   public selectedStatus: any | null = "All";
-  constructor(public authService:AuthService, private dialog: MatDialog,private route: ActivatedRoute,
+  constructor(public authService:AuthService, public requestService:RequestsService, private dialog: MatDialog,private route: ActivatedRoute,
     private router:Router){}
     ngOnInit(): void {  
       this.route.parent?.paramMap.subscribe(params => {
@@ -53,7 +54,7 @@ export class HomeComponent implements OnInit {
     });
   }
   getInquiries(){
-    this.authService.getInquiries().subscribe(inquiries => {
+    this.requestService.getRequests().subscribe(inquiries => {
       this.inquiries = inquiries;
       this.filteredInquiries=inquiries
       

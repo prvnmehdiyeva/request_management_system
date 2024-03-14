@@ -26,11 +26,11 @@
           
         },
         { path: 'create-new', component: CreateNewComponent },
-        { path: 'request-detail/:id', component: RequestDetailComponent },
+        { path: 'request-detail/:requestId', component: RequestDetailComponent },
         { path: 'profile', component: ProfileComponent }, 
         { path: 'password', component: PasswordComponent },
       ]
-    }
+    },
   ];
 
 

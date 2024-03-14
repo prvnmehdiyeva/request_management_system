@@ -1,16 +1,16 @@
-<div class="grid-head container pb-3" *ngFor="let card of filteredInquiries">
+<div class="grid-head container pb-3" *ngFor="let item of request">
   <div class="title" >
     <div class="head">
-      <h3 mat-dialog-title>{{card.ID}}</h3>
-    <span class="align-middle small opacity-50 small">{{card.Category}}</span>
+      <h3 mat-dialog-title>{{item.ID}}</h3>
+    <span class="align-middle small opacity-50 small">{{item.Category}}</span>
     </div>
     <div class="back-link">
        <a class="back-link">
-           Status:{{card.Status}}
+           Status:{{item.Status}}
        </a>
     </div>
   </div>
- 
+
   <ul class="list-group list-group-horizontal mb-3 p-3">
     <button id="requestButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('requestButton')" [class.active]="activeItem === 'requestButton'">
       Request
@@ -33,14 +33,14 @@
     <div class="card">
        <div class="name">
         <div class="head">
-          <h6>{{card.Executor}}</h6>
-          <p>{{card.Sender}}</p>
+          <h6>{{item.Executor}}</h6>
+          <p>{{item.Sender}}</p>
        </div>
-       <p class="small">{{card.Date}} / {{now}}</p>
+       <p class="small">{{item.Date}} / {{now}}</p>
       </div>
       <div>
-        <h6>{{card.Title}}</h6>
-        <p>{{card.Text}}
+        <h6>{{item.Title}}</h6>
+        <p>{{item.Text}}
         </p>
       </div>
       <div class="button">
@@ -74,7 +74,7 @@
   <div class="password">
     <a href="#">
       <span class="icon">
-        <i class="fas fa-print"></i> 
+        <i class="fas fa-print"></i>
       </span>
       Print...
     </a>
@@ -112,7 +112,7 @@
     <div class="comment">
       <label for="text">Comment</label>
       <input type="text" class="form-control" id="text" formControlName="text" required>
-    </div>    
+    </div>
     <!-- Other form elements -->
     <div class="input-group mt-4 mb-5">
       <input type="file" class="form-control" id="upload">
@@ -124,7 +124,7 @@
       </button>
     </div>
   </form>
-  
+
 </div>
 
 
@@ -133,22 +133,22 @@
     <div class="name">
       <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
-          <h6 class="m-0 mb-1">{{card.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{card.Category}}</p>
+          <h6 class="m-0 mb-1">{{item.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{item.Category}}</p>
       </div>
     </div>
     <div class="vertical-line">
       <div class="line"></div>
-      <p class="m-0">Create new request</p>
+      <p class="m-0">Create new item</p>
     </div>
-      <p class="small m-0">{{card.Date}} / {{now}}</p>
+      <p class="small m-0">{{item.Date}} / {{now}}</p>
   </div>
   <div class="card card-history p-3 mb-3">
     <div class="name">
       <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
-          <h6 class="m-0 mb-1">{{card.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{card.Category}}
+          <h6 class="m-0 mb-1">{{item.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{item.Category}}
           </p>
       </div>
     </div>
@@ -156,21 +156,21 @@
       <div class="line"></div>
       <p class="m-0">Create new request</p>
     </div>
-      <p class="small m-0">{{card.Date}} / {{now}}</p>
+      <p class="small m-0">{{item.Date}} / {{now}}</p>
   </div>
   <div class="card card-history p-3 mb-3">
     <div class="name">
       <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
-          <h6 class="m-0 mb-1">{{card.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{card.Category}}</p>
+          <h6 class="m-0 mb-1">{{item.Executor}}</h6>
+          <p class="m-0 opacity-50 small">{{item.Category}}</p>
       </div>
     </div>
     <div class="vertical-line">
       <div class="line"></div>
       <p class="m-0">Create new request</p>
     </div>
-    <p class="small m-0">{{card.Date}} / {{now}}</p>
+    <p class="small m-0">{{item.Date}} / {{now}}</p>
   </div>
 </div>
 
@@ -190,7 +190,7 @@
         <option>...</option>
       </select>
     </div>
-    
+
     <div class="col-12">
       <label for="inputAddress" class="form-label">Address</label>
       <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">

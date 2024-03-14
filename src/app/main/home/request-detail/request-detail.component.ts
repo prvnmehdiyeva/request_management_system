@@ -1,10 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InquiriesInfo } from '../../../models/inquiries-info';
 import { AuthService } from '../../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppComment } from '../../../models/appcomment';
 import { v4 as uuidv4 } from 'uuid';
+import { isPlatformBrowser } from '@angular/common';
+import { RequestsService } from '../../../services/requests.service';
+import { CommentsService } from '../../../services/comments.service';
 
 @Component({
   selector: 'app-request-detail',
@@ -19,44 +22,57 @@ export class RequestDetailComponent implements OnInit {
 
   form: FormGroup;
   public filteredInquiries: InquiriesInfo[] = [];
-  public inquiries: InquiriesInfo[] = [];
+  public request: InquiriesInfo[] = [];
   public comments: AppComment[] = [];
   now:string=''
-  activeItem: string = 'commentButton'; 
+  activeItem: string = 'commentButton';
   newCommentTitle: string='';
   newCommentText: string='';
+  currentUser: any
 
-  constructor(private fb:FormBuilder, private route: ActivatedRoute, public authService: AuthService) {
+  constructor(private fb:FormBuilder, private route: ActivatedRoute, public authService: AuthService,  public requestService: RequestsService, public commentsService: CommentsService, @Inject(PLATFORM_ID) private platformId:Object) {
     this.form = this.fb.group({
       title: ['', Validators.required],
       text: ['', Validators.required]
     });
   }
-  
+
   ngOnInit(): void {
+    console.log(this.request);
     this.route.paramMap.subscribe(params => {
-      this.inquiryId = params.get('id') || '';
-      
-      const currentUserString = sessionStorage.getItem('currentUser');
-      if (currentUserString) {
-        const currentUser = JSON.parse(currentUserString);
+      this.inquiryId = params.get('requestId') || '';
 
-        this.id = currentUser.id || '';
-        this.userName = currentUser.name || '';
-        this.userJob = currentUser.job || '';
 
-        console.log('Inquiry ID:', this.inquiryId);
-        console.log('User ID:', this.id);
-        
-        this.getInquiries(); 
-        this.getComments();
-        this.nowDate();
-      } else {
-        console.error('currentUser not found in sessionStorage.');
+      if(isPlatformBrowser(this.platformId)){
+        const currentUserString = sessionStorage.getItem('currentUser');
+
+        if (currentUserString) {
+          const currentUser = JSON.parse(currentUserString);
+
+          this.id = currentUser.id || '';
+          this.userName = currentUser.name || '';
+          this.userJob = currentUser.userJob || '';
+
+          console.log('Inquiry ID:', this.inquiryId);
+          console.log('User ID:', this.id);
+
+          this.requestService.getRequestById(this.id, this.inquiryId).subscribe(
+            (request: any) => { 
+                this.request = request;
+                console.log("Request Detail:", request);
+            },
+            (error) => {
+                console.error("Error fetching request detail:", error);
+            }
+        );
+          this.getComments();
+          this.nowDate();
+        } else {
+          console.error('currentUser not found in sessionStorage.');
+        }
       }
-    });
-  } 
-
+      })
+  }
   nowDate(){
     const now = new Date();
     this.now = now.toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
@@ -66,15 +82,17 @@ export class RequestDetailComponent implements OnInit {
     this.activeItem = buttonId;
   }
 
-  getInquiries() {
-    this.authService.getInquiries().subscribe(inquiries => {
-      this.inquiries = inquiries;
-      this.filteredInquiries = inquiries.filter((inquiry: { ID: { toString: () => string; }; }) => inquiry.ID && inquiry.ID.toString() === this.inquiryId);
-    });
-  } 
+
+
+  // getInquiries() {
+  //   this.requestService.getRequests().subscribe(inquiries => {
+  //     this.inquiries = inquiries;
+  //     this.filteredInquiries = inquiries.filter((inquiry: { ID: { toString: () => string; }; }) => inquiry.ID && inquiry.ID.toString() === this.inquiryId);
+  //   });
+  // }
 
   getComments(){
-    this.authService.getComments().subscribe(comments =>{
+    this.commentsService.getComments().subscribe(comments =>{
       this.comments = comments;
       console.log(comments);
     });
@@ -93,10 +111,10 @@ export class RequestDetailComponent implements OnInit {
 
       console.log("New Comment:", newComment);
 
-      this.authService.addComment(newComment).subscribe(
+      this.commentsService.addComment(newComment).subscribe(
         (comment: AppComment) => {
-          this.comments.unshift(comment); 
-          this.form.reset(); 
+          this.comments.unshift(comment);
+          this.form.reset();
         },
         (error) => {
           console.error('Error adding comment:', error);

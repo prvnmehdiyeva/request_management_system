@@ -3,6 +3,7 @@ import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { InquiriesInfo } from '../../models/inquiries-info';
+import { RequestsService } from '../../services/requests.service';
 
 @Component({
   selector: 'app-create-new',
@@ -14,7 +15,7 @@ export class CreateNewComponent implements OnInit {
   @Input() id: string = '';
   currentComponent: string = 'create-new'; 
   public inquiries: InquiriesInfo[] = [];
-constructor(private fb:FormBuilder ,private route: ActivatedRoute, private authService:AuthService
+constructor(private fb:FormBuilder ,private route: ActivatedRoute, private authService:AuthService, private requestService:RequestsService
   ){
   this.form = this.fb.group({
     id: [''],
@@ -38,7 +39,7 @@ ngOnInit(): void {
 }
 addRequest() {
   const formValues = this.form.value;
-  this.authService.addRequest(formValues).subscribe((response: any) => {
+  this.requestService.addRequest(formValues).subscribe((response: any) => {
     this.inquiries.push(response);
     console.log(response);
   });
