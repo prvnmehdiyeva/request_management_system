@@ -28,7 +28,8 @@
       "Executor": "Alice Smith",
       "Date": "2024-02-22",
       "Status": "Opened",
-      "id": "5dd8"
+      "id": "5dd8",
+      "request_id": "123456"
     },
     {
       "Sender": "Jane Smith",
@@ -38,7 +39,8 @@
       "Executor": "Bob Johnson",
       "Date": "2024-02-21",
       "Status": "Execution",
-      "id": "7c5a"
+      "id": "7c5a",
+      "request_id": "234567"
     },
     {
       "Sender": "Emily Davis",
@@ -48,7 +50,8 @@
       "Executor": "Chris Brown",
       "Date": "2024-02-20",
       "Status": "Closed",
-      "id": "c148"
+      "id": "c148",
+      "request_id": "345678"
     },
     {
       "Sender": "Alex Johnson",
@@ -58,7 +61,8 @@
       "Executor": "Emma Lee",
       "Date": "2024-02-19",
       "Status": "Hold",
-      "id": "f1b7"
+      "id": "f1b7",
+      "request_id": "456789"
     },
     {
       "Sender": "Michael Wilson",
@@ -68,7 +72,8 @@
       "Executor": "David Brown",
       "Date": "2024-02-18",
       "Status": "Approved",
-      "id": "bf77"
+      "id": "bf77",
+      "request_id": "567890"
     },
     {
       "Sender": "Sophia Martinez",
@@ -78,7 +83,8 @@
       "Executor": "Olivia Garcia",
       "Date": "2024-02-17",
       "Status": "Refused",
-      "id": "bc1d"
+      "id": "bc1d",
+      "request_id": "678901"
     },
     {
       "Sender": "Sophia Martinez",
@@ -88,7 +94,8 @@
       "Executor": "Olivia Garcia",
       "Date": "2024-02-17",
       "Status": "Refused",
-      "id": "8489"
+      "id": "8489",
+      "request_id": "789012"
     },
     {
       "Sender": "Emma Johnson",
@@ -98,7 +105,8 @@
       "Executor": "John Smith",
       "Date": "2024-02-16",
       "Status": "Opened",
-      "id": "02a4"
+      "id": "02a4",
+      "request_id": "890123"
     },
     {
       "Sender": "David Brown",
@@ -108,7 +116,8 @@
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
       "Status": "Execution",
-      "id": "8f0e"
+      "id": "8f0e",
+      "request_id": "901234"
     },
     {
       "Sender": "Olivia Garcia",
@@ -118,391 +127,21 @@
       "Executor": "Sophia Martinez",
       "Date": "2024-02-14",
       "Status": "Closed",
-      "id": "8178"
+      "id": "8178",
+      "request_id": "012345"
     },
     {
+      "id": "OhOUXRl",
+      "request_id": "176001",
       "Sender": "John Doe",
-      "Title": "Product Feedback",
-      "Text": "Providing feedback on recent updates",
-      "Category": "Feedback",
-      "Executor": "Jane Smith",
-      "Date": "2024-02-13",
-      "Status": "Hold",
-      "id": "6ca1"
-    },
-    {
-      "Sender": "Jane Smith",
-      "Title": "Service Complaint",
-      "Text": "Unsatisfactory service experience",
-      "Category": "Customer Support",
-      "Executor": "Alex Johnson",
-      "Date": "2024-02-12",
-      "Status": "Approved",
-      "id": "04fc"
-    },
-    {
-      "Sender": "Emily Davis",
-      "Title": "Feature Query",
-      "Text": "Seeking information about a feature",
-      "Category": "General Inquiry",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-11",
-      "Status": "Refused",
-      "id": "9b3c"
-    },
-    {
-      "Sender": "Alex Johnson",
-      "Title": "Software Issue",
-      "Text": "Encountering technical problem with the software",
-      "Category": "Technical",
-      "Executor": "David Brown",
-      "Date": "2024-02-10",
-      "Status": "Opened",
-      "id": "d1c4"
-    },
-    {
-      "Sender": "Michael Wilson",
-      "Title": "Feature Addition",
-      "Text": "Requesting addition of new feature",
-      "Category": "Feature Request",
+      "Title": "Bug api",
+      "Text": "Need to rewrite the codes",
       "Executor": "John Doe",
-      "Date": "2024-02-09",
-      "Status": "Execution",
-      "id": "fb9e"
-    },
-    {
-      "Sender": "David Brown",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Execution",
-      "id": "31e6"
-    },
-    {
-      "Sender": "John Doe",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Closed",
-      "id": "63b5"
-    },
-    {
-      "Sender": "Jane Smith",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Refused",
-      "id": "afff"
-    },
-    {
-      "Sender": "David Brown",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Opened",
-      "id": "065c"
-    },
-    {
-      "Sender": "John Doe",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Approved",
-      "id": "ed89"
-    },
-    {
-      "Sender": "Jane Smith",
-      "Title": "Feedback",
-      "Text": "Positive feedback on recent updates",
-      "Category": "Feedback",
-      "Executor": "Bob Johnson",
-      "Date": "2024-02-21",
-      "Status": "Execution",
-      "id": "de38"
-    },
-    {
-      "Sender": "Emily Davis",
-      "Title": "Bug Report",
-      "Text": "Unable to login",
-      "Category": "Technical",
-      "Executor": "Chris Brown",
-      "Date": "2024-02-20",
-      "Status": "Closed",
-      "id": "f76b"
-    },
-    {
-      "Sender": "Alex Johnson",
-      "Title": "Feature Request",
-      "Text": "Requesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Emma Lee",
-      "Date": "2024-02-19",
-      "Status": "Hold",
-      "id": "c9bd"
-    },
-    {
-      "Sender": "Michael Wilson",
-      "Title": "Complaint",
-      "Text": "Experiencing issues with the product",
-      "Category": "Customer Support",
-      "Executor": "David Brown",
-      "Date": "2024-02-18",
-      "Status": "Approved",
-      "id": "7ffc"
-    },
-    {
-      "Sender": "Sophia Martinez",
-      "Title": "Question",
-      "Text": "Seeking clarification on a feature",
-      "Category": "General Inquiry",
-      "Executor": "Olivia Garcia",
-      "Date": "2024-02-17",
-      "Status": "Refused",
-      "id": "79b7"
-    },
-    {
-      "Sender": "Sophia Martinez",
-      "Title": "Question",
-      "Text": "Seeking clarification on a feature",
-      "Category": "General Inquiry",
-      "Executor": "Olivia Garcia",
-      "Date": "2024-02-17",
-      "Status": "Refused",
-      "id": "c766"
-    },
-    {
-      "Sender": "Emma Johnson",
-      "Title": "Technical Support",
-      "Text": "Need help with technical issue",
-      "Category": "Technical",
-      "Executor": "John Smith",
-      "Date": "2024-02-16",
-      "Status": "Opened",
-      "id": "8a79"
-    },
-    {
-      "Sender": "David Brown",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Execution",
-      "id": "b485"
-    },
-    {
-      "Sender": "Olivia Garcia",
-      "Title": "Login Issue",
-      "Text": "Unable to login to the system",
-      "Category": "Technical",
-      "Executor": "Sophia Martinez",
-      "Date": "2024-02-14",
-      "Status": "Closed",
-      "id": "3c5f"
-    },
-    {
-      "Sender": "John Doe",
-      "Title": "Product Feedback",
-      "Text": "Providing feedback on recent updates",
-      "Category": "Feedback",
-      "Executor": "Jane Smith",
-      "Date": "2024-02-13",
-      "Status": "Hold",
-      "id": "864b"
-    },
-    {
-      "Sender": "Jane Smith",
-      "Title": "Service Complaint",
-      "Text": "Unsatisfactory service experience",
-      "Category": "Customer Support",
-      "Executor": "Alex Johnson",
-      "Date": "2024-02-12",
-      "Status": "Approved",
-      "id": "9537"
-    },
-    {
-      "Sender": "Emily Davis",
-      "Title": "Feature Query",
-      "Text": "Seeking information about a feature",
-      "Category": "General Inquiry",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-11",
-      "Status": "Refused",
-      "id": "3a4f"
-    },
-    {
-      "Sender": "Alex Johnson",
-      "Title": "Software Issue",
-      "Text": "Encountering technical problem with the software",
-      "Category": "Technical",
-      "Executor": "David Brown",
-      "Date": "2024-02-10",
-      "Status": "Opened",
-      "id": "e01a"
-    },
-    {
-      "Sender": "Michael Wilson",
-      "Title": "Feature Addition",
-      "Text": "Requesting addition of new feature",
-      "Category": "Feature Request",
-      "Executor": "John Doe",
-      "Date": "2024-02-09",
-      "Status": "Execution",
-      "id": "46e4"
-    },
-    {
-      "Sender": "David Brown",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Execution",
-      "id": "8d21"
-    },
-    {
-      "Sender": "John Doe",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Closed",
-      "id": "98c8"
-    },
-    {
-      "Sender": "Jane Smith",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Refused",
-      "id": "f0f1"
-    },
-    {
-      "Sender": "David Brown",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Opened",
-      "id": "f20a"
-    },
-    {
-      "Sender": "John Doe",
-      "Title": "New Feature Proposal",
-      "Text": "Suggesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Michael Wilson",
-      "Date": "2024-02-15",
-      "Status": "Approved",
-      "id": "d7fe"
-    },
-    {
-      "Sender": "Alice Brown",
-      "Title": "Feature Suggestion",
-      "Text": "Proposing a new feature idea",
-      "Category": "Feature Request",
-      "Executor": "Bob Johnson",
-      "Date": "2024-02-15",
-      "Status": "Execution",
-      "id": "b0bf"
-    },
-    {
-      "Sender": "Samuel Smith",
-      "Title": "Technical Issue",
-      "Text": "Experiencing technical difficulties",
-      "Category": "Technical",
-      "Executor": "Chris Davis",
-      "Date": "2024-02-15",
-      "Status": "Opened",
-      "id": "a696"
-    },
-    {
-      "Sender": "Emily Wilson",
-      "Title": "Feature Request",
-      "Text": "Requesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "David Brown",
-      "Date": "2024-02-15",
-      "Status": "Hold",
-      "id": "7f89"
-    },
-    {
-      "Sender": "John Smith",
-      "Title": "Product Feedback",
-      "Text": "Providing feedback on recent updates",
-      "Category": "Feedback",
-      "Executor": "Emma Lee",
-      "Date": "2024-02-15",
-      "Status": "Approved",
-      "id": "a388"
-    },
-    {
-      "Sender": "Olivia Martinez",
-      "Title": "Bug Report",
-      "Text": "Reporting a bug in the system",
-      "Category": "Technical",
-      "Executor": "Frank Johnson",
-      "Date": "2024-02-15",
-      "Status": "Closed",
-      "id": "3f5c"
-    },
-    {
-      "Sender": "Michael Davis",
-      "Title": "Service Complaint",
-      "Text": "Unsatisfactory service experience",
-      "Category": "Customer Support",
-      "Executor": "Grace Smith",
-      "Date": "2024-02-15",
-      "Status": "Hold",
-      "id": "677a"
-    },
-    {
-      "Sender": "Sophia Brown",
-      "Title": "Question",
-      "Text": "Seeking clarification on a feature",
-      "Category": "General Inquiry",
-      "Executor": "Henry Wilson",
-      "Date": "2024-02-15",
-      "Status": "Refused",
-      "id": "9218"
-    },
-    {
-      "id": "323ntyP",
-      "category": "",
-      "priority": "",
-      "type": "",
-      "title": "",
-      "text": ""
-    },
-    {
-      "id": "RdrUIYJ",
-      "category": "",
-      "priority": "",
-      "type": "",
-      "title": "",
-      "text": ""
-    },
-    {
-      "id": "l1cyVCC",
-      "category": "",
-      "priority": "",
-      "type": "",
-      "title": "",
-      "text": ""
+      "Category": "Finance",
+      "Date": "2024-03-14T08:58:10.345Z",
+      "Status": "opened",
+      "Prioritet": "medium",
+      "Type": "Technical Support"
     }
   ],
   "status": [

@@ -1,5 +1,6 @@
 export interface InquiriesInfo {
     id: number,
+    request_id:number;
     Sender: string,
     Title: string,
     Text: string,

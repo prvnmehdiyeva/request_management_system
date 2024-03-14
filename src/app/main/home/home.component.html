@@ -10,7 +10,7 @@
             <button mat-fab extended class="btn btn-create text-light"
             color="primary" [routerLink]="['/main/users', id, 'create-new']">
             <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
-            Create inquiries
+            Create request
           </button></div>
         </div>
         <div class="row bg-white mt-3 pl-3 pt-3">
@@ -66,7 +66,7 @@
                     </td>
                   </tr>
                   <tr *ngFor="let card of filteredInquiries" [routerLink]="['/main/users', id, card.id]">
-                    <td>{{card.id}}</td>
+                    <td>{{card.request_id}}</td>
                     <td>{{card.Sender}}</td>
                     <td>{{card.Title}}</td>
                     <td>{{ card.Text | slice:0:30 }}</td>

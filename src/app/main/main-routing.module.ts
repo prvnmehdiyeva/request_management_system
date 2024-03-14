@@ -23,18 +23,14 @@
         { 
           path: 'inquiries', 
           component: HomeComponent,
-          
-          
         },
         { path: 'create-new', component: CreateNewComponent },
-        { path: ':requestId', component: RequestDetailComponent },
         { path: 'profile', component: ProfileComponent }, 
         { path: 'password', component: PasswordComponent },
+        { path: ':requestId', component: RequestDetailComponent },
       ]
     },
   ];
-
-
 
   @NgModule({
     imports: [RouterModule.forChild(routes)],
