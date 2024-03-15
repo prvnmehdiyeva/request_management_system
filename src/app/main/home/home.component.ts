@@ -93,6 +93,7 @@ export class HomeComponent implements OnInit {
     search(filterData:string, searchData:string) {
       this.filteredInquiries = this.inquiries.filter((i:any) => {
         if (filterData === "ID" || filterData === "Date") {
+
           return i[filterData].toString().includes(searchData.toString());
         } else {
           return i[filterData].toLowerCase().includes(searchData.toLowerCase());

@@ -24,10 +24,10 @@
   }
 }
 
-@media screen and (max-width: 390px){
+@media screen and (max-width: 768px){
   .nav{
-    display: flex;
-    flex-direction: row !important;
+    display: grid;
+    grid-template-columns: repeat(3,1fr); 
     gap: 100px !important;
   }
   .icon-link {

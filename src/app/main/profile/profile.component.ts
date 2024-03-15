@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   @Input() image: string = '';
   @Input() password: string = '';
   changeProfileForm: FormGroup;
-
+  
 
   constructor(
      private route: ActivatedRoute, 
@@ -32,7 +32,8 @@ export class ProfileComponent implements OnInit {
      private fb: FormBuilder,     
      private authService: AuthService,
      private snackBar: MatSnackBar,
-     private dialog: MatDialog
+     private dialog: MatDialog,
+     private changeDetectorRef: ChangeDetectorRef 
   )
   {
     this.changeProfileForm = this.fb.group({
@@ -40,6 +41,7 @@ export class ProfileComponent implements OnInit {
       newMission: ['', [Validators.required]],
       newInternalTelephone: ['', Validators.required],
       newMobileTelephone: ['', Validators.required],
+      newImage: ['']
     });
   }
 
@@ -71,15 +73,17 @@ export class ProfileComponent implements OnInit {
       } else {
         console.error('currentUser not found in sessionStorage.');
       }
+      this.image = sessionStorage.getItem('profileImageUrl') || '';
     } 
+
   }
-  
   onSubmit(){
     const newDepartment = this.changeProfileForm.get('newDepartment')?.value;
     const newMission = this.changeProfileForm.get('newMission')?.value;
     const newInternalTelephone = this.changeProfileForm.get('newInternalTelephone')?.value;
     const newMobileTelephone = this.changeProfileForm.get('newMobileTelephone')?.value;
-
+    const newImage = this.changeProfileForm.get('newImage')?.value;
+console.log(this.image);
     const updatedProfileData = {
       id: this.id,
     department: newDepartment !== '' ? newDepartment : this.department,
@@ -89,7 +93,7 @@ export class ProfileComponent implements OnInit {
     name: this.name,
     userJob: this.userJob,
     password: this.password, 
-    image: this.image 
+    image: newImage !== '' ? newImage : this.image 
     };
 
     this.authService.updateUserProfile(updatedProfileData).subscribe(() => {
@@ -106,7 +110,26 @@ export class ProfileComponent implements OnInit {
   openSuccessDialog() {
     this.dialog.open(ProfilechangedialogComponent, {
       width: '400px',
-      position: { top: '20%' }
+      position: { top: '10%' }
     });
+  }
+  onSelectFile(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      const file = inputElement.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.image = e.target.result; 
+          this.changeDetectorRef.detectChanges();
+          sessionStorage.setItem('profileImageUrl', this.image);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+  deleteImage() {
+    sessionStorage.removeItem('profileImageUrl');
+    this.image='';
   }
 }

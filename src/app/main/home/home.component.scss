@@ -110,3 +110,42 @@
 .form-select{
   height: 100%;
 }
+.responsive-btn{
+display: none;
+}
+.none{
+display: none;
+}
+
+@media screen and (max-width: 768px){
+  .list-group-horizontal {
+    flex-direction: column !important;
+}
+
+.list-group{
+  display: none;
+}
+.col-btn{
+  display: none;
+}
+.responsive-btn{
+  display: flex;
+}
+.header1{
+  display: grid;
+    grid-template-columns: 1fr 1fr;
+  text-align: end;
+  margin: 0;
+
+ .btn-create{
+  background-color:#55539F;
+  padding: 0.6rem;
+  border-radius: 5px;
+}
+ }
+}
+.responsive-head{
+  display: none;
+}
+
+

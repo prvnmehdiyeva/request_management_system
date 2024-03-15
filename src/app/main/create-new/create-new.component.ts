@@ -5,6 +5,8 @@ import { AuthService } from '../../services/auth.service';
 import { InquiriesInfo } from '../../models/inquiries-info';
 import { RequestsService } from '../../services/requests.service';
 import { isPlatformBrowser } from '@angular/common';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-create-new',
@@ -17,9 +19,15 @@ export class CreateNewComponent implements OnInit {
   @Input() name: string = '';
   currentComponent: string = 'create-new'; 
   public inquiries: InquiriesInfo[] = [];
-  now = new Date();
-constructor(private fb:FormBuilder ,private route: ActivatedRoute, private authService:AuthService, private requestService:RequestsService, @Inject(PLATFORM_ID) private platformId:Object
-  ){
+  
+  constructor(
+    private fb:FormBuilder, 
+    private route: ActivatedRoute, 
+    private authService:AuthService, 
+    private requestService:RequestsService, 
+    @Inject(PLATFORM_ID) private platformId:Object
+  )
+  {
   this.form = this.fb.group({
     id: ['', [Validators.required]],
     request_id: [this.generateRandomNumber(), [Validators.required, Validators.pattern('^[0-9]{6}$')]],
@@ -28,7 +36,9 @@ constructor(private fb:FormBuilder ,private route: ActivatedRoute, private authS
     Text: ['', Validators.required],
     Executor:  ['', Validators.required],
     Category: ['', Validators.required],
-    Date:this.now,
+
+    Date:new Date().toISOString().substring(0, 10),
+
     Status:['Opened', Validators.required],
     Prioritet: ['', Validators.required],
     Type: ['', Validators.required],
@@ -47,7 +57,6 @@ ngOnInit(): void {
 
       console.log('User ID:', this.id);
       console.log('User name:', this.name);
-      this.nowDate();
     } else {
       console.error('currentUser not found in sessionStorage.');
     }
@@ -65,14 +74,9 @@ addRequest() {
     console.log(response);
   });
 }
-nowDate() {
-  return this.now.toLocaleString('en-US', {
-    weekday: 'long',
-    month: 'short',
-    day: 'numeric'
-  });
-}
+
 generateRandomNumber(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
+
 }

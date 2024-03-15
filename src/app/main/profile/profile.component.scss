@@ -51,7 +51,7 @@
   }
   // form
 
-  .form{
+.form{
     display: grid;
   .inputs{
     display: grid;
@@ -65,7 +65,7 @@
       border: 2px solid rgb(231, 231, 231);
     }
   }
-  }
+}
   .last-side{
     display: flex;
     justify-content: space-between;
@@ -104,5 +104,25 @@
         margin-left: 20px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px){
+.form{
+    display: grid;
+  .inputs{
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+    .form-label{
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .form-control{
+      border: 2px solid rgb(231, 231, 231);
+    }
+  }
+  }
+  .profile{
+    margin-right: 4%;
   }
 }

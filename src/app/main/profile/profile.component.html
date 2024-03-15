@@ -3,24 +3,25 @@
     <h3 mat-dialog-title>Profile</h3>
   </div>
     <div class="profile pt-3">
-      <div class="image-side">
-        <div class="image">
-          <div class="photo">
-             <img src="../../../assets/{{image}}" alt="profile">
-          </div>
-        <a href="#" class="icon-link">
-          <i class="fas fa-edit"></i> Change image
-        </a>
-        <a href="#" class="icon-link">
-          <i class="fas fa-trash"></i> Delete image
-        </a>
-        
-        </div>
-        <div class="info pt-2">
-          <p>Allowed file types: png, jpg, jpeg.</p>
-        </div>
-      </div>
+      
       <form class="form"  [formGroup]="changeProfileForm" (ngSubmit)="onSubmit()">
+        <div class="image-side">
+          <div class="image">
+            <div class="photo">
+               <img [src]="image" alt="profile">
+            </div>
+          <a  class="icon-link">
+            <i class="fas fa-edit"></i> 
+            <input type="file" formControlName="newImage" (change)="onSelectFile($event)">
+          </a>
+          <a (click)="deleteImage()" class="icon-link">
+            <i class="fas fa-trash"></i> Delete image
+          </a>
+          </div>
+          <div class="info pt-2">
+            <p>Allowed file types: png, jpg, jpeg.</p>
+          </div>
+        </div>
         <div class="inputs">
           <div class="col-12">
             <label for="department" class="form-label">Department</label>
@@ -45,7 +46,7 @@
         </div>
         <div class="last-side pt-4">
           <div class="password">
-            <a href="#">
+            <a [routerLink]="['/main/users', id, 'password']">
               <span class="icon">
                 <i class="fas fa-lock"></i> 
               </span>

@@ -11,7 +11,7 @@ export class ProfilechangedialogComponent {
   constructor(public dialogRef: MatDialogRef<ProfilechangedialogComponent>, private router: Router) {
     setTimeout(() => {
       this.dialogRef.close();
-      this.router.navigate(['../inquiries']);
-    }, 2000);
+      this.router.navigate(['/login']);
+    }, 4000);
   }
 }

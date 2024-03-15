@@ -1,5 +1,5 @@
 <div class="container text-left">
-        <h3>Inquiries</h3>
+        <h3 class="responsive-head">Inquiries</h3>
         <div class="row header1">
           <div class="col p-0">
             <select class="form-select" name="status" [(ngModel)]="selectedStatus" (ngModelChange)="changeStatus($event)" aria-label="Default select example">
@@ -12,6 +12,11 @@
             <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
             Create request
           </button></div>
+          <div>
+          <!-- <button class="none responsive-btn" type="button" class="btn btn-create" [routerLink]="['/main/users', id, 'create-new']">
+            <mat-icon ><i class="fas fa-plus text-light btn-title" style="font-size: 18px;"></i></mat-icon>
+          </button> -->
+        </div>
         </div>
         <div class="row bg-white mt-3 pl-3 pt-3">
           <div class="col-12 pl-6">
