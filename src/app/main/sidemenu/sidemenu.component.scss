@@ -23,18 +23,31 @@
     transition: color 0.3s;
   }
 }
+.navbar{
+  display: none;
+}
 
 @media screen and (max-width: 768px){
-  .nav{
-    display: grid;
-    grid-template-columns: repeat(3,1fr); 
-    gap: 100px !important;
+  .navbar{
+    display: flex;
+    z-index: 1500;
   }
-  .icon-link {
-    width: 20px;
-    height: 20px;
-    i {
-      padding: 8px;
-    }
+  .nav{
+    display: none;
+  }
+  .nav-responsive{
+    display: grid;
+    align-items: end !important;
+    justify-content: space-between !important;
+    gap: 30px !important;
+    .icon-link {
+      width: 20px;
+      height: 20px;    
+      opacity: 80%;
+      i {
+        padding: 8px;
+      }
+  }
+  
   }
 }

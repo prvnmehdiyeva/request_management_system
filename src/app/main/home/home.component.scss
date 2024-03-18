@@ -24,7 +24,6 @@
   justify-content: space-between;
 }
 
-
   .header1{
     margin: 2rem 0 2rem 0;
   }
@@ -118,6 +117,16 @@ display: none;
 }
 
 @media screen and (max-width: 768px){
+  .fixed-table-container {
+    
+  }
+  
+  .table-responsive {
+    max-height: calc(75vh - 100px); 
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
   .list-group-horizontal {
     flex-direction: column !important;
 }

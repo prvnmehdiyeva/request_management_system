@@ -21,12 +21,15 @@
 @media screen and (max-width: 768px){
   .nav_side {
     width: 108vw;
-    height: 3%;
+    height:auto;
+    background-color: initial;
     overflow: hidden;
+    padding: 0 !important;
   }
   .nav_second{
     margin-left:4%;
-    margin-top: 18%;
+    margin-top: -1%;
     width: 100%;
+    padding-left:0 !important;
   }
 }

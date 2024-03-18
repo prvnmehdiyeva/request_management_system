@@ -9,11 +9,13 @@ import { UsersInfo } from '../../models/users-info';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
 import { RequestsService } from '../../services/requests.service';
+import { fadeOpacityAnimation } from '../../animations/fade.animation';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  animations: [fadeOpacityAnimation],
 
 })
 export class HomeComponent implements OnInit {

@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:request_management_system": "node dist/request_management_system/server/server.mjs",
-    "server": "ts-node ./server/server.ts"
+    "server": "ts-node ./server/server.ts",
+    "deploy": "netlify deploy --auth $NETLIFY_AUTH_TOKEN"
   },
   "private": true,
   "dependencies": {
@@ -16,6 +17,7 @@
     "@angular/common": "^17.2.0",
     "@angular/compiler": "^17.2.0",
     "@angular/core": "^17.2.0",
+    "@angular/fire": "^17.0.1",
     "@angular/forms": "^17.2.0",
     "@angular/material": "^17.2.1",
     "@angular/platform-browser": "^17.2.0",
@@ -39,6 +41,7 @@
     "@angular-devkit/build-angular": "^17.2.0",
     "@angular/cli": "^17.2.0",
     "@angular/compiler-cli": "^17.2.0",
+    "@netlify-builder/deploy": "^5.0.0",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.19.21",

@@ -4,11 +4,13 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileComponent } from '../profile/profile.component';
+import { fadeInAnimation } from '../../animations/fade.animation';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  animations: [fadeInAnimation],
 })
 export class HeaderComponent implements OnInit {
 

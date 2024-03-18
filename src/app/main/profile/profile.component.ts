@@ -6,11 +6,13 @@ import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfilechangedialogComponent } from './profilechangedialog/profilechangedialog.component';
+import { fadeOpacityAnimation } from '../../animations/fade.animation';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrl: './profile.component.scss',
+  animations: [fadeOpacityAnimation],
 })
 export class ProfileComponent implements OnInit {
   currentComponent: string = 'profile'; 
