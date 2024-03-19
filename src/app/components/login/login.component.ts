@@ -3,11 +3,14 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionstorageService } from '../../services/sessionstorage.service';
+import { fadeDelayedAnimation } from '../../animations/fade.animation';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
+  animations: [fadeDelayedAnimation],
+
 })
 export class LoginComponent implements OnInit {
   myForm: FormGroup ;
@@ -18,8 +21,16 @@ export class LoginComponent implements OnInit {
       name: ['', Validators.required],
       password: ['', Validators.required]
     });
+    
   }
   ngOnInit(): void {
+    setTimeout(() => {
+      const splash = document.getElementById('splash');
+      if (splash) {
+        splash.style.display = 'none';
+      }
+    }, 4000);
+  
   }
   onSubmit() {
     this.isSubmitting = true;

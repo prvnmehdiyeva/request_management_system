@@ -25,3 +25,20 @@ export const fadeOpacityAnimation = trigger('fadeOpacityAnimation', [
     })),
   ]),
 ]);
+
+export const fadeDelayedAnimation = trigger('fadeDelayedAnimation', [
+  transition(':enter', [
+    style({
+      opacity: 0, 
+      display: 'none',
+      transform: 'translateY(5%)', 
+
+    }),
+    animate('0.5s ease-in', style({
+      opacity: 1,
+      display: 'block',
+      transform: 'translateY(0)', 
+
+    })),
+  ], { delay: '3.5s' }), 
+]);
