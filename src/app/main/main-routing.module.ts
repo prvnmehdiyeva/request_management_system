@@ -12,16 +12,16 @@
     { path: '', redirectTo: '/login', pathMatch: 'full' }, 
     { path: 'login', component: LoginComponent },
     { 
-      path: 'users/:id',
+      path: 'requests',
       component: MainComponent,
       children:[
         { 
           path: '', 
-          redirectTo: 'inquiries', 
+          redirectTo: '', 
           pathMatch: 'full' 
         },
         { 
-          path: 'inquiries', 
+          path: '', 
           component: HomeComponent,
         },
         { path: 'create-new', component: CreateNewComponent },

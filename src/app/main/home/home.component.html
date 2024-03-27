@@ -1,5 +1,5 @@
 <div [@fadeOpacityAnimation] class="container text-left">
-        <h3 class="responsive-head">Inquiries</h3>
+        <h3 class="responsive-head">Requests</h3>
         <div class="row header1">
           <div class="col p-0">
             <select class="form-select" name="status" [(ngModel)]="selectedStatus" (ngModelChange)="changeStatus($event)" aria-label="Default select example">
@@ -8,7 +8,7 @@
           </div>
           <div class="col col-btn">
             <button mat-fab extended class="btn btn-create text-light"
-            color="primary" [routerLink]="['/main/users', id, 'create-new']">
+            color="primary" [routerLink]="['/main/requests', 'create-new']">
             <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
             Create request
           </button></div>
@@ -72,7 +72,7 @@
                     </select>
                     </td>
                   </tr>
-                  <tr *ngFor="let card of filteredInquiries" [routerLink]="['/main/users', id, card.id]">
+                  <tr *ngFor="let card of filteredInquiries" [routerLink]="['/main/requests', card.id]">
                     <td>{{card.request_id}}</td>
                     <td>{{card.Sender}}</td>
                     <td>{{card.Title}}</td>

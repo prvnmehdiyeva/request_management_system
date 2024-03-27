@@ -28,26 +28,7 @@
 }
 
 @media screen and (max-width: 768px){
-  .navbar{
-    display: flex;
-    z-index: 1500;
-  }
   .nav{
     display: none;
-  }
-  .nav-responsive{
-    display: grid;
-    align-items: end !important;
-    justify-content: space-between !important;
-    gap: 30px !important;
-    .icon-link {
-      width: 20px;
-      height: 20px;    
-      opacity: 80%;
-      i {
-        padding: 8px;
-      }
-  }
-  
   }
 }

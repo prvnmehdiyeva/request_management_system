@@ -27,6 +27,13 @@ input::placeholder {
   color: #b8b8b8;
 }
 
+
 @media screen and (max-width: 768px){
-  
+  .container, .container-sm{
+    // max-width: 500px !important;
+  }
+  .container{
+    padding: 0 !important;
+    padding: 0 10px 0 10px;
+  }
 }

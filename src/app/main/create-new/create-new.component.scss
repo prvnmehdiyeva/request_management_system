@@ -13,3 +13,12 @@
     padding: 0.375rem 2.25rem 0.375rem 0.75rem;
     border-radius: 5px;
   }
+  @media screen and (max-width: 768px){
+    .mat-mdc-fab .mdc-button__label{
+      display: none !important;
+    }
+    .back-link{
+      display: none;
+    }
+  }
+  

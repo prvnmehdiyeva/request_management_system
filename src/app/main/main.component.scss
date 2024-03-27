@@ -2,6 +2,10 @@
   box-sizing: border-box;
 
 }
+.row{
+  background-color: #F0F1F5 !important;
+
+}
 .nav_side {
   background-color: #55539F;
   position: fixed;
@@ -13,7 +17,6 @@
   z-index: 1000;
 }
 .nav_second{
-  background-color: #F0F1F5;
   height: 88vh;
   margin-left:18%;
   width: 82vw;
@@ -27,9 +30,14 @@
     padding: 0 !important;
   }
   .nav_second{
-    margin-left:4%;
+    margin-left:2%;
     margin-top: -1%;
+    padding: 30px;
     width: 100%;
     padding-left:0 !important;
+  }
+  .row{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 }

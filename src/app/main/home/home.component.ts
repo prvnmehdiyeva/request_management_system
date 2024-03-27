@@ -39,13 +39,15 @@ export class HomeComponent implements OnInit {
   constructor(public authService:AuthService, public requestService:RequestsService, private dialog: MatDialog,private route: ActivatedRoute,
     private router:Router){}
     ngOnInit(): void {  
-      this.route.parent?.paramMap.subscribe(params => {
-        this.id = params.get('id')!;
+      const currentUserString = sessionStorage.getItem('currentUser');
+      if (currentUserString) {
+        const currentUser = JSON.parse(currentUserString)
+          this.id=currentUser.id
+      }
         console.log('IDHome', this.id);
         this.getUsers();
         this.getInquiries(); 
         this.getStatus();
-      });
     } 
     selectMenuItem(menuItem: string) {
       this.menuItemSelected.emit(menuItem);

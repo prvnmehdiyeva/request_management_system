@@ -28,7 +28,9 @@ export class RequestDetailComponent implements OnInit {
   activeItem: string = 'commentButton';
   newCommentTitle: string='';
   newCommentText: string='';
-  currentUser: any
+  currentUser: any;
+  lastComment: any = null;
+
 
   constructor(private fb:FormBuilder, private route: ActivatedRoute, public authService: AuthService,  public requestService: RequestsService, public commentsService: CommentsService, @Inject(PLATFORM_ID) private platformId:Object) {
     this.form = this.fb.group({
@@ -38,6 +40,7 @@ export class RequestDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     console.log(this.request);
     this.route.paramMap.subscribe(params => {
       this.inquiryId = params.get('requestId') || '';
@@ -62,10 +65,12 @@ export class RequestDetailComponent implements OnInit {
               (request: InquiriesInfo | any) => { 
                   if (Array.isArray(request)) {
                       this.request = request;
+                      
                   } else {
                       this.request = [request];
                   }
                   console.log("Request Detail:", this.request);
+                  
               },
               (error) => {
                   console.error("Error fetching request detail:", error);
@@ -91,18 +96,14 @@ export class RequestDetailComponent implements OnInit {
   }
 
 
-
-  // getInquiries() {
-  //   this.requestService.getRequests().subscribe(inquiries => {
-  //     this.inquiries = inquiries;
-  //     this.filteredInquiries = inquiries.filter((inquiry: { ID: { toString: () => string; }; }) => inquiry.ID && inquiry.ID.toString() === this.inquiryId);
-  //   });
-  // }
-
   getComments(){
     this.commentsService.getComments().subscribe(comments =>{
       this.comments = comments;
       console.log(comments);
+      
+      if (this.comments.length > 0) {
+        this.lastComment = this.comments[this.comments.length - 1];
+      }
     });
   }
 
@@ -121,7 +122,7 @@ export class RequestDetailComponent implements OnInit {
 
       this.commentsService.addComment(newComment).subscribe(
         (comment: AppComment) => {
-          this.comments.unshift(comment);
+          this.comments.push(comment);
           this.form.reset();
         },
         (error) => {

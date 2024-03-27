@@ -22,6 +22,9 @@
 
 .list-group{
   --bs-list-group-border-radius:0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 !important;
   width: 100%;
   .list-group-item{
     background: none;
@@ -180,4 +183,11 @@
       background-color: #ececec;
     }
   }
+}
+@media screen and (max-width: 768px){
+  .list-group{
+  margin-top: 25px;
+  margin-bottom: 30px;
+  padding: 0 !important;
+}
 }

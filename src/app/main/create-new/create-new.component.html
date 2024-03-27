@@ -1,14 +1,14 @@
 <div class="grid-head container pb-3">
 <h3 mat-dialog-title>Create new inquiry</h3>
 <div class="back-link">
-  <a [routerLink]="'../inquiries'" routerLinkActive="active" class="back-link">
+  <a [routerLink]="['/main/requests']" routerLinkActive="active" class="back-link">
     <i class="fas fa-chevron-left"></i> Back
   </a>
 </div>
 </div>
 <mat-dialog-content class="mat-typography">
   
-  <form [formGroup]="form" class="row g-3 p-4 pb-0">
+  <form [formGroup]="form" class="row g-3 p-1 pb-0">
     <div class="col-md-4">
       <label for="Category" class="form-label">Category</label>
       <select id="Category" class="form-select" formControlName="Category">
@@ -52,7 +52,7 @@
       <label class="input-group-text" for="inputGroupFile02">Upload</label>
     </div>
     <mat-dialog-actions class="d-flex justify-content-end">
-      <button mat-fab extended class="btn btn-create text-light" mat-align="center" [routerLink]="['../inquiries']" routerLinkActive="router-link-active"  (click)="addRequest()">
+      <button mat-fab extended class="btn btn-create text-light clear" mat-align="center" [routerLink]="['/main/requests']" routerLinkActive="router-link-active"  (click)="addRequest()">
         Create Request
       </button>
 </mat-dialog-actions>

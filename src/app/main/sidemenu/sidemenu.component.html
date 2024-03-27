@@ -1,50 +1,18 @@
-<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
-  <div class="p-4 pt-3" style="background-color:#6a69a8;">
-    <ul class="nav-responsive flex-column gap-3 list-unstyled">
-        <li class="nav-item">
-          <a [routerLink]="['/main/users', id, 'inquiries']" routerLinkActive="active" class="icon-link text-decoration-none gap-3" >
-            <i class="fas fa-file"></i>
-            Inquiries 
-          </a>
-        </li>
-        <li class="nav-item">
-          <a [routerLink]="['/main/users', id, 'inquiries']" class="icon-link text-decoration-none gap-3" href="#" >
-            <i class="fas fa-flag"></i>
-            Reports
-          </a>
-        </li>
-        <li class="nav-item">
-          <a [routerLink]="['/main/users', id, 'profile']" routerLinkActive="active" class="icon-link text-decoration-none gap-3" >
-            <i class="fas fa-user"></i>
-            Profil
-        </a>    
-        </li>
-      </ul>
-  </div>
-</div>
-<nav class="navbar navbar-dark">
-  <div class="container-fluid justify-content-end">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#6a69a8;">
-      <span class="navbar-toggler-icon" style="background-color:#6a69a8;"></span>
-    </button>
-  </div>
-</nav>
 <ul class="nav flex-column gap-3">
-  <!-- fixed-top -->
     <li class="nav-item">
-      <a [routerLink]="['/main/users', id, 'inquiries']" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
+      <a [routerLink]="['/main/requests']" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
         <i class="fas fa-file"></i>
         Inquiries 
       </a>
     </li>
     <li class="nav-item">
-      <a [routerLink]="['/main/users', id, 'inquiries']" class="icon-link text-decoration-none gap-3" href="#">
+      <a [routerLink]="['/main/requests']" class="icon-link text-decoration-none gap-3" href="#">
         <i class="fas fa-flag"></i>
         Reports
       </a>
     </li>
     <li class="nav-item">
-      <a [routerLink]="['/main/users', id, 'profile']" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
+      <a [routerLink]="['/main/requests', 'profile']" routerLinkActive="active" class="icon-link text-decoration-none gap-3">
         <i class="fas fa-user"></i>
         Profil
     </a>    

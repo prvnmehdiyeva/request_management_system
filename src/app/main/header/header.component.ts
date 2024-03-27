@@ -28,11 +28,16 @@ export class HeaderComponent implements OnInit {
 
   }
   getUserName(){
-    this.authService.getUsers().subscribe((data) => {
-      const user = data.find((user: any) => user.id === this.id);
-      if (user) {
-        this.name = user.name;
-      }
-    });
+    // this.authService.getUsers().subscribe((data) => {
+    //   const user = data.find((user: any) => user.id === this.id);
+    //   if (user) {
+    //     this.name = user.name;
+    //   }
+    // });
+    const currentUserString = sessionStorage.getItem('currentUser');
+    if (currentUserString) {
+      const currentUser = JSON.parse(currentUserString)
+        this.name=currentUser.name
+    }
   }
 }

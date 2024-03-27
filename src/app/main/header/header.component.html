@@ -1,18 +1,71 @@
 <nav  [@fadeInAnimation] class="navbar fixed-top bg-body-tertiary">
   <div class="container-own container-fluid">
-    <img src="/assets/logocolorful.png" alt="logocic">
+    <a href=""  [routerLink]="['/main/requests', 'inquiries']">
+      <img src="/assets/logocolorful.png" alt="logocic" >
+    </a>
     <form class="d-flex" role="search">
-      <i class="fas fa-user"></i>
-      <div class="dropdown">
+      <i class="user fas fa-user"></i>
+      <div class="dropdown user">
         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           {{name}}
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" [routerLink]="['/main/users', id, 'profile']">Profil</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/main/users', id, 'password']">Change your password</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/main/requests', 'profile']">Profil</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/main/requests', 'password']">Change your password</a></li>
           <li><a class="dropdown-item" [routerLink]="['/main']">Log out</a></li>
         </ul>
       </div>
+  
+      <nav class="navbar nav-responsive fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel">{{name}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a [routerLink]="['/main/requests']" routerLinkActive="active" class="nav-link icon-link text-decoration-none gap-3" >
+                    <i class="fas fa-file"></i>
+                    Inquiries 
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['/main/requests']" class="nav-link icon-link text-decoration-none gap-3" href="#" >
+                    <i class="fas fa-flag"></i>
+                    Reports
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a [routerLink]="['/main/requests', 'profile']" routerLinkActive="active" class="nav-link icon-link text-decoration-none gap-3" >
+                    <i class="fas fa-user"></i>
+                    Profil
+                </a> 
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="text-light nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Account
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" [routerLink]="['/main/requests', 'profile']">Profil</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/main/requests', 'password']">Change your password</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" [routerLink]="['/main']">Log out</a></li>
+                  </ul>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
     </form>
   </div>
 </nav>

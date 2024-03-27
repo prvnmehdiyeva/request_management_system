@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         this.myForm.reset();
         this.isSubmitting = false;
-        this.router.navigate(['main/users', user.id],{queryParams:{name:user.name}});
+        this.router.navigate(['main/requests'],{queryParams:{name:user.name}});
       }, 2000);
     } else{
       console.log("error");
