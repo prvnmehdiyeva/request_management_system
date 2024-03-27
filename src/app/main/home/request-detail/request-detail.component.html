@@ -27,7 +27,7 @@
     </button>
   </ul>
   <aside *ngIf="activeItem==='requestButton'">
-<div class="grid-message">
+<div class="grid-message mt-4">
   <div class="message">
     <img class="profile" src="../../../assets/profile.png" alt="profile">
     <div class="card">
@@ -87,7 +87,7 @@
 </aside>
 
 <div *ngIf="activeItem === 'commentButton'">
-  <div class="message reply-message" *ngFor="let comment of comments">
+  <div class="message reply-message mt-4" *ngFor="let comment of comments">
     <img class="profile" src="../../../assets/profile.png" alt="profile">
     <div class="card">
        <div class="name">
@@ -103,7 +103,7 @@
       </div>
     </div>
   </div>
-  <form class="comment-form mt-5 mb-3" [formGroup]="form" >
+  <form class="comment-form mt-4 mb-3" [formGroup]="form" >
     <!-- Form inputs with formControlName -->
     <div class="align-items-left mb-3">
       <label for="title">Title</label>
@@ -129,7 +129,7 @@
 
 
 <div *ngIf="activeItem === 'historyButton'">
-  <div class="card card-history p-3 mb-3">
+  <div class="card card-history mt-4 p-3 mb-3">
     <div class="name">
       <img class="profile" src="../../../assets/profile.png" alt="profile">
       <div class="head">
@@ -175,7 +175,7 @@
 </div>
 
 <div *ngIf="activeItem === 'infoButton'">
-  <form class="row g-3">
+  <form class="row g-3 mt-4">
     <div class="col-md-6">
       <label for="prioritet" class="form-label">Prioritet</label>
       <select id="prioritet" class="form-select">
@@ -208,6 +208,7 @@
       <input type="password" class="form-control" id="planned">
     </div>
     <div class="col-md-12">
+      <label for="planned" class="form-label">Type</label>
       <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="inlineRadioApp" id="maintenance" value="optionApp">
           <label class="form-check-label" for="maintenance">Application Maintenance</label>
@@ -227,6 +228,7 @@
     <input type="password" class="form-control" id="solman">
   </div>
   <div class="col-md-12">
+    <label for="planned" class="form-label">Contact</label>
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="inlineRadio" id="email" value="option1">
       <label class="form-check-label" for="email">Email</label>

@@ -7,5 +7,16 @@ export interface InquiriesInfo {
     Category: string,
     Executor: string,
     Date: number,
-    Status: string
+    Status: string,
+    Prioritet:string,
+    RequestType:string,
+    Result:string,
+    Solution:string,
+    ExecutionTime:string,
+    PlannedExecutionTime:string,
+    Type:string,
+    SolmanRequestNumber:number,
+    Contact:string,
+    Code:string,
+    RootCause:string,
 }
