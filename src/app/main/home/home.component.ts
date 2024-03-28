@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
 import { RequestsService } from '../../services/requests.service';
 import { fadeOpacityAnimation } from '../../animations/fade.animation';
+import { Observable, of} from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,7 @@ import { fadeOpacityAnimation } from '../../animations/fade.animation';
   styleUrl: './home.component.scss',
   animations: [fadeOpacityAnimation],
 
-})
+}) 
 export class HomeComponent implements OnInit {
   @Output() menuItemSelected = new EventEmitter<string>();
   currentPage=0
@@ -31,10 +33,10 @@ export class HomeComponent implements OnInit {
   searchByExecutor: string = '';
   searchByDate: string = '';
   @Input() id: string = '';
-  public inquiries: InquiriesInfo[]=[]
-  public users: UsersInfo[]=[]
-  public filteredInquiries: InquiriesInfo[] = [];
-  public status: Status[]=[] ;
+  public inquiries$: Observable<InquiriesInfo[]> | undefined
+  public filteredRequests$: Observable<InquiriesInfo[]> | undefined
+  public users$: Observable<InquiriesInfo[]> | undefined
+  public status$: Observable<Status[]> | undefined ;
   public selectedStatus: any | null = "All";
   constructor(public authService:AuthService, public requestService:RequestsService, private dialog: MatDialog,private route: ActivatedRoute,
     private router:Router){}
@@ -53,32 +55,24 @@ export class HomeComponent implements OnInit {
       this.menuItemSelected.emit(menuItem);
     }
   getUsers(){
-    this.authService.getUsers().subscribe(users => {
-      this.users = users;
-    });
+    this.users$ = this.authService.getUsers()
   }
   getInquiries(){
-    this.requestService.getRequests().subscribe(inquiries => {
-      this.inquiries = inquiries;
-      this.filteredInquiries=inquiries
-      
-    });
+    this.inquiries$ = this.filteredRequests$ = this.requestService.getRequests();
   }
   getStatus(){
-    this.authService.getStatus().subscribe(status => {
-      this.status=status
-    });
+    this.status$= this.authService.getStatus()
   }
 
-  getStatusCount(status:any){
-    let count =0
-    if(status==="All"){
-      count = this.inquiries.length;
-    } else{
-      count = this.inquiries.filter(inquiry => inquiry.Status === status).length;
-    }
-    return count
-    }
+//   getStatusCount(status:any){
+//     let count =0
+//     if(status==="All"){
+//       count = this.inquiries.length;
+//     } else{
+//       count = this.inquiries.filter(inquiry => inquiry.Status === status).length;
+//     }
+//     return count
+// }
 
 
     changeStatus(status: any) {
@@ -86,23 +80,26 @@ export class HomeComponent implements OnInit {
       console.log('Selected Status:', status);
       if (status === null || status === 'All') {
         this.selectedStatus = 'All';
-        this.filteredInquiries = this.inquiries;
+        this.filteredRequests$ = this.inquiries$;
       } else {
         this.selectedStatus = status;
-        this.filteredInquiries = this.inquiries.filter(c => c.Status === status);
+        this.filteredRequests$ = this.inquiries$?.pipe(
+          map(inquiries => inquiries.filter((c: { Status: any; }) => c.Status === status))
+        );
       }
-      console.log('Filtered Inquiries:', this.filteredInquiries);
+      console.log('Filtered Inquiries:', this.filteredRequests$);
     }
 
     search(filterData:string, searchData:string) {
-      this.filteredInquiries = this.inquiries.filter((i:any) => {
-        if (filterData === "ID" || filterData === "Date") {
-
-          return i[filterData].toString().includes(searchData.toString());
-        } else {
-          return i[filterData].toLowerCase().includes(searchData.toLowerCase());
-        }
-      });
+      this.filteredRequests$ = this.inquiries$?.pipe(
+        map(inquiries => inquiries.filter((i:any) => {
+          if (filterData === "ID" || filterData === "Date") {
+            return i[filterData].toString().includes(searchData.toString());
+          } else {
+            return i[filterData].toLowerCase().includes(searchData.toLowerCase());
+          }
+        }))
+      );
     }
 
     handlePageEvent(pageEvent:PageEvent){
@@ -114,7 +111,9 @@ export class HomeComponent implements OnInit {
     filterData(): void {
       const startIndex = this.currentPage * this.pageSize;
       const endIndex = startIndex + this.pageSize;
-      this.filteredInquiries = this.inquiries.slice(startIndex, endIndex);
+      this.filteredRequests$ = this.inquiries$?.pipe(
+        map(inquiries => inquiries.slice(startIndex, endIndex))
+      );
     }
   }
   

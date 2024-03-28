@@ -19,4 +19,5 @@ export interface InquiriesInfo {
     Contact:string,
     Code:string,
     RootCause:string,
+    Routine:boolean
 }

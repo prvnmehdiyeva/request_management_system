@@ -3,13 +3,13 @@
         <div class="row header1">
           <div class="col p-0">
             <select class="form-select" name="status" [(ngModel)]="selectedStatus" (ngModelChange)="changeStatus($event)" aria-label="Default select example">
-              <option *ngFor="let s of status" [ngValue]="s.name">{{s.name}}</option>
+              <option *ngFor="let status of (status$ | async)" [ngValue]="status.name">{{status.name}}</option>
           </select>
           </div>
           <div class="col col-btn">
             <button mat-fab extended class="btn btn-create text-light"
             color="primary" [routerLink]="['/main/requests', 'create-new']">
-            <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
+           <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
             Create request
           </button></div>
           <div>
@@ -22,16 +22,17 @@
           <div class="col-12 pl-6">
             <ul class="list-group list-group-horizontal mb-3 p-3">
               <button class="list-group-item d-flex justify-content-between align-items-center"  
-                  *ngFor="let s of status" 
-                  (click)="changeStatus(s.name)" 
-                  [class.active]="selectedStatus && selectedStatus === s.name">
-                {{s.name}}
+              *ngFor="let status of status$ | async" 
+                  (click)="changeStatus(status.name)" 
+                  [class.active]="selectedStatus && selectedStatus === status.name">
+                {{status.name}}
                 <span class="badge">
-                  {{getStatusCount(s.name)}}</span>
+                  {{ getStatusCount(status.name) | async }}
+                  </span>
               </button>
             </ul>
 
-              <mat-paginator [length]="inquiries.length" [pageSize]="10" [showFirstLastButtons]="false" [pageSizeOptions]="[5,10,20]" [pageIndex]="currentPage" (page)="handlePageEvent($event)"
+              <mat-paginator [length]="(inquiries$ | async)?.length" [pageSize]="10" [showFirstLastButtons]="false" [pageSizeOptions]="[5,10,20]" [pageIndex]="currentPage" (page)="handlePageEvent($event)"
               >
              </mat-paginator>
            
@@ -68,11 +69,12 @@
                     <td><input type="date" class="form-control" placeholder="Search" [(ngModel)]="searchByDate" (input)="search('Date',searchByDate)"></td>
                     <td>
                       <select class="form-control custom-select custom-select-bg" name="status" [(ngModel)]="selectedStatus" (ngModelChange)="changeStatus($event)" aria-label="Default select example">
-                        <option *ngFor="let s of status" [ngValue]="s.name">{{s.name}}</option>
+                        <option  *ngFor="let status of (status$ | async)" 
+                        [ngValue]="status.name">{{status.name}}</option>
                     </select>
                     </td>
                   </tr>
-                  <tr *ngFor="let card of filteredInquiries" [routerLink]="['/main/requests', card.id]">
+                  <tr *ngFor="let card of filteredRequests$ | async"  [routerLink]="['/main/requests', card.id]">
                     <td>{{card.request_id}}</td>
                     <td>{{card.Sender}}</td>
                     <td>{{card.Title}}</td>

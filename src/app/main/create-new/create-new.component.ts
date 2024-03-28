@@ -36,9 +36,7 @@ export class CreateNewComponent implements OnInit {
     Text: ['', Validators.required],
     Executor:  ['', Validators.required],
     Category: ['', Validators.required],
-
     Date:new Date().toISOString().substring(0, 10),
-
     Status:['Opened', Validators.required],
     Prioritet: ['', Validators.required],
     Type: ['', Validators.required],
@@ -51,12 +49,10 @@ ngOnInit(): void {
 
     if (currentUserString) {
       const currentUser = JSON.parse(currentUserString);
-
+ 
       this.id = currentUser.id || '';
       this.name = currentUser.name || '';
 
-      console.log('User ID:', this.id);
-      console.log('User name:', this.name);
     } else {
       console.error('currentUser not found in sessionStorage.');
     }

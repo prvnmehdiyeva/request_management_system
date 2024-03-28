@@ -88,14 +88,14 @@ export class ProfileComponent implements OnInit {
 console.log(this.image);
     const updatedProfileData = {
       id: this.id,
-    department: newDepartment !== '' ? newDepartment : this.department,
-    mission: newMission !== '' ? newMission : this.mission,
-    internalTelephone: newInternalTelephone !== '' ? newInternalTelephone : this.internalTelephone,
-    mobileTelephone: newMobileTelephone !== '' ? newMobileTelephone : this.mobileTelephone,
-    name: this.name,
-    userJob: this.userJob,
-    password: this.password, 
-    image: newImage !== '' ? newImage : this.image 
+      department: newDepartment !== '' ? newDepartment : this.department,
+      mission: newMission !== '' ? newMission : this.mission,
+      internalTelephone: newInternalTelephone !== '' ? newInternalTelephone : this.internalTelephone,
+      mobileTelephone: newMobileTelephone !== '' ? newMobileTelephone : this.mobileTelephone,
+      name: this.name,
+      userJob: this.userJob,
+      password: this.password, 
+      image: newImage !== '' ? newImage : this.image 
     };
 
     this.authService.updateUserProfile(updatedProfileData).subscribe(() => {

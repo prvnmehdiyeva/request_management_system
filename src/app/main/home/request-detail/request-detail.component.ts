@@ -21,6 +21,7 @@ export class RequestDetailComponent implements OnInit {
   @Input() userJob: any = '';
 
   form: FormGroup;
+  formRequest!: FormGroup;
   public filteredInquiries: InquiriesInfo[] = [];
   public request: InquiriesInfo[] = [];
   public comments: AppComment[] = [];
@@ -36,6 +37,19 @@ export class RequestDetailComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', Validators.required],
       text: ['', Validators.required]
+    });
+    this.formRequest = this.fb.group({
+      id: ['', [Validators.required]],
+      request_id: ['', [Validators.required]],
+      Sender: ['', Validators.required],
+      Title: ['', Validators.required],
+      Text: ['', Validators.required],
+      Executor:  ['', Validators.required],
+      Category: ['', Validators.required],
+      Date:['', Validators.required],
+      Status:['Opened', Validators.required],
+      Prioritet: ['', Validators.required],
+      Type: ['', Validators.required],
     });
   }
 
