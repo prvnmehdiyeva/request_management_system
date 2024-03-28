@@ -67,6 +67,8 @@ export class HomeComponent implements OnInit {
 //   getStatusCount(status:any){
 //     let count =0
 //     if(status==="All"){
+  // Property 'inquiries' does not exist on type 'HomeComponent'. Did you mean 'inquiries$'?ts(2551)
+
 //       count = this.inquiries.length;
 //     } else{
 //       count = this.inquiries.filter(inquiry => inquiry.Status === status).length;
