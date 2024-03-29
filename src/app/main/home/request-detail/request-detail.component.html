@@ -1,23 +1,23 @@
-<div class="grid-head container pb-3" *ngFor="let request of request">
+<div class="grid-head container pb-3" *ngFor="let request of request$ | async">
   <div class="title" >
     <div class="head">
       <h3 mat-dialog-title>{{request.request_id}}</h3>
     <span class="align-middle small opacity-50 small">{{request.Category}}</span>
     </div>
     <div class="back-link">
-       <a class="back-link">
+       <a class="back-link" >
            Status:{{request.Status}}
        </a>
     </div>
   </div>
-
+ 
   <ul class="list-group list-group-horizontal mb-3 p-3">
     <button id="requestButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('requestButton')" [class.active]="activeItem === 'requestButton'">
       Request
     </button>
-    <button id="commentButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('commentButton')" [class.active]="activeItem === 'commentButton'" r="let comment of comments" >
+    <button id="commentButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('commentButton')" [class.active]="activeItem === 'commentButton'" r="let comment of comments$ | async" >
       Comment
-      <span class="badge">{{comments.length}}</span>
+      <span class="badge">{{ (comments$ | async)?.length }}</span>
     </button>
     <button id="historyButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('historyButton')" [class.active]="activeItem === 'historyButton'" >
       History
@@ -52,7 +52,7 @@
       </div>
     </div>
   </div>
-  <div class="message reply-message mt-3" *ngIf="lastComment">
+  <div class="message reply-message mt-3" *ngIf="lastComment$ | async as lastComment">
     <img class="profile" src="../../../assets/profile.png" alt="profile">
     <div class="card">
        <div class="name">
@@ -69,7 +69,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
 <div class="last-side pt-4">
   <div class="password">
     <a href="#">
@@ -81,13 +81,16 @@
   </div>
 <div class="buttons">
   <a [routerLink]="['/main/requests']" routerLinkActive="active" class="btn btn-secondary" type="button">Cancel</a>
-      <button class="btn btn-submit" type="submit">Lock it</button>
+  <button mat-button [matMenuTriggerFor]="lockMenu" >Lock it</button>
+  <mat-menu #lockMenu="matMenu">
+    <button mat-menu-item *ngFor="let status of status$ | async" (click)="updateStatus(status.name)">{{status.name}}</button>
+  </mat-menu>
 </div>
 </div>
 </aside>
 
 <div *ngIf="activeItem === 'commentButton'">
-  <div class="message reply-message mt-4" *ngFor="let comment of comments">
+  <div class="message reply-message mt-4" *ngFor="let comment of comments$ | async">
     <img class="profile" src="../../../assets/profile.png" alt="profile">
     <div class="card">
        <div class="name">

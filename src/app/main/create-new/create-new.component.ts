@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { InquiriesInfo } from '../../models/inquiries-info';
 import { RequestsService } from '../../services/requests.service';
 import { isPlatformBrowser } from '@angular/common';
-import { DatePipe } from '@angular/common';
+import { Observable, map, of, switchMap, tap } from 'rxjs';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class CreateNewComponent implements OnInit {
   @Input() id: string = '';
   @Input() name: string = '';
   currentComponent: string = 'create-new'; 
-  public inquiries: InquiriesInfo[] = [];
+  public inquiries$!: Observable<InquiriesInfo[]> 
   
   constructor(
     private fb:FormBuilder, 
@@ -37,7 +37,7 @@ export class CreateNewComponent implements OnInit {
     Executor:  ['', Validators.required],
     Category: ['', Validators.required],
     Date:new Date().toISOString().substring(0, 10),
-    Status:['Opened', Validators.required],
+    Status:['Closed', Validators.required],
     Prioritet: ['', Validators.required],
     Type: ['', Validators.required],
   });
@@ -62,13 +62,18 @@ addRequest() {
   this.form.patchValue({ 
     Sender: this.name,
     Executor: this.name
-  });
+  }); 
   const formValues = this.form.value;
-  this.requestService.addRequest(formValues).subscribe((response: any) => {
-    this.inquiries.unshift(response);
-
-    console.log(response);
-  });
+  this.requestService.addRequest(formValues).pipe(
+    switchMap(newInquiry => {
+      return this.inquiries$.pipe(
+        map(inquiries => {
+          inquiries.unshift(newInquiry); 
+          return inquiries;
+        })
+      );
+    })
+  ).subscribe();
 }
 
 generateRandomNumber(): string {

@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
     ngOnInit(): void {
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.id = params.get('id') || ''; 
-        console.log('ID', this.id);
         this.getUserName()
       });
 

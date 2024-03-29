@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfilechangedialogComponent } from './profilechangedialog/profilechangedialog.component';
 import { fadeOpacityAnimation } from '../../animations/fade.animation';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -26,7 +27,7 @@ export class ProfileComponent implements OnInit {
   @Input() image: string = '';
   @Input() password: string = '';
   changeProfileForm: FormGroup;
-  
+  updateProfile$!: Observable<any>;
 
   constructor(
      private route: ActivatedRoute, 
@@ -85,7 +86,6 @@ export class ProfileComponent implements OnInit {
     const newInternalTelephone = this.changeProfileForm.get('newInternalTelephone')?.value;
     const newMobileTelephone = this.changeProfileForm.get('newMobileTelephone')?.value;
     const newImage = this.changeProfileForm.get('newImage')?.value;
-console.log(this.image);
     const updatedProfileData = {
       id: this.id,
       department: newDepartment !== '' ? newDepartment : this.department,

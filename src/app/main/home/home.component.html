@@ -26,8 +26,8 @@
                   (click)="changeStatus(status.name)" 
                   [class.active]="selectedStatus && selectedStatus === status.name">
                 {{status.name}}
-                <span class="badge">
-                  {{ getStatusCount(status.name) | async }}
+                <span class="badge" >
+                  {{ statusCounts[status.name] }}
                   </span>
               </button>
             </ul>

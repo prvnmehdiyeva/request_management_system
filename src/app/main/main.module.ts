@@ -24,6 +24,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { PasswordChangeSuccessDialogComponent } from './password/password-change-success-dialog/password-change-success-dialog.component';
 import { RequestDetailComponent } from './home/request-detail/request-detail.component';
 import { ProfilechangedialogComponent } from './profile/profilechangedialog/profilechangedialog.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ProfilechangedialogComponent } from './profile/profilechangedialog/prof
     MatDialogModule,
     RouterModule,
     MatSnackBarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatMenuModule
   ]
 })
 export class MainModule { }

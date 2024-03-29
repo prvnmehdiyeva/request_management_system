@@ -36,57 +36,13 @@
   ],
   "inquiries": [
     {
-      "Sender": "John Doe",
-      "Title": "Urgent Issue",
-      "Text": "She filed a formal request for more information. At your request, I am enclosing a full refund of your payment. Troops were sent at the request of our allies. This next song is a request from one of our listeners.",
-      "Category": "Technical",
-      "Executor": "Alice Smith",
-      "Date": "2024-02-22",
-      "Status": "Opened",
-      "id": "5dd8",
-      "request_id": "123456"
-    },
-    {
-      "Sender": "Jane Smith",
-      "Title": "Feedback",
-      "Text": "Positive feedback on recent updates",
-      "Category": "Feedback",
-      "Executor": "Bob Johnson",
-      "Date": "2024-02-21",
-      "Status": "Execution",
-      "id": "7c5a",
-      "request_id": "234567"
-    },
-    {
-      "Sender": "Emily Davis",
-      "Title": "Bug Report",
-      "Text": "Unable to login",
-      "Category": "Technical",
-      "Executor": "Chris Brown",
-      "Date": "2024-02-20",
-      "Status": "Closed",
-      "id": "c148",
-      "request_id": "345678"
-    },
-    {
-      "Sender": "Alex Johnson",
-      "Title": "Feature Request",
-      "Text": "Requesting a new feature",
-      "Category": "Feature Request",
-      "Executor": "Emma Lee",
-      "Date": "2024-02-19",
-      "Status": "Hold",
-      "id": "f1b7",
-      "request_id": "456789"
-    },
-    {
+      "Status": "Approved",
       "Sender": "Michael Wilson",
       "Title": "Complaint",
       "Text": "Experiencing issues with the product",
       "Category": "Customer Support",
       "Executor": "David Brown",
       "Date": "2024-02-18",
-      "Status": "Approved",
       "id": "bf77",
       "request_id": "567890"
     },
@@ -119,18 +75,18 @@
       "Category": "Technical",
       "Executor": "John Smith",
       "Date": "2024-02-16",
-      "Status": "Opened",
+      "Status": "Approved",
       "id": "02a4",
       "request_id": "890123"
     },
     {
+      "Status": "Opened",
       "Sender": "David Brown",
       "Title": "New Feature Proposal",
       "Text": "Suggesting a new feature",
       "Category": "Feature Request",
       "Executor": "Michael Wilson",
       "Date": "2024-02-15",
-      "Status": "Execution",
       "id": "8f0e",
       "request_id": "901234"
     },
@@ -159,30 +115,17 @@
       "Type": "General Inquiry"
     },
     {
-      "id": "-gShL4n",
-      "request_id": "457775",
+      "id": "YwBKDfe",
+      "request_id": "485308",
       "Sender": "John Doe",
-      "Title": "Title test",
-      "Text": "Text test",
+      "Title": "Status",
+      "Text": "status\n",
       "Executor": "John Doe",
-      "Category": "Marketing",
-      "Date": "2024-03-15",
-      "Status": "Opened",
-      "Prioritet": "medium",
+      "Category": "Finance",
+      "Date": "2024-03-29",
+      "Status": "Closed",
+      "Prioritet": "high",
       "Type": "Technical Support"
-    },
-    {
-      "id": "kyPzxs7",
-      "request_id": "400070",
-      "Sender": "John Doe",
-      "Title": "sss",
-      "Text": "sss",
-      "Executor": "John Doe",
-      "Category": "Operations",
-      "Date": "2024-03-27",
-      "Status": "Opened",
-      "Prioritet": "medium",
-      "Type": "Bug Report"
     }
   ],
   "status": [
@@ -258,6 +201,96 @@
       "title": "add as a last comment ",
       "text": "fixing comment",
       "id": "lKD1fke"
+    },
+    {
+      "ID": "8a897af3-099b-4b4e-abfd-3f1155fdb1ab",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "TEST",
+      "text": "TEST",
+      "id": "VjfoyQi"
+    },
+    {
+      "ID": "e68b52f8-b69b-4580-877d-c451ce1d0712",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "eed",
+      "text": "teeest",
+      "id": "1hU3_Cv"
+    },
+    {
+      "ID": "15c55f64-e005-4bce-9d2b-e080f6867735",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "ddd",
+      "text": "ddd",
+      "id": "6U5L2Yt"
+    },
+    {
+      "ID": "ecb89502-55bf-4afe-a5a0-44aaf6f5b4f2",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "eee",
+      "text": "eee",
+      "id": "AEzj2Zz"
+    },
+    {
+      "ID": "3bb4f5fc-e59b-4edc-bbee-f24ae32ac014",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "eeedd",
+      "text": "eddd",
+      "id": "utznsBQ"
+    },
+    {
+      "ID": "a393759a-e129-480d-903d-d9971149beb6",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "dcf",
+      "text": "sdcfv",
+      "id": "j29TF89"
+    },
+    {
+      "ID": "9a9f57da-639c-4e28-9dc5-91e6d42b544e",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "d",
+      "text": "e",
+      "id": "4QhkfWS"
+    },
+    {
+      "ID": "68616a85-6991-4bcf-9f66-dafee07dacae",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "s",
+      "text": "s",
+      "id": "XuGdavh"
+    },
+    {
+      "ID": "54757615-ebd4-452b-9965-29a36bd6609a",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "ddd",
+      "text": "ddd",
+      "id": "LF-iLzF"
+    },
+    {
+      "ID": "4598c7c2-f87b-4327-9690-e1adc53e07ae",
+      "user_id": "1",
+      "request_id": "5dd8",
+      "name": "John Doe",
+      "title": "qq",
+      "text": "qq",
+      "id": "k3zqEFL"
     }
   ]
 }

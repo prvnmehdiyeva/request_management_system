@@ -12,6 +12,7 @@ import { RequestsService } from '../../services/requests.service';
 import { fadeOpacityAnimation } from '../../animations/fade.animation';
 import { Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -33,11 +34,14 @@ export class HomeComponent implements OnInit {
   searchByExecutor: string = '';
   searchByDate: string = '';
   @Input() id: string = '';
+
   public inquiries$: Observable<InquiriesInfo[]> | undefined
   public filteredRequests$: Observable<InquiriesInfo[]> | undefined
   public users$: Observable<InquiriesInfo[]> | undefined
   public status$: Observable<Status[]> | undefined ;
   public selectedStatus: any | null = "All";
+  statusCounts: any = {};
+
   constructor(public authService:AuthService, public requestService:RequestsService, private dialog: MatDialog,private route: ActivatedRoute,
     private router:Router){}
     ngOnInit(): void {  
@@ -50,6 +54,7 @@ export class HomeComponent implements OnInit {
         this.getUsers();
         this.getInquiries(); 
         this.getStatus();
+        this.getStatusCounts()
     } 
     selectMenuItem(menuItem: string) {
       this.menuItemSelected.emit(menuItem);
@@ -58,28 +63,37 @@ export class HomeComponent implements OnInit {
     this.users$ = this.authService.getUsers()
   }
   getInquiries(){
-    this.inquiries$ = this.filteredRequests$ = this.requestService.getRequests();
+    this.inquiries$ = this.requestService.getRequests();
+    this.filteredRequests$ = this.requestService.getRequests();
   }
   getStatus(){
     this.status$= this.authService.getStatus()
   }
 
-//   getStatusCount(status:any){
-//     let count =0
-//     if(status==="All"){
-  // Property 'inquiries' does not exist on type 'HomeComponent'. Did you mean 'inquiries$'?ts(2551)
-
-//       count = this.inquiries.length;
-//     } else{
-//       count = this.inquiries.filter(inquiry => inquiry.Status === status).length;
-//     }
-//     return count
-// }
-
-
+  getStatusCounts(): void {
+    this.status$?.subscribe(statuses => {
+      statuses.forEach(status => {
+        this.getStatusCount(status.name);
+      });
+    });
+  }
+  getStatusCount(status: string): void {
+    this.inquiries$?.pipe(
+      switchMap(inquiries => {
+        if (status === "All") {
+          return of(inquiries.length);
+        } else {
+          return of(inquiries.filter(inquiry => inquiry.Status === status).length);
+        }
+      })
+    ).subscribe(count => {
+      this.statusCounts[status] = count;
+    });
+  }
+  
+   
     changeStatus(status: any) {
       this.selectedStatus = status;
-      console.log('Selected Status:', status);
       if (status === null || status === 'All') {
         this.selectedStatus = 'All';
         this.filteredRequests$ = this.inquiries$;
@@ -88,10 +102,10 @@ export class HomeComponent implements OnInit {
         this.filteredRequests$ = this.inquiries$?.pipe(
           map(inquiries => inquiries.filter((c: { Status: any; }) => c.Status === status))
         );
-      }
-      console.log('Filtered Inquiries:', this.filteredRequests$);
-    }
 
+      }
+
+    }
     search(filterData:string, searchData:string) {
       this.filteredRequests$ = this.inquiries$?.pipe(
         map(inquiries => inquiries.filter((i:any) => {

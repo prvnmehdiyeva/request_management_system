@@ -9,6 +9,7 @@ import { InquiriesInfo } from '../models/inquiries-info';
 export class RequestsService {
   private baseUrl = 'http://localhost:3000';
 
+
   constructor(private http: HttpClient) { }
 
   getRequests(): Observable<any> {
@@ -25,4 +26,10 @@ export class RequestsService {
   getRequestById(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/inquiries/${id}`);
 }
+updateRequestStatusById(id: string, newStatus: any, otherData: any): Observable<any> {
+  const url = `${this.baseUrl}/inquiries/${id}`;
+  const updatedRequest = {  ...otherData, Status: newStatus }; 
+  return this.http.put<any>(url, updatedRequest);
+}
+
 }

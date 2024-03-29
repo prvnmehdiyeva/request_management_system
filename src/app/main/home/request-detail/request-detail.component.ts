@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InquiriesInfo } from '../../../models/inquiries-info';
 import { AuthService } from '../../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -8,6 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { isPlatformBrowser } from '@angular/common';
 import { RequestsService } from '../../../services/requests.service';
 import { CommentsService } from '../../../services/comments.service';
+import { Observable, map, of, switchMap } from 'rxjs';
+import { Status } from '../../../models/status';
 
 @Component({
   selector: 'app-request-detail',
@@ -15,25 +17,27 @@ import { CommentsService } from '../../../services/comments.service';
   styleUrls: ['./request-detail.component.scss']
 })
 export class RequestDetailComponent implements OnInit {
-  @Input() inquiryId: string = '';
+  @Input() requestId: string = '';
   @Input() id: any = '';
   @Input() userName: any = '';
   @Input() userJob: any = '';
-
+  defaultStatus: string = "Closed";
   form: FormGroup;
   formRequest!: FormGroup;
   public filteredInquiries: InquiriesInfo[] = [];
-  public request: InquiriesInfo[] = [];
-  public comments: AppComment[] = [];
+  public request$!: Observable<InquiriesInfo[]> ;
+  public comments$!: Observable<AppComment[]>
+  public lastComment$!: Observable<any>;
+  public status$!: Observable<Status[]> ;
+
   now:string=''
-  activeItem: string = 'commentButton';
+  activeItem: string = 'requestButton';
   newCommentTitle: string='';
   newCommentText: string='';
   currentUser: any;
-  lastComment: any = null;
 
 
-  constructor(private fb:FormBuilder, private route: ActivatedRoute, public authService: AuthService,  public requestService: RequestsService, public commentsService: CommentsService, @Inject(PLATFORM_ID) private platformId:Object) {
+  constructor(private fb:FormBuilder, private route: ActivatedRoute,private router:Router, public authService: AuthService,  public requestService: RequestsService, public commentsService: CommentsService, @Inject(PLATFORM_ID) private platformId:Object) {
     this.form = this.fb.group({
       title: ['', Validators.required],
       text: ['', Validators.required]
@@ -47,17 +51,15 @@ export class RequestDetailComponent implements OnInit {
       Executor:  ['', Validators.required],
       Category: ['', Validators.required],
       Date:['', Validators.required],
-      Status:['Opened', Validators.required],
+      Status:['', Validators.required],
       Prioritet: ['', Validators.required],
       Type: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    
-    console.log(this.request);
     this.route.paramMap.subscribe(params => {
-      this.inquiryId = params.get('requestId') || '';
+      this.requestId = params.get('requestId') || '';
 
 
       if(isPlatformBrowser(this.platformId)){
@@ -70,26 +72,14 @@ export class RequestDetailComponent implements OnInit {
           this.userName = currentUser.name || '';
           this.userJob = currentUser.userJob || '';
 
-          console.log('Inquiry ID:', this.inquiryId);
+          console.log('Inquiry ID:', this.requestId);
           console.log('User ID:', this.id);
 
 
 // request ID
-            this.requestService.getRequestById(this.inquiryId).subscribe(
-              (request: InquiriesInfo | any) => { 
-                  if (Array.isArray(request)) {
-                      this.request = request;
-                      
-                  } else {
-                      this.request = [request];
-                  }
-                  console.log("Request Detail:", this.request);
-                  
-              },
-              (error) => {
-                  console.error("Error fetching request detail:", error);
-              }
-            );
+        this.request$ = this.requestService.getRequestById(this.requestId).pipe(
+          map(request => Array.isArray(request) ? request : [request]) 
+        );       
           this.getComments();
           this.nowDate();
         } else {
@@ -97,6 +87,7 @@ export class RequestDetailComponent implements OnInit {
         }
       }
       })
+      this. getStatus()
   }
 
 
@@ -109,42 +100,60 @@ export class RequestDetailComponent implements OnInit {
     this.activeItem = buttonId;
   }
 
-
-  getComments(){
-    this.commentsService.getComments().subscribe(comments =>{
-      this.comments = comments;
-      console.log(comments);
-      
-      if (this.comments.length > 0) {
-        this.lastComment = this.comments[this.comments.length - 1];
-      }
-    });
+  getStatus(){
+    this.status$= this.authService.getStatus()
   }
+  getComments(){
+    this.comments$ = this.commentsService.getComments()
+    this.lastComment$ = this.comments$.pipe(
+      map(comments => comments.length > 0 ? comments[comments.length - 1] : null)
+    );
+  } 
 
-  addComment() {
-    if (this.form.valid) {
+  addComment() { 
       const newComment: AppComment = {
         ID:uuidv4(),
         user_id: this.id,
-        request_id: this.inquiryId,
+        request_id: this.requestId,
         name: this.userName,
         title: this.form.value.title,
         text: this.form.value.text
       };
 
-      console.log("New Comment:", newComment);
-
-      this.commentsService.addComment(newComment).subscribe(
-        (comment: AppComment) => {
-          this.comments.push(comment);
-          this.form.reset();
-        },
-        (error) => {
-          console.error('Error adding comment:', error);
-        }
-      );
-    } else{
-      console.log("Form not valid");
-    }
+      this.commentsService.addComment(newComment).pipe(
+        switchMap(response =>{
+          return this.comments$.pipe(
+            map(comments=>{
+              comments.unshift(response);
+              console.log(response);
+              this.form.reset();
+              return comments
+            }) 
+          )
+        })
+      ).subscribe()
+    
   }
+  updateStatus(newStatus: string) {
+    this.request$ = this.request$.pipe(
+      map(requests => {
+        return requests.map(request => {
+          if (request.id.toString() === this.requestId) {
+            const updatedRequest = { ...request, Status: newStatus };
+            console.log('Updated request:', updatedRequest);
+            this.requestService.updateRequestStatusById(this.requestId, newStatus, request).subscribe(
+              () => {
+                this.router.navigate(['/main/requests']); 
+              }
+            );
+            return updatedRequest;
+          }
+          return request; 
+        });
+      })
+    );
+  }
+  
+  
+  
 }

@@ -4,7 +4,7 @@
   </div>
     <div class="profile pt-3">
       
-      <form class="form"  [formGroup]="changeProfileForm" (ngSubmit)="onSubmit()">
+      <form class="form" [formGroup]="changeProfileForm" (ngSubmit)="onSubmit()">
         <div class="image-side">
           <div class="image">
             <div class="photo">
@@ -46,7 +46,7 @@
         </div>
         <div class="last-side pt-4">
           <div class="password">
-            <a [routerLink]="['/main/users', id, 'password']">
+            <a [routerLink]="['/main/requests', 'password']">
               <span class="icon">
                 <i class="fas fa-lock"></i> 
               </span>

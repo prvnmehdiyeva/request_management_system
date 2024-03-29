@@ -17,14 +17,12 @@ export class SidemenuComponent implements OnInit {
     if (!this.id) {
       this.route.params.subscribe(params => {
         this.id = params['id'];
-        console.log(this.id);
       });
     }
 
     if (!this.userName) {
       this.route.queryParams.subscribe(params => {
         this.userName = params['name'] || '';
-        console.log(this.userName);
       });
     }
   }
