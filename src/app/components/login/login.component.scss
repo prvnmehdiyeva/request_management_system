@@ -173,6 +173,15 @@ $teal: #494D8E;
 .logo-overlay{
   margin-left: -2rem;
     margin-top: 19rem;
+    animation: fadeInFromLeft 2s ease forwards;
+}
+@keyframes fadeInFromLeft {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 .overlay {
     position: absolute;
