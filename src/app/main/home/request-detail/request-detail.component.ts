@@ -35,7 +35,7 @@
     private commentsUpdatedSubject = new BehaviorSubject<void | null>(null);
 
     now:string=''
-    activeItem: string = 'infoButton';
+    activeItem: string = 'commentButton';
     newCommentTitle: string='';
     newCommentText: string='';
     currentUser: any;
