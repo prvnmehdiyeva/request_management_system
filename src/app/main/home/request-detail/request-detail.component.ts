@@ -199,8 +199,8 @@
                 () => {
                   this.showToast();
                   setTimeout(() => {
-                    this.router.navigate(['/main/requests']); // Navigate after 3 seconds
-                  }, 20000);
+                    this.router.navigate(['/main/requests']); 
+                  }, 3000);
                 }
               );
             }

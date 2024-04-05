@@ -1,4 +1,6 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 $primary-color: #55539F; 
 body{
   overflow-x: hidden;
@@ -35,9 +37,9 @@ input::placeholder {
 }
 
 @media screen and (max-width: 768px){
-  .container, .container-sm{
-    // max-width: 500px !important;
-  }
+  // .container, .container-sm{
+  //   // max-width: 500px !important;
+  // }
   .container{
     padding: 0 !important;
     padding: 0 10px 0 10px;

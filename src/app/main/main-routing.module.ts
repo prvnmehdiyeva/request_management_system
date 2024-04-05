@@ -8,6 +8,7 @@
   import { HomeComponent } from './home/home.component';
   import { RequestDetailComponent } from './home/request-detail/request-detail.component';
 import { ReportComponent } from './report/report.component';
+import { MessageService } from 'primeng/api';
 
   const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' }, 
@@ -36,6 +37,7 @@ import { ReportComponent } from './report/report.component';
 
   @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [MessageService],
   })
   export class MainRoutingModule { }

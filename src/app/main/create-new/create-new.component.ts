@@ -6,6 +6,8 @@ import { InquiriesInfo } from '../../models/inquiries-info';
 import { RequestsService } from '../../services/requests.service';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, map, of, switchMap, tap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -25,7 +27,11 @@ export class CreateNewComponent implements OnInit {
     private route: ActivatedRoute, 
     private authService:AuthService, 
     private requestService:RequestsService, 
-    @Inject(PLATFORM_ID) private platformId:Object
+    @Inject(PLATFORM_ID) private platformId:Object,
+    private snackBar: MatSnackBar,
+    private router: Router, 
+    private messageService: MessageService
+
   )
   {
   this.form = this.fb.group({
@@ -44,6 +50,8 @@ export class CreateNewComponent implements OnInit {
 }
 
 ngOnInit(): void {
+  this.inquiries$ = this.requestService.getRequests();
+
   if(isPlatformBrowser(this.platformId)){
     const currentUserString = sessionStorage.getItem('currentUser');
 
@@ -59,16 +67,26 @@ ngOnInit(): void {
   }
 }
 addRequest() {
+  const controlsToCheck = ['Title', 'Text', 'Category', 'Prioritet', "Type"];
+
+if (controlsToCheck.some(controlName => this.form.get(controlName)?.invalid)) {
+  this.openSnackBar('Please fill in all required fields', 'Close');
+  return; 
+}
   this.form.patchValue({ 
     Sender: this.name,
     Executor: this.name
   }); 
   const formValues = this.form.value;
   this.requestService.addRequest(formValues).pipe(
-    switchMap(newInquiry => {
+    switchMap(newRequest => {
       return this.inquiries$.pipe(
         map(inquiries => {
-          inquiries.unshift(newInquiry); 
+          inquiries.unshift(newRequest); 
+          this.showToast()
+          setTimeout(() => {
+            this.router.navigate(['/main/requests']);
+          }, 3000);
           return inquiries;
         })
       );
@@ -79,5 +97,12 @@ addRequest() {
 generateRandomNumber(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
-
+private openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {
+    duration: 5000,
+  });
+}
+showToast() {
+  this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Form submitted successfully' });
+}
 }
