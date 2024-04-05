@@ -173,17 +173,15 @@
     
     addInfo() {
       this.submitted = true;
-
-      console.log("🚀 ~ RequestDetailComponent ~ addInfo ~ this.formRequest.valid:", this.formRequest.valid)
-      console.log("🚀 ~ RequestDetailComponent ~ addInfo ~ this.formRequest.value:", this.formRequest.value)
-
-    if (this.formRequest.invalid && this.formRequest.get('routine')?.value) {
-      this.openSnackBar('Please fill in all required fields', 'Close');
-      return; 
-  }
-  
-  
-      
+    
+      const controlsToCheck = ['prioritet', 'requesttype', 'result', 'solution', 'execution', 'planned', 'type', 'sender', 'solman', 'contact', 'code', 'root'];
+    
+      // Check if any of the required fields are invalid
+      if (controlsToCheck.some(controlName => this.formRequest.get(controlName)?.invalid)) {
+        this.openSnackBar('Please fill in all required fields', 'Close');
+        return;
+      }
+    
       const formRequestData = {
         prioritet: this.formRequest.get('prioritet')?.value || 'Low',
         requesttype: this.formRequest.get('requesttype')?.value || 'APP Change',
@@ -207,22 +205,19 @@
               this.requestService.updateRequestStatus(this.requestId, formRequestData, request).subscribe(
                 () => {
                   this.showToast();
-                  this.isSubmitting=true
-
+                  this.isSubmitting = true;
                   setTimeout(() => {
-                    this.router.navigate(['/main/requests']); 
+                    this.router.navigate(['/main/requests']);
                   }, 3000);
                 }
               );
             }
-            return request; 
+            return request;
           });
         })
       );
-      // const jsonData = JSON.stringify(formData);
-    
-      // console.log(jsonData);
     }
+    
     
     private openSnackBar(message: string, action: string) {
       this.snackBar.open(message, action, {
