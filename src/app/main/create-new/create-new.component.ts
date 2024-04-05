@@ -21,6 +21,9 @@ export class CreateNewComponent implements OnInit {
   @Input() name: string = '';
   currentComponent: string = 'create-new'; 
   public inquiries$!: Observable<InquiriesInfo[]> 
+  submitted = false;
+  isSubmitting:boolean  = false;
+
   
   constructor(
     private fb:FormBuilder, 
@@ -67,6 +70,7 @@ ngOnInit(): void {
   }
 }
 addRequest() {
+  this.submitted=true
   const controlsToCheck = ['Title', 'Text', 'Category', 'Prioritet', "Type"];
 
 if (controlsToCheck.some(controlName => this.form.get(controlName)?.invalid)) {
@@ -84,6 +88,7 @@ if (controlsToCheck.some(controlName => this.form.get(controlName)?.invalid)) {
         map(inquiries => {
           inquiries.unshift(newRequest); 
           this.showToast()
+          this.isSubmitting=true
           setTimeout(() => {
             this.router.navigate(['/main/requests']);
           }, 3000);

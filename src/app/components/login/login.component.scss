@@ -165,134 +165,54 @@ body {
   }
 }
 
-.splash {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  &_logo {
+
+
+
+
+$teal: #494D8E;
+.logo-overlay{
+  margin-left: -2rem;
+    margin-top: 19rem;
+}
+.overlay {
     position: absolute;
-    margin: -15px 0 0 -25px;
-    top: 46vh;
-    z-index: 5;
-    left: 49vw;
-    width: 50px;
-    text-align: center;
-    height: 30px;
-    font-size: 26px;
-    font-weight: 600;
-    color: #ffffff;
-    opacity: 1;
-    will-change: opacity;
-    @include animation('logo .3s ease-in 1.5s forwards, off .6s ease-in-out 3.2s forwards'); 
-    img{
-      width: 80px;
-      height: auto;
-    } 
-  }
-  &_svg {
-    position: relative;
-    margin: auto;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    bottom: 0;
     right: 0;
-    svg {
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: visible;
-      backface-visibility: visible;
-      rect {
-        // width: 100%;
-        // height: 100%;
-        fill: $yellow;
-        stroke: 0;
-        -webkit-clip-path: polygon(45vw 40vh, 55vw 40vh, 55vw 60vh, 45vw 60vh);
-        clip-path: polygon(45vw 40vh, 55vw 40vh, 55vw 60vh, 45vw 60vh);
-        @include animation('logo .3s ease-in 1.5s forwards, off .6s ease-in-out 3.2s forwards');
-      }
-    }
-  }
-  &_minimize {
-    position: absolute;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    top: 0;
+    bottom: 0;
     left: 0;
-    z-index: 4;
-    svg {
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: visible;
-      backface-visibility: visible;
-      rect {
-        width: 100%;
-        height: 100%;
-        -webkit-clip-path: polygon(0vw 0vh, 100vw 0vh, 100vw 100vh, 0vw 100vh);
-        clip-path: polygon(0vw 0vh, 100vw 0vh, 100vw 100vh, 0vw 100vh);
-        @include animation('scale .2s ease-out forwards 1s, hide 1.3s ease-out forwards 1.2s');
-      }
+    
+    &.show {
+        .bar {
+          transform: scale(1, 1) translate3d(0,0,0);
+          transform-origin: 0 0;
+        }
     }
-  }
+
+    .bar {
+        position: absolute;
+        width: 10.1vw;
+        background: $teal;
+        top: 0;
+        bottom: 0;
+        transform: scale(0, 1)
+                   translate3d(0,0,0);
+        transform-origin: 100% 100%;
+        transition: transform 0.5s ease-in-out;        
+        &:first-of-type {
+            border-left: none;
+        }
+        
+        $light: $teal;
+        $dark: mix(black, $teal, 5%);        
+        @for $x from 1 through 10 {
+            &:nth-of-type(#{$x}) {
+                left: ($x - 1) * 10vw;
+                background: linear-gradient(to right, $light 0%, $dark 100%);
+                transition-delay: 0.05s * $x;
+            }
+            
+            $light: $dark;
+            $dark: mix(black, $teal, ($x * 5%));
+        }
+    }
 }
-
-@include keyframes(scale) {
-  100% {
-    -webkit-clip-path: polygon(45vw 40vh, 55vw 40vh, 55vw 60vh, 45vw 60vh);
-    clip-path: polygon(45vw 40vh, 55vw 40vh, 55vw 60vh, 45vw 60vh);
-  }
-}
-
-@include keyframes(hide) {
-  100% {
-    fill: transparent;
-  }
-}
-
-@include keyframes (off) {
-  100% {
-    opacity: 0;
-  }
-}
-
-@include keyframes (on) {
-  100% {
-    opacity: 1;
-  }
-}
-
-@include keyframes (logo) {
-  100% {
-    color: $black;
-  }
-}
-
-@include keyframes (type) {
-  0% {
-    width: 0;
-  }
-}
-
-@include keyframes (type2) {
-  0% {
-    width: 0;
-  }
-  50% {
-    width: 0;
-  }
-  100% {
-    width: 100;
-  }
-}
-
-
-
-

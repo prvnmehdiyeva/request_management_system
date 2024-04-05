@@ -39,6 +39,10 @@
     newCommentTitle: string='';
     newCommentText: string='';
     currentUser: any;
+    submitted = false;
+    isSubmitting:boolean  = false;
+
+
 
     constructor(
       private fb: FormBuilder, 
@@ -69,7 +73,7 @@
         contact:  ['', Validators.required],
         code: ['', Validators.required],
         root:['', Validators.required],
-        routine:['', Validators.required],
+        routine:[''],
       });
     }
   
@@ -168,12 +172,17 @@
     }
     
     addInfo() {
-      console.log("Form validity:", this.formRequest.valid);
-    console.log("FormRequest values:", this.formRequest.value);
-      if (this.formRequest.invalid) {
-        this.openSnackBar('Please fill in all required fields', 'Close');
-        return; 
-      }
+      this.submitted = true;
+
+      console.log("🚀 ~ RequestDetailComponent ~ addInfo ~ this.formRequest.valid:", this.formRequest.valid)
+      console.log("🚀 ~ RequestDetailComponent ~ addInfo ~ this.formRequest.value:", this.formRequest.value)
+
+    if (this.formRequest.invalid && this.formRequest.get('routine')?.value) {
+      this.openSnackBar('Please fill in all required fields', 'Close');
+      return; 
+  }
+  
+  
       
       const formRequestData = {
         prioritet: this.formRequest.get('prioritet')?.value || 'Low',
@@ -198,6 +207,8 @@
               this.requestService.updateRequestStatus(this.requestId, formRequestData, request).subscribe(
                 () => {
                   this.showToast();
+                  this.isSubmitting=true
+
                   setTimeout(() => {
                     this.router.navigate(['/main/requests']); 
                   }, 3000);

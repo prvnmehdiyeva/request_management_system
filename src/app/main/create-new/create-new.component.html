@@ -19,6 +19,12 @@
         <option>Information Technology</option>
         <option>Customer Service</option>
       </select>
+
+      <div *ngIf="submitted && form.get('Category')?.errors 
+      || form.get('Category')?.invalid && (form.get('Category')?.dirty || form.get('Category')?.touched)" class="alert alert-danger">
+        <div *ngIf="form.get('Category')?.errors?.['required']">Category is required.</div>
+      </div>
+
     </div>
     <div class="col-md-4">
       <label for="Prioritet" class="form-label">Prioritet</label>
@@ -27,8 +33,9 @@
         <option value="medium">Medium</option>
         <option value="high">High</option>
       </select>
-      <div *ngIf="form.get('Prioritet')?.errors?.['required']" class="invalid-feedback">
-        Priority is required.
+      <div *ngIf="submitted && form.get('Prioritet')?.errors 
+      || form.get('Prioritet')?.invalid && (form.get('Prioritet')?.dirty || form.get('Prioritet')?.touched)" class="alert alert-danger">
+        <div *ngIf="form.get('Prioritet')?.errors?.['required']">Prioritet is required.</div>
       </div>
     </div>
     <div class="col-md-4">
@@ -41,22 +48,25 @@
         <option>Complaint</option>
         <option>Feedback</option>
       </select>
-      <div *ngIf="form.get('Type')?.errors?.['required']" class="invalid-feedback">
-        Request type is required.
+      <div *ngIf="submitted && form.get('Type')?.errors 
+      || form.get('Type')?.invalid && (form.get('Type')?.dirty || form.get('Type')?.touched)" class="alert alert-danger">
+        <div *ngIf="form.get('Type')?.errors?.['required']">Type is required.</div>
       </div>
     </div>
     <div class="col-12">
       <label for="Title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="Title" formControlName="Title" placeholder="Enter Title">
-        <div *ngIf="form.get('Title')?.invalid && (form.get('Title')?.dirty || form.get('Title')?.touched)" class="alert alert-danger">
+      <input [ngClass]="{ 'is-invalid': submitted && form.get('Title')?.errors }" type="text" class="form-control" id="Title" formControlName="Title" placeholder="Enter Title">
+        <div *ngIf="submitted && form.get('Title')?.errors 
+        || form.get('Title')?.invalid && (form.get('Title')?.dirty || form.get('Title')?.touched)" class="alert alert-danger">
             <div *ngIf="form.get('Title')?.errors?.['required']">Title is required.</div>
             <div *ngIf="form.get('Title')?.errors?.['maxlength']">Title must be maximum 15 characters</div>
         </div>
     </div>
     <div class="col-12">
       <label for="Text" class="form-label">Text</label>
-      <textarea class="form-control" id="Text" rows="5" formControlName="Text" placeholder="Enter Text"></textarea>
-      <div *ngIf="form.get('Text')?.invalid && (form.get('Text')?.dirty || form.get('Text')?.touched)" class="alert alert-danger">
+      <textarea [ngClass]="{ 'is-invalid': submitted && form.get('Text')?.errors }" class="form-control" id="Text" rows="5" formControlName="Text" placeholder="Enter Text"></textarea>
+      <div *ngIf="submitted && form.get('Text')?.errors 
+      || form.get('Text')?.invalid && (form.get('Text')?.dirty || form.get('Text')?.touched)" class="alert alert-danger">
         <div *ngIf="form.get('Text')?.errors?.['required']">Text is required.</div>
         <div *ngIf="form.get('Text')?.errors?.['maxlength']">Text must be maximum 100 characters</div>
     </div>
@@ -73,7 +83,7 @@
       [hideTransitionOptions]="'1000ms'"
       [showTransformOptions]="'translateX(100%)'"
       ></p-toast>
-      <button pButton pRipple mat-fab extended class="btn btn-create text-light clear" mat-align="center" routerLinkActive="router-link-active"  (click)="addRequest()">
+      <button pButton pRipple mat-fab extended class="btn btn-create text-light clear" mat-align="center" routerLinkActive="router-link-active" (click)="addRequest()" [disabled]="isSubmitting">
         Create Request
       </button>
 </mat-dialog-actions>

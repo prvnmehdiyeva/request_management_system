@@ -15,6 +15,9 @@ import { fadeDelayedAnimation } from '../../animations/fade.animation';
 export class LoginComponent implements OnInit {
   myForm: FormGroup ;
   isSubmitting: boolean = false;
+  overlayVisible: boolean = true;
+
+  
 
   constructor(private authService:AuthService,private fb: FormBuilder,private router:Router,private sessionStorageService:SessionstorageService){
     this.myForm = this.fb.group({
@@ -25,11 +28,14 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     setTimeout(() => {
-      const splash = document.getElementById('splash');
-      if (splash) {
-        splash.style.display = 'none';
-      }
-    }, 4000);
+      this.overlayVisible = false; 
+      setTimeout(() => {
+          const overlay = document.querySelector('.overlay');
+          if (overlay) {
+              overlay.remove();
+          }
+      }, 2000);
+  }, 2000);
   
   }
   onSubmit() {

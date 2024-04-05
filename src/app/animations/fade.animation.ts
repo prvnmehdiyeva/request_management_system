@@ -40,5 +40,5 @@ export const fadeDelayedAnimation = trigger('fadeDelayedAnimation', [
       transform: 'translateY(0)', 
 
     })),
-  ], { delay: '3.5s' }), 
+  ], { delay: '1.5s' }), 
 ]);

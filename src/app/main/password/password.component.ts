@@ -17,6 +17,7 @@ export class PasswordComponent implements OnInit {
   changePasswordForm: FormGroup;
   successMessage: string | null = null;
   errorMessage: string | null = null;
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -49,55 +50,52 @@ export class PasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("object");
+    this.submitted = true;
+
     const currentPassword = this.changePasswordForm.get('currentPassword')?.value;
-    console.log(currentPassword);
     const newPassword = this.changePasswordForm.get('newPassword')?.value;
-        console.log(newPassword);
-
     const confirmPassword = this.changePasswordForm.get('confirmPassword')?.value;
-        console.log(confirmPassword);
 
-  
-        if (!currentPassword || !newPassword || !confirmPassword) {
-          this.snackBar.open('Please fill in all fields.', 'Close', {
-            duration: 4000,
-          
-          });
-          return;
-        }
-    
-        if (newPassword !== confirmPassword) {
-          this.snackBar.open('New password and confirm password do not match.', 'Close', {
-            duration: 4000,
-          });
-          return;
-        }
-  
-        this.authService.getUsers().subscribe(
-          (data: any[]) => {
+    if (!currentPassword || !newPassword || !confirmPassword) {
+        this.snackBar.open('Please fill in all fields.', 'Close', {
+            duration: 4000
+        });
+        return;
+    }
+
+    if (newPassword !== confirmPassword) {
+        this.snackBar.open('New password and confirm password do not match.', 'Close', {
+            duration: 4000
+        });
+        return;
+    }
+
+    this.authService.getUsers().subscribe(
+        (data: any[]) => {
             const user = data.find(user => user.id === this.id && user.password === currentPassword);
             if (user) {
-              this.authService.updateUserPassword(user.id, newPassword, user).subscribe(
-                () => {
-                  this.openSuccessDialog();
-                  this.changePasswordForm.reset();
-                },
-                error => {
-                  this.errorMessage = 'An error occurred while updating the password.';
-                  console.error('Error updating password:', error);
-                }
-              );
+                this.authService.updateUserPassword(user.id, newPassword, user).subscribe(
+                    () => {
+                        this.openSuccessDialog();
+                    },
+                    error => {
+                        this.errorMessage = 'An error occurred while updating the password.';
+                        console.error('Error updating password:', error);
+                    }
+                );
             } else {
-              this.errorMessage = 'Current password is incorrect.';
+                this.snackBar.open('Current password is incorrect.', 'Close', {
+                    duration: 4000
+                });
             }
-          },
-          error => {
+        },
+        error => {
             this.errorMessage = 'An error occurred while getting user data.';
             console.error('Error getting user data:', error);
-          }
-        );
-  }
+        }
+    );
+}
+
   openSuccessDialog() {
     this.dialog.open(PasswordChangeSuccessDialogComponent, {
       width: '400px',
