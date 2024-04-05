@@ -26,7 +26,13 @@ input::placeholder {
   font-size: 11px;
   color: #b8b8b8;
 }
-
+.alert{
+  background-color: white !important;
+  color: red !important;
+  border: none !important;
+  font-size: 12px;
+  padding: 0  !important;
+}
 
 @media screen and (max-width: 768px){
   .container, .container-sm{

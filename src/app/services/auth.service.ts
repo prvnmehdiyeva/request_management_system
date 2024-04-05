@@ -23,9 +23,10 @@ export class AuthService {
     return this.http.get<any>(`${this.baseUrl}/users/${id}`);
   }
   
-  updateUserPassword(userId: string, newPassword: string, userName:string): Observable<any> {
+  updateUserPassword(userId: string, newPassword: string, otherData:any): Observable<any> {
     const url = `${this.baseUrl}/user/${userId}`;
-    return this.http.put<any>(url, { name:userName,password: newPassword });
+    const updatedRequest = {  ...otherData, password: newPassword }; 
+    return this.http.put<any>(url, updatedRequest);
   }
   updateUserProfile(updatedProfileData: any): Observable<any> {
     const { id, ...rest } = updatedProfileData;

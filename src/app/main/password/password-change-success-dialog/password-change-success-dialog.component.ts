@@ -11,8 +11,8 @@ export class PasswordChangeSuccessDialogComponent {
   constructor(public dialogRef: MatDialogRef<PasswordChangeSuccessDialogComponent>, private router: Router) {
     setTimeout(() => {
       this.dialogRef.close();
-      this.router.navigate(['/login']);
-    }, 9000);
+      this.router.navigate(['/']);
+    }, 7000);
   }
 
 }

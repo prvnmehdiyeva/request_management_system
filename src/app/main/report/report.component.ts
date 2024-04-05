@@ -13,15 +13,12 @@ import { fadeOpacityAnimation } from '../../animations/fade.animation';
 import { Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
-
-@Component({ 
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-  animations: [fadeOpacityAnimation],
-
-}) 
-export class HomeComponent implements OnInit {
+@Component({
+  selector: 'app-report',
+  templateUrl: './report.component.html',
+  styleUrl: './report.component.scss'
+})
+export class ReportComponent implements OnInit {
   @Output() menuItemSelected = new EventEmitter<string>();
   currentPage=0
   pageSizeOptions = [5, 10, 20];
@@ -35,7 +32,7 @@ export class HomeComponent implements OnInit {
   searchByDate: string = '';
   @Input() id: string = '';
 
-  public requests$: Observable<InquiriesInfo[]> | undefined
+  public inquiries$: Observable<InquiriesInfo[]> | undefined
   public filteredRequests$: Observable<InquiriesInfo[]> | undefined
   public users$: Observable<InquiriesInfo[]> | undefined
   public status$: Observable<Status[]> | undefined ;
@@ -63,7 +60,7 @@ export class HomeComponent implements OnInit {
     this.users$ = this.authService.getUsers()
   }
   getInquiries(){
-    this.requests$ = this.requestService.getRequests();
+    this.inquiries$ = this.requestService.getRequests();
     this.filteredRequests$ = this.requestService.getRequests();
   }
   getStatus(){
@@ -78,7 +75,7 @@ export class HomeComponent implements OnInit {
     });
   }
   getStatusCount(status: string): void {
-    this.requests$?.pipe(
+    this.inquiries$?.pipe(
       switchMap(inquiries => {
         if (status === "All") {
           return of(inquiries.length);
@@ -96,10 +93,10 @@ export class HomeComponent implements OnInit {
       this.selectedStatus = status;
       if (status === null || status === 'All') {
         this.selectedStatus = 'All';
-        this.filteredRequests$ = this.requests$;
+        this.filteredRequests$ = this.inquiries$;
       } else {
         this.selectedStatus = status;
-        this.filteredRequests$ = this.requests$?.pipe(
+        this.filteredRequests$ = this.inquiries$?.pipe(
           map(inquiries => inquiries.filter((c: { Status: any; }) => c.Status === status))
         );
 
@@ -107,7 +104,7 @@ export class HomeComponent implements OnInit {
 
     }
     search(filterData:string, searchData:string) {
-      this.filteredRequests$ = this.requests$?.pipe(
+      this.filteredRequests$ = this.inquiries$?.pipe(
         map(inquiries => inquiries.filter((i:any) => {
           if (filterData === "ID" || filterData === "Date") {
             return i[filterData].toString().includes(searchData.toString());
@@ -127,9 +124,8 @@ export class HomeComponent implements OnInit {
     filterData(): void {
       const startIndex = this.currentPage * this.pageSize;
       const endIndex = startIndex + this.pageSize;
-      this.filteredRequests$ = this.requests$?.pipe(
+      this.filteredRequests$ = this.inquiries$?.pipe(
         map(inquiries => inquiries.slice(startIndex, endIndex))
       );
     }
-  }
-  
+}

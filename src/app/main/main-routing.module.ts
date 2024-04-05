@@ -7,6 +7,7 @@
   import { PasswordComponent } from './password/password.component';
   import { HomeComponent } from './home/home.component';
   import { RequestDetailComponent } from './home/request-detail/request-detail.component';
+import { ReportComponent } from './report/report.component';
 
   const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' }, 
@@ -24,6 +25,7 @@
           path: '', 
           component: HomeComponent,
         },
+        { path: 'report', component: ReportComponent },
         { path: 'create-new', component: CreateNewComponent },
         { path: 'profile', component: ProfileComponent }, 
         { path: 'password', component: PasswordComponent },

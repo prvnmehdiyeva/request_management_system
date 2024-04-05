@@ -32,7 +32,7 @@ export class CreateNewComponent implements OnInit {
     id: ['', [Validators.required]],
     request_id: [this.generateRandomNumber(), [Validators.required, Validators.pattern('^[0-9]{6}$')]],
     Sender: ['', Validators.required],
-    Title: ['', Validators.required],
+    Title: ['', [Validators.required, Validators.maxLength(10)]],
     Text: ['', Validators.required],
     Executor:  ['', Validators.required],
     Category: ['', Validators.required],

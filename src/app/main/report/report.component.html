@@ -1,0 +1,101 @@
+<div [@fadeOpacityAnimation] class="container text-left">
+  <h3 class="responsive-head">Reports</h3>
+  <div class="row header1">
+    <div class="col p-0  d-flex flex-column">
+        
+        <td><input type="date" class="form-control" placeholder="Search" [(ngModel)]="searchByDate" (input)="search('Date',searchByDate)"></td>
+    </div>
+    <div class="col col-btn p-0">
+      <button mat-fab extended class="btn btn-create p-3 text-light"
+      color="primary">
+      Print
+    </button></div>
+    <div>
+  </div>
+  </div>
+  <div class="row bg-white mt-3 pl-3 pt-3">
+    <div class="col-12 pl-6">
+      <ul class="list-group list-group-horizontal mb-3 p-3">
+        <div class="grid-container">
+           <button class="list-group-item d-flex justify-content-between align-items-center"  
+        *ngFor="let status of status$ | async" 
+            (click)="changeStatus(status.name)" 
+            [class.active]="selectedStatus && selectedStatus === status.name">
+          {{status.name}}
+          <span class="badge" >
+            {{ statusCounts[status.name] }}
+            </span>
+        </button>
+        </div>
+       
+      </ul>
+
+        <mat-paginator [length]="(inquiries$ | async)?.length" [pageSize]="10" [showFirstLastButtons]="false" [pageSizeOptions]="[5,10,20]" [pageIndex]="currentPage" (page)="handlePageEvent($event)"
+        >
+       </mat-paginator>
+     
+      <div class="container mt-5">
+        <div class="fixed-table-container">
+        <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="search-head">ID</th>
+              <th class="search-head">Sender</th>
+              <th class="search-head">Title</th>
+              <th class="search-head">Text</th>
+              <th class="search-head">Category</th>
+              <th class="search-head">Executor</th>
+              <th class="search-head">Date</th>
+              <th class="search-head">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" placeholder="ID" [(ngModel)]="searchByID" (input)="search('ID', searchByID)"></td>
+
+              <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchBySender" (input)="search('Sender',searchBySender)"></td>
+
+              <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByTitle" (input)="search('Title',searchByTitle)"></td>
+
+              <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByText" (input)="search('Text',searchByText)"></td>
+
+              <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByCategory" (input)="search('Category',searchByCategory)"></td>
+
+              <td><input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchByExecutor" (input)="search('Executor',searchByExecutor)"></td>
+
+              <td><input type="date" class="form-control" placeholder="Search" [(ngModel)]="searchByDate" (input)="search('Date',searchByDate)"></td>
+              <td>
+                <select class="form-control custom-select custom-select-bg" name="status" [(ngModel)]="selectedStatus" (ngModelChange)="changeStatus($event)" aria-label="Default select example">
+                  <option  *ngFor="let status of (status$ | async)" 
+                  [ngValue]="status.name">{{status.name}}</option>
+              </select>
+              </td>
+            </tr>
+            <tr *ngFor="let card of filteredRequests$ | async"  [routerLink]="['/main/requests', card.id]">
+              <td>{{card.request_id}}</td>
+              <td>{{card.Sender}}</td>
+              <td>{{card.Title}}</td>
+              <td>{{ card.Text | slice:0:30 }}</td>
+              <td>{{card.Category}}</td>
+              <td>{{card.Executor}}</td>
+              <td>{{card.Date}}</td>
+              <td><button type="button" class="btn btn-create-table" [style.width.px]="150" disabled
+                [class.btn-outline-info]="card.Status === 'Opened'"  disabled
+                [class.btn-outline-primary]="card.Status === 'Execution'"  disabled
+                [class.btn-outline-success]="card.Status === 'Closed'"  disabled
+                [class.btn-outline-secondary]="card.Status === 'Hold'"  disabled
+                [class.btn-outline-warning]="card.Status === 'Approved'" disabled
+                [class.btn-outline-danger]="card.Status === 'Refused'" disabled>
+                {{card.Status}}</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+

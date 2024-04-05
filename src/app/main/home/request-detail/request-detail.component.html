@@ -178,99 +178,149 @@
 </div>
 
 <div *ngIf="activeItem === 'infoButton'">
-  <form class="row g-3 mt-4">
+  <form class="row g-3 mt-4" [formGroup]="formRequest">
     <div class="col-md-6">
       <label for="prioritet" class="form-label">Prioritet</label>
-      <select id="prioritet" class="form-select">
+      <select id="prioritet" class="form-select" formControlName="prioritet" required>
         <option selected>Low</option>
         <option>...</option>
       </select>
     </div>
     <div class="col-md-6">
       <label for="requesttype" class="form-label">Request type</label>
-      <select id="requesttype" class="form-select">
+      <select id="requesttype" class="form-select" formControlName="requesttype" required>
         <option selected>APP Change</option>
         <option>...</option>
       </select>
     </div>
-
+  
     <div class="col-12">
       <label for="result" class="form-label">Result</label>
-      <input type="text" class="form-control" id="result" style="height: 100px;">
+      <input type="text" class="form-control" id="result" style="height: 100px;" formControlName="result" required>
+      <div *ngIf="formRequest.get('result')?.invalid && (formRequest.get('result')?.dirty || formRequest.get('result')?.touched)" class="alert alert-danger">
+        <div *ngIf="formRequest.get('result')?.errors?.['required']">Result is required.</div>
+      </div>
     </div>
     <div class="col-12">
       <label for="solution" class="form-label">Solution</label>
-      <input type="text" class="form-control" id="solution" style="height: 100px;">
+      <input type="text" class="form-control" id="solution" style="height: 100px;" formControlName="solution" required>
+      <div *ngIf="formRequest.get('solution')?.invalid && (formRequest.get('solution')?.dirty || formRequest.get('solution')?.touched)" class="alert alert-danger">
+        <div *ngIf="formRequest.get('solution')?.errors?.['required']">Solution is required.</div>
+      </div>
     </div>
     <div class="col-md-6">
       <label for="execution" class="form-label">Execution time</label>
-      <input type="email" class="form-control" id="execution">
+      <input type="time" class="form-control" id="execution" formControlName="execution" required>
     </div>
     <div class="col-md-6">
       <label for="planned" class="form-label">Planned execution time</label>
-      <input type="password" class="form-control" id="planned">
+      <input type="time" class="form-control" id="planned" formControlName="planned" required>
     </div>
     <div class="col-md-12">
-      <label for="planned" class="form-label">Type</label>
+      <label for="type" class="form-label">Type</label>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioApp" id="maintenance" value="optionApp">
-          <label class="form-check-label" for="maintenance">Application Maintenance</label>
+        <input class="form-check-input" type="radio" id="maintenance" value="optionApp" formControlName="type" required>
+        <label class="form-check-label" for="maintenance">Application Maintenance</label>
       </div>
       <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioApp" id="development" value="option">
-          <label class="form-check-label" for="development">Application Development</label>
+        <input class="form-check-input" type="radio" id="development" value="option" formControlName="type" required>
+        <label class="form-check-label" for="development">Application Development</label>
       </div>
-  </div>
+    </div>
   
-  <div class="col-md-6">
-    <label for="sender" class="form-label">Sender</label>
-    <input type="email" class="form-control" id="sender">
-  </div>
-  <div class="col-md-6">
-    <label for="solman" class="form-label">Solman Request Number</label>
-    <input type="password" class="form-control" id="solman">
-  </div>
-  <div class="col-md-12">
-    <label for="planned" class="form-label">Contact</label>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadio" id="email" value="option1">
-      <label class="form-check-label" for="email">Email</label>
+    <div class="col-md-6">
+      <label for="sender" class="form-label">Sender</label>
+      <input type="text"
+        id="sender"
+        class="form-control"
+        formControlName="sender"
+        required>
+      <div *ngIf="formRequest.get('sender')?.invalid && (formRequest.get('sender')?.dirty || formRequest.get('sender')?.touched)" class="alert alert-danger">
+        <div *ngIf="formRequest.get('sender')?.errors?.['required']">Sender is required.</div>
+        <div *ngIf="formRequest.get('sender')?.errors?.['maxlength']">Sender must be at most 30 characters.</div>
+      </div>
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadio" id="Phone" value="option2">
-      <label class="form-check-label" for="Phone">Phone</label>
+  
+    <div class="col-md-6">
+      <label for="solman" class="form-label">Solman Request Number</label>
+      <input type="text"
+        id="solman"
+        class="form-control"
+        formControlName="solman"
+        required>
+      <div *ngIf="formRequest.get('solman')?.invalid && (formRequest.get('solman')?.dirty || formRequest.get('solman')?.touched)" class="alert alert-danger">
+        <div *ngIf="formRequest.get('solman')?.errors?.['required']">Solman Request Number is required.</div>
+        <div *ngIf="formRequest.get('solman')?.errors?.['pattern']">Solman Request Number must contain only numbers.</div>
+      </div>
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadio" id="solman" value="option3">
-      <label class="form-check-label" for="solman">SOLMAN</label>
+  
+    <div class="col-md-12">
+      <label for="contact" class="form-label">Contact</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="email" value="option1" formControlName="contact" required>
+        <label class="form-check-label" for="email">Email</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="Phone" value="option2" formControlName="contact">
+        <label class="form-check-label" for="Phone">Phone</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="solman" value="option3" formControlName="contact">
+        <label class="form-check-label" for="solman">SOLMAN</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="request" value="option4" formControlName="contact">
+        <label class="form-check-label" for="request">Request</label>
+      </div>
+      <div *ngIf="formRequest.get('contact')?.invalid && (formRequest.get('contact')?.dirty || formRequest.get('contact')?.touched)" class="alert alert-danger">
+        <div *ngIf="formRequest.get('contact')?.errors?.['required']">Contact is required.</div>
+      </div>
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadio" id="request" value="option4">
-      <label class="form-check-label" for="request">Request</label>
+    
+  
+    <div class="col-12">
+      <label for="code" class="form-label">Code</label>
+      <input type="text" class="form-control" style="height: 150px;" id="code" formControlName="code" required>
+      <div *ngIf="formRequest.get('code')?.invalid && (formRequest.get('code')?.dirty || formRequest.get('code')?.touched)" class="alert alert-danger">
+        <div *ngIf="formRequest.get('code')?.errors?.['required']">Code is required.</div>
+      </div>
     </div>
-</div>
-<div class="col-12">
-  <label for="code" class="form-label">Code</label>
-  <input type="text" class="form-control" style="height: 150px;" id="code">
-</div>
-<div class="col-12">
-  <label for="root" class="form-label">Root cause</label>
-  <input type="text" class="form-control" id="root" style="height: 100px;" >
-</div>
+  
+    <div class="col-12">
+      <label for="root" class="form-label">Root cause</label>
+      <input type="text" class="form-control" id="root" style="height: 100px;" formControlName="root" required>
+      <div *ngIf="formRequest.get('root')?.invalid && (formRequest.get('root')?.dirty || formRequest.get('root')?.touched)" class="alert alert-danger">
+        <div *ngIf="formRequest.get('root')?.errors?.['required']">Root cause is required.</div>
+      </div>
+    </div>
+  
     <div class="col-12">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="routine" required>
         <label class="form-check-label" for="gridCheck">
           Routine
         </label>
       </div>
     </div>
+  
     <div class="col-12">
+
       <div class="buttons">
-        <button class="btn btn-submit" type="submit">Send</button>
+      <p-toast
+      [style.margin-top.px]="50"
+      [showTransformOptions]="'translateY(100%)'"
+      [showTransitionOptions]="'1000ms'"
+      [hideTransitionOptions]="'1000ms'"
+      [showTransformOptions]="'translateX(100%)'"
+      ></p-toast>
+
+      <button class="btn btn-submit" pButton pRipple type="submit" (click)="addInfo()" label="Show">Send</button>
+
+
       </div>
     </div>
   </form>
+  
 </div>
 <p class="copyright pt-2" disabled>Copyright &copy; CIC LLC</p>
 </div>

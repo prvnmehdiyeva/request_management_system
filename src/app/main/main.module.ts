@@ -25,6 +25,9 @@ import { PasswordChangeSuccessDialogComponent } from './password/password-change
 import { RequestDetailComponent } from './home/request-detail/request-detail.component';
 import { ProfilechangedialogComponent } from './profile/profilechangedialog/profilechangedialog.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { ReportComponent } from './report/report.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { MatMenuModule } from '@angular/material/menu';
     PasswordChangeSuccessDialogComponent,
     RequestDetailComponent,
     ProfilechangedialogComponent,
+    ReportComponent,
   ],
   imports: [
     CommonModule,
@@ -55,7 +59,11 @@ import { MatMenuModule } from '@angular/material/menu';
     RouterModule,
     MatSnackBarModule,
     MatSlideToggleModule,
-    MatMenuModule
-  ]
+    MatMenuModule,
+    ToastModule
+  ],
+  providers: [
+    MessageService, 
+  ],
 })
 export class MainModule { }
