@@ -18,7 +18,9 @@ export class CommentsService {
   
 // post
   addComment(comment: AppComment): Observable<AppComment> {
-    return this.http.post<AppComment>(`${this.baseUrl}/comments`, comment);
+    const url = `${this.baseUrl}/comments`
+    return this.http.post<AppComment>(url, comment);
   }
+  
 
 }

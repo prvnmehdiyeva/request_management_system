@@ -29,10 +29,11 @@
     formRequest!: FormGroup;
     public filteredInquiries: InquiriesInfo[] = [];
     public request$!: Observable<InquiriesInfo[]> ;
-    public comments$!: Observable<AppComment[]>
     public lastComment$!: Observable<any>;
     public status$!: Observable<Status[]> ;
-    private commentsUpdatedSubject = new BehaviorSubject<void | null>(null);
+    // private myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+    // comments$: Observable<AppComment[]> = this.myData.asObservable();
+    comments$!: Observable<AppComment[]>;
 
     now:string=''
     activeItem: string = 'commentButton';
@@ -128,28 +129,20 @@
 
     addComment() { 
       const newComment: AppComment = {
-        ID:uuidv4(),
+        ID: uuidv4(),
         user_id: this.id,
         request_id: this.requestId,
         name: this.userName,
         title: this.form.value.title,
         text: this.form.value.text
       };
-
-      this.commentsService.addComment(newComment).pipe(
-        switchMap(response =>{
-          return this.comments$.pipe(
-            map(comments=>{
-              comments.unshift(response);
-              console.log(response);
-              this.form.reset();
-              return comments;
-            }) 
-          )
-        }),
-        tap(() => this.commentsUpdatedSubject.next())
-      ).subscribe();
+      this.comments$ = this.commentsService.addComment(newComment).pipe(
+        switchMap(() => this.commentsService.getComments())
+      );
+    
+      this.form.reset();
     }
+    
 
     updateStatus(newStatus: string) {
       this.request$ = this.request$.pipe(
@@ -176,7 +169,6 @@
     
       const controlsToCheck = ['prioritet', 'requesttype', 'result', 'solution', 'execution', 'planned', 'type', 'sender', 'solman', 'contact', 'code', 'root'];
     
-      // Check if any of the required fields are invalid
       if (controlsToCheck.some(controlName => this.formRequest.get(controlName)?.invalid)) {
         this.openSnackBar('Please fill in all required fields', 'Close');
         return;
@@ -226,5 +218,8 @@
   }
   showToast() {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Form submitted successfully' });
+  }
+  showToastMessage() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Comment sent successfully' });
   }
   }
