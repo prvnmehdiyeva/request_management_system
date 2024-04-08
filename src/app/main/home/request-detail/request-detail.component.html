@@ -1,375 +1,659 @@
 <div class="grid-head container pb-3" *ngFor="let request of request$ | async">
-  <div class="title" >
+  <div class="title">
     <div class="head">
-      <h3 mat-dialog-title>{{request.request_id}}</h3>
-    <span class="align-middle small opacity-50 small">{{request.Category}}</span>
+      <h3 mat-dialog-title>{{ request.request_id }}</h3>
+      <span class="align-middle small opacity-50 small">{{
+        request.Category
+      }}</span>
     </div>
     <div class="back-link">
-       <a class="back-link" >
-           Status:{{request.Status}}
-       </a>
+      <a class="back-link"> Status:{{ request.Status }} </a>
     </div>
   </div>
- 
+
   <ul class="list-group list-group-horizontal mb-3 p-3">
-    <button id="requestButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('requestButton')" [class.active]="activeItem === 'requestButton'">
+    <button
+      id="requestButton"
+      class="list-group-item d-flex justify-content-between align-items-center"
+      (click)="toggleActive('requestButton')"
+      [class.active]="activeItem === 'requestButton'"
+    >
       Request
     </button>
-    <button id="commentButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('commentButton')" [class.active]="activeItem === 'commentButton'" r="let comment of comments$ | async" >
+    <button
+      id="commentButton"
+      class="list-group-item d-flex justify-content-between align-items-center"
+      (click)="toggleActive('commentButton')"
+      [class.active]="activeItem === 'commentButton'"
+      r="let comment of myComments$ | async"
+    >
       Comment
-      <span class="badge">{{ (comments$ | async)?.length }}</span>
+      <span class="badge">{{ (myComments$ | async)?.length }}</span>
     </button>
-    <button id="historyButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('historyButton')" [class.active]="activeItem === 'historyButton'" >
+    <button
+      id="historyButton"
+      class="list-group-item d-flex justify-content-between align-items-center"
+      (click)="toggleActive('historyButton')"
+      [class.active]="activeItem === 'historyButton'"
+    >
       History
     </button>
-    <button id="infoButton" class="list-group-item d-flex justify-content-between align-items-center" (click)="toggleActive('infoButton')" [class.active]="activeItem === 'infoButton'">
+    <button
+      id="infoButton"
+      class="list-group-item d-flex justify-content-between align-items-center"
+      (click)="toggleActive('infoButton')"
+      [class.active]="activeItem === 'infoButton'"
+    >
       Request information
     </button>
   </ul>
-  <aside *ngIf="activeItem==='requestButton'">
-<div class="grid-message mt-4">
-  <div class="message">
-    <img class="profile" src="../../../assets/profile.png" alt="profile">
-    <div class="card">
-       <div class="name">
-        <div class="head">
-          <h6>{{request.Executor}}</h6>
-          <p>{{request.Sender}}</p>
-       </div>
-       <p class="small">{{request.Date}} / {{now}}</p>
-      </div>
-      <div>
-        <h6>{{request.Title}}</h6>
-        <p>{{request.Text}}
-        </p>
-      </div>
-      <div class="button">
-        <a class="btn btn-link" disabled>Connect</a>
-        <div class="info">
-          <p class="small">App New Requirement |&nbsp; </p>
-          <p class="small">Medium</p>
+  <aside *ngIf="activeItem === 'requestButton'">
+    <div class="grid-message mt-4">
+      <div class="message">
+        <img class="profile" src="../../../assets/profile.png" alt="profile" />
+        <div class="card">
+          <div class="name">
+            <div class="head">
+              <h6>{{ request.Executor }}</h6>
+              <p>{{ request.Sender }}</p>
+            </div>
+            <p class="small">{{ request.Date }} / {{ now }}</p>
+          </div>
+          <div>
+            <h6>{{ request.Title }}</h6>
+            <p>{{ request.Text }}</p>
+          </div>
+          <div class="button">
+            <a class="btn btn-link" disabled>Connect</a>
+            <div class="info">
+              <p class="small">App New Requirement |&nbsp;</p>
+              <p class="small">Medium</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="message reply-message mt-3" *ngIf="lastComment$ | async as lastComment">
-    <img class="profile" src="../../../assets/profile.png" alt="profile">
-    <div class="card">
-       <div class="name">
-        <div class="head">
-          <h6>{{userName}}</h6>
-          <p class='text-secondary small'>{{userJob}}</p>
-       </div>
-       <p class="small">20/12/2023 / 12:00</p>
-      </div>
-      <div>
-        <h6>{{lastComment.title}}</h6>
-        <p>{{lastComment.text}}
-        </p>
-      </div>
-    </div>
-  </div>
-</div> 
-<div class="last-side pt-4">
-  <div class="password">
-    <a href="#">
-      <span class="icon">
-        <i class="fas fa-print"></i>
-      </span>
-      Print...
-    </a>
-  </div>
-<div class="buttons">
-  <a [routerLink]="['/main/requests']" routerLinkActive="active" class="btn btn-secondary" type="button">Cancel</a>
-  <button mat-button [matMenuTriggerFor]="lockMenu" >Lock it</button>
-  <mat-menu #lockMenu="matMenu">
-    <button mat-menu-item *ngFor="let status of status$ | async" (click)="updateStatus(status.name)">{{status.name}}</button>
-  </mat-menu>
-</div>
-</div>
-</aside>
-
-<div *ngIf="activeItem === 'commentButton'">
-  <div class="message reply-message mt-4" *ngFor="let comment of comments$ | async">
-    <img class="profile" src="../../../assets/profile.png" alt="profile">
-    <div class="card">
-       <div class="name">
-        <div class="head">
-          <h6>{{ userName }}</h6>
-          <p class='text-secondary small'>{{ userJob }}</p>
+      <!-- <div
+        class="message reply-message mt-3"
+        *ngIf="lastComment$ | async as lastComment"
+      >
+        <img class="profile" src="../../../assets/profile.png" alt="profile" />
+        <div class="card">
+          <div class="name">
+            <div class="head">
+              <h6>{{ userName }}</h6>
+              <p class="text-secondary small">{{ userJob }}</p>
+            </div>
+            <p class="small">20/12/2023 / 12:00</p>
+          </div>
+          <div>
+            <h6>{{ lastComment.title }}</h6>
+            <p>{{ lastComment.text }}</p>
+          </div>
         </div>
-        <p class="small">{{ now }}</p>
+      </div> -->
+    </div>
+    <div class="last-side pt-4">
+      <div class="password">
+        <a href="#">
+          <span class="icon">
+            <i class="fas fa-print"></i>
+          </span>
+          Print...
+        </a>
       </div>
-      <div>
-        <h6>{{ comment.title }}</h6>
-        <p>{{ comment.text }}</p>
-      </div>
-    </div>
-  </div>
-  <form class="comment-form mt-4 mb-3" [formGroup]="form" >
-    <div class="align-items-left mb-3">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" formControlName="title" required>
-    </div>
-    <div class="comment">
-      <label for="text">Comment</label>
-      <input type="text" class="form-control" id="text" formControlName="text" required>
-    </div>
-    <div class="input-group mt-4 mb-5">
-      <input type="file" class="form-control" id="upload">
-      <label class="input-group-text" for="upload">Upload</label>
-    </div>
-    <div class="buttons">
-      <p-toast
-      [style.margin-top.px]="50"
-      [showTransformOptions]="'translateY(100%)'"
-      [showTransitionOptions]="'1000ms'"
-      [hideTransitionOptions]="'1000ms'"
-      [showTransformOptions]="'translateX(100%)'"
-      ></p-toast>
-      <button  pButton pRipple label="Show" mat-fab extended class="btn btn-submit" mat-align="center" routerLinkActive="router-link-active"  (click)="addComment()">
-        Submit
-      </button>
-    </div>
-  </form>
-
-</div>
-
-
-<div *ngIf="activeItem === 'historyButton'">
-  <div class="card card-history mt-4 p-3 mb-3">
-    <div class="name">
-      <img class="profile" src="../../../assets/profile.png" alt="profile">
-      <div class="head">
-          <h6 class="m-0 mb-1">{{request.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{request.Category}}</p>
-      </div>
-    </div>
-    <div class="vertical-line">
-      <div class="line"></div>
-      <p class="m-0">Create new request</p>
-    </div>
-      <p class="small m-0">{{request.Date}} / {{now}}</p>
-  </div>
-  <div class="card card-history p-3 mb-3">
-    <div class="name">
-      <img class="profile" src="../../../assets/profile.png" alt="profile">
-      <div class="head">
-          <h6 class="m-0 mb-1">{{request.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{request.Category}}
-          </p>
-      </div>
-    </div>
-    <div class="vertical-line">
-      <div class="line"></div>
-      <p class="m-0">Create new request</p>
-    </div>
-      <p class="small m-0">{{request.Date}} / {{now}}</p>
-  </div>
-  <div class="card card-history p-3 mb-3">
-    <div class="name">
-      <img class="profile" src="../../../assets/profile.png" alt="profile">
-      <div class="head">
-          <h6 class="m-0 mb-1">{{request.Executor}}</h6>
-          <p class="m-0 opacity-50 small">{{request.Category}}</p>
-      </div>
-    </div>
-    <div class="vertical-line">
-      <div class="line"></div>
-      <p class="m-0">Create new request</p>
-    </div>
-    <p class="small m-0">{{request.Date}} / {{now}}</p>
-  </div>
-</div>
-
-<div *ngIf="activeItem === 'infoButton'">
-  <form class="row g-3 mt-4" [formGroup]="formRequest">
-    <div class="col-md-6">
-      <label for="prioritet" class="form-label">Prioritet</label>
-      <select id="prioritet" class="form-select" formControlName="prioritet" required>
-        <option selected>Low</option>
-        <option>...</option>
-      </select>
-
-      <div *ngIf="submitted && formRequest.get('prioritet')?.errors 
-      || formRequest.get('prioritet')?.invalid && (formRequest.get('prioritet')?.dirty || formRequest.get('prioritet')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('prioritet')?.errors?.['required']">Prioritet  is required.</div>
-      </div>
-
-    </div>
-    <div class="col-md-6">
-      <label for="requesttype" class="form-label">Request type</label>
-      <select id="requesttype" class="form-select" formControlName="requesttype" required>
-        <option selected>APP Change</option>
-        <option>...</option>
-      </select>
-      
-      <div *ngIf="submitted && formRequest.get('requesttype')?.errors 
-      || formRequest.get('requesttype')?.invalid && (formRequest.get('requesttype')?.dirty || formRequest.get('requesttype')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('requesttype')?.errors?.['required']">Request type is required.</div>
-      </div>
-
-    </div>
-  
-    <div class="col-12">
-      <label for="result" class="form-label">Result</label>
-      <input [ngClass]="{ 'is-invalid': submitted && formRequest.get('result')?.errors }" type="text" class="form-control" id="result" style="height: 100px;" formControlName="result" required>
-
-      <div *ngIf="submitted && formRequest.get('result')?.errors 
-      || formRequest.get('result')?.invalid && (formRequest.get('result')?.dirty || formRequest.get('result')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('result')?.errors?.['required']">Result is required.</div>
-    </div>
-    
-
-    </div>
-    <div class="col-12">
-      <label for="solution" class="form-label">Solution</label>
-      <input [ngClass]="{ 'is-invalid': submitted && formRequest.get('solution')?.errors }" type="text" class="form-control" id="solution" style="height: 100px;" formControlName="solution" required>
-
-      <div *ngIf="submitted && formRequest.get('solution')?.errors 
-      || formRequest.get('solution')?.invalid && (formRequest.get('solution')?.dirty || formRequest.get('solution')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('solution')?.errors?.['required']">Solution is required.</div>
-      </div>
-
-    </div>
-    <div class="col-md-6">
-      <label for="execution" class="form-label">Execution time</label>
-      <input type="time" class="form-control" id="execution" formControlName="execution" required>
-      <div *ngIf="submitted && formRequest.get('execution')?.errors 
-      || formRequest.get('execution')?.invalid && (formRequest.get('execution')?.dirty || formRequest.get('execution')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('execution')?.errors?.['required']">Execution time  is required.</div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label for="planned" class="form-label">Planned execution time</label>
-      <input type="time" class="form-control" id="planned" formControlName="planned" required>
-      <div *ngIf="submitted && formRequest.get('planned')?.errors 
-      || formRequest.get('planned')?.invalid && (formRequest.get('planned')?.dirty || formRequest.get('planned')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('planned')?.errors?.['required']">Planned time is required.</div>
-      </div>
-    </div>
-    <div class="col-md-12">
-      <label for="type" class="form-label">Type</label>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="maintenance" value="optionApp" formControlName="type" required>
-        <label class="form-check-label" for="maintenance">Application Maintenance</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="development" value="option" formControlName="type" required>
-        <label class="form-check-label" for="development">Application Development</label>
-      </div>
-      <div *ngIf="submitted && formRequest.get('type')?.errors 
-      || formRequest.get('type')?.invalid && (formRequest.get('type')?.dirty || formRequest.get('type')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('type')?.errors?.['required']">Type is required.</div>
-      </div>
-    </div>
-  
-    <div class="col-md-6">
-      <label for="sender" class="form-label">Sender</label>
-      <input [ngClass]="{ 'is-invalid': submitted && formRequest.get('sender')?.errors }" type="text"
-        id="sender"
-        class="form-control"
-        formControlName="sender"
-        required>
-
-      <div *ngIf="submitted && formRequest.get('sender')?.errors 
-      || formRequest.get('sender')?.invalid && (formRequest.get('sender')?.dirty || formRequest.get('sender')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('sender')?.errors?.['required']">Sender is required.</div>
-        <div *ngIf="formRequest.get('sender')?.errors?.['maxlength']">Sender must be at most 30 characters.</div>
-      </div>
-
-    </div>
-  
-    <div class="col-md-6">
-      <label for="solman" class="form-label">Solman Request Number</label>
-      <input [ngClass]="{ 'is-invalid': submitted && formRequest.get('solman')?.errors }" type="text"
-        id="solman"
-        class="form-control"
-        formControlName="solman"
-        required>
-
-      <div *ngIf="submitted && formRequest.get('solman')?.errors 
-      || formRequest.get('solman')?.invalid && (formRequest.get('solman')?.dirty || formRequest.get('solman')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('solman')?.errors?.['required']">Solman Request Number is required.</div>
-        <div *ngIf="formRequest.get('solman')?.errors?.['pattern']">Solman Request Number must contain only numbers.</div>
-      </div>
-
-    </div>
-  
-    <div class="col-md-12">
-      <label for="contact" class="form-label">Contact</label>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="email" value="option1" formControlName="contact" required>
-        <label class="form-check-label" for="email">Email</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="Phone" value="option2" formControlName="contact">
-        <label class="form-check-label" for="Phone">Phone</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="solman" value="option3" formControlName="contact">
-        <label class="form-check-label" for="solman">SOLMAN</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="request" value="option4" formControlName="contact">
-        <label class="form-check-label" for="request">Request</label>
-      </div>
-
-      <div *ngIf="submitted && formRequest.get('contact')?.errors 
-      || formRequest.get('contact')?.invalid && (formRequest.get('contact')?.dirty || formRequest.get('contact')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('contact')?.errors?.['required']">Contact is required.</div>
-      </div>
-
-    </div>
-    
-  
-    <div class="col-12">
-      <label for="code" class="form-label">Code</label>
-      <input [ngClass]="{ 'is-invalid': submitted && formRequest.get('code')?.errors }" type="text" class="form-control" style="height: 150px;" id="code" formControlName="code" required>
-
-      <div *ngIf="submitted && formRequest.get('code')?.errors 
-      || formRequest.get('code')?.invalid && (formRequest.get('code')?.dirty || formRequest.get('code')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('code')?.errors?.['required']">Code is required.</div>
-      </div>
-
-    </div>
-  
-    <div class="col-12">
-      <label for="root" class="form-label">Root cause</label>
-      <input [ngClass]="{ 'is-invalid': submitted && formRequest.get('root')?.errors }" type="text" class="form-control" id="root" style="height: 100px;" formControlName="root" required>
-
-      <div *ngIf="submitted && formRequest.get('root')?.errors 
-      || formRequest.get('root')?.invalid && (formRequest.get('root')?.dirty || formRequest.get('root')?.touched)" class="alert alert-danger">
-        <div *ngIf="formRequest.get('root')?.errors?.['required']">Root cause is required.</div>
-      </div>
-
-    </div>
-  
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck" formControlName="routine" required>
-        <label class="form-check-label" for="gridCheck">
-          Routine
-        </label>
-      </div>
-    </div>
-  
-    <div class="col-12">
-
       <div class="buttons">
-      <p-toast
-      [style.margin-top.px]="50"
-      [showTransformOptions]="'translateY(100%)'"
-      [showTransitionOptions]="'1000ms'"
-      [hideTransitionOptions]="'1000ms'"
-      [showTransformOptions]="'translateX(100%)'"
-      ></p-toast>
-
-      <button class="btn btn-submit" pButton pRipple type="submit" (click)="addInfo()" [disabled]="isSubmitting" label="Show">Send</button>
+        <a
+          [routerLink]="['/main/requests']"
+          routerLinkActive="active"
+          class="btn btn-secondary"
+          type="button"
+          >Cancel</a
+        >
+        <button mat-button [matMenuTriggerFor]="lockMenu">Lock it</button>
+        <mat-menu #lockMenu="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let status of status$ | async"
+            (click)="updateStatus(status.name)"
+          >
+            {{ status.name }}
+          </button>
+        </mat-menu>
       </div>
     </div>
-  </form>
-  
-</div>
-<p class="copyright pt-2" disabled>Copyright &copy; CIC LLC</p>
+  </aside>
+
+  <div *ngIf="activeItem === 'commentButton'">
+    <div
+      class="message reply-message mt-4"
+      *ngFor="let comment of myComments$ | async"
+    >
+      <img class="profile" src="../../../assets/profile.png" alt="profile" />
+      <div class="card">
+        <div class="name">
+          <div class="head">
+            <h6>{{ userName }}</h6>
+            <p class="text-secondary small">{{ userJob }}</p>
+          </div>
+          <p class="small">{{ now }}</p>
+        </div>
+        <div>
+          <h6>{{ comment.title }}</h6>
+          <p>{{ comment.text }}</p>
+        </div>
+      </div>
+    </div>
+    <form class="comment-form mt-4 mb-3" [formGroup]="form">
+      <div class="align-items-left mb-3">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          required
+        />
+      </div>
+      <div class="comment">
+        <label for="text">Comment</label>
+        <input
+          type="text"
+          class="form-control"
+          id="text"
+          formControlName="text"
+          required
+        />
+      </div>
+      <div class="input-group mt-4 mb-5">
+        <input type="file" class="form-control" id="upload" />
+        <label class="input-group-text" for="upload">Upload</label>
+      </div>
+      <div class="buttons">
+        <p-toast
+          [style.margin-top.px]="50"
+          [showTransformOptions]="'translateY(100%)'"
+          [showTransitionOptions]="'1000ms'"
+          [hideTransitionOptions]="'1000ms'"
+          [showTransformOptions]="'translateX(100%)'"
+        ></p-toast>
+        <button
+          pButton
+          pRipple
+          label="Show"
+          mat-fab
+          extended
+          class="btn btn-submit"
+          mat-align="center"
+          routerLinkActive="router-link-active"
+          (click)="addComment()"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="activeItem === 'historyButton'">
+    <div class="card card-history mt-4 p-3 mb-3">
+      <div class="name">
+        <img class="profile" src="../../../assets/profile.png" alt="profile" />
+        <div class="head">
+          <h6 class="m-0 mb-1">{{ request.Executor }}</h6>
+          <p class="m-0 opacity-50 small">{{ request.Category }}</p>
+        </div>
+      </div>
+      <div class="vertical-line">
+        <div class="line"></div>
+        <p class="m-0">Create new request</p>
+      </div>
+      <p class="small m-0">{{ request.Date }} / {{ now }}</p>
+    </div>
+    <div class="card card-history p-3 mb-3">
+      <div class="name">
+        <img class="profile" src="../../../assets/profile.png" alt="profile" />
+        <div class="head">
+          <h6 class="m-0 mb-1">{{ request.Executor }}</h6>
+          <p class="m-0 opacity-50 small">{{ request.Category }}</p>
+        </div>
+      </div>
+      <div class="vertical-line">
+        <div class="line"></div>
+        <p class="m-0">Create new request</p>
+      </div>
+      <p class="small m-0">{{ request.Date }} / {{ now }}</p>
+    </div>
+    <div class="card card-history p-3 mb-3">
+      <div class="name">
+        <img class="profile" src="../../../assets/profile.png" alt="profile" />
+        <div class="head">
+          <h6 class="m-0 mb-1">{{ request.Executor }}</h6>
+          <p class="m-0 opacity-50 small">{{ request.Category }}</p>
+        </div>
+      </div>
+      <div class="vertical-line">
+        <div class="line"></div>
+        <p class="m-0">Create new request</p>
+      </div>
+      <p class="small m-0">{{ request.Date }} / {{ now }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="activeItem === 'infoButton'">
+    <form class="row g-3 mt-4" [formGroup]="formRequest">
+      <div class="col-md-6">
+        <label for="prioritet" class="form-label">Prioritet</label>
+        <select
+          id="prioritet"
+          class="form-select"
+          formControlName="prioritet"
+          required
+        >
+          <option selected>Low</option>
+          <option>...</option>
+        </select>
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('prioritet')?.errors) ||
+            (formRequest.get('prioritet')?.invalid &&
+              (formRequest.get('prioritet')?.dirty ||
+                formRequest.get('prioritet')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('prioritet')?.errors?.['required']">
+            Prioritet is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="requesttype" class="form-label">Request type</label>
+        <select
+          id="requesttype"
+          class="form-select"
+          formControlName="requesttype"
+          required
+        >
+          <option selected>APP Change</option>
+          <option>...</option>
+        </select>
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('requesttype')?.errors) ||
+            (formRequest.get('requesttype')?.invalid &&
+              (formRequest.get('requesttype')?.dirty ||
+                formRequest.get('requesttype')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('requesttype')?.errors?.['required']">
+            Request type is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="result" class="form-label">Result</label>
+        <input
+          [ngClass]="{
+            'is-invalid': submitted && formRequest.get('result')?.errors
+          }"
+          type="text"
+          class="form-control"
+          id="result"
+          style="height: 100px"
+          formControlName="result"
+          required
+        />
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('result')?.errors) ||
+            (formRequest.get('result')?.invalid &&
+              (formRequest.get('result')?.dirty ||
+                formRequest.get('result')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('result')?.errors?.['required']">
+            Result is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="solution" class="form-label">Solution</label>
+        <input
+          [ngClass]="{
+            'is-invalid': submitted && formRequest.get('solution')?.errors
+          }"
+          type="text"
+          class="form-control"
+          id="solution"
+          style="height: 100px"
+          formControlName="solution"
+          required
+        />
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('solution')?.errors) ||
+            (formRequest.get('solution')?.invalid &&
+              (formRequest.get('solution')?.dirty ||
+                formRequest.get('solution')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('solution')?.errors?.['required']">
+            Solution is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="execution" class="form-label">Execution time</label>
+        <input
+          type="time"
+          class="form-control"
+          id="execution"
+          formControlName="execution"
+          required
+        />
+        <div
+          *ngIf="
+            (submitted && formRequest.get('execution')?.errors) ||
+            (formRequest.get('execution')?.invalid &&
+              (formRequest.get('execution')?.dirty ||
+                formRequest.get('execution')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('execution')?.errors?.['required']">
+            Execution time is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="planned" class="form-label">Planned execution time</label>
+        <input
+          type="time"
+          class="form-control"
+          id="planned"
+          formControlName="planned"
+          required
+        />
+        <div
+          *ngIf="
+            (submitted && formRequest.get('planned')?.errors) ||
+            (formRequest.get('planned')?.invalid &&
+              (formRequest.get('planned')?.dirty ||
+                formRequest.get('planned')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('planned')?.errors?.['required']">
+            Planned time is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="type" class="form-label">Type</label>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="maintenance"
+            value="optionApp"
+            formControlName="type"
+            required
+          />
+          <label class="form-check-label" for="maintenance"
+            >Application Maintenance</label
+          >
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="development"
+            value="option"
+            formControlName="type"
+            required
+          />
+          <label class="form-check-label" for="development"
+            >Application Development</label
+          >
+        </div>
+        <div
+          *ngIf="
+            (submitted && formRequest.get('type')?.errors) ||
+            (formRequest.get('type')?.invalid &&
+              (formRequest.get('type')?.dirty ||
+                formRequest.get('type')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('type')?.errors?.['required']">
+            Type is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="sender" class="form-label">Sender</label>
+        <input
+          [ngClass]="{
+            'is-invalid': submitted && formRequest.get('sender')?.errors
+          }"
+          type="text"
+          id="sender"
+          class="form-control"
+          formControlName="sender"
+          required
+        />
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('sender')?.errors) ||
+            (formRequest.get('sender')?.invalid &&
+              (formRequest.get('sender')?.dirty ||
+                formRequest.get('sender')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('sender')?.errors?.['required']">
+            Sender is required.
+          </div>
+          <div *ngIf="formRequest.get('sender')?.errors?.['maxlength']">
+            Sender must be at most 30 characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="solman" class="form-label">Solman Request Number</label>
+        <input
+          [ngClass]="{
+            'is-invalid': submitted && formRequest.get('solman')?.errors
+          }"
+          type="text"
+          id="solman"
+          class="form-control"
+          formControlName="solman"
+          required
+        />
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('solman')?.errors) ||
+            (formRequest.get('solman')?.invalid &&
+              (formRequest.get('solman')?.dirty ||
+                formRequest.get('solman')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('solman')?.errors?.['required']">
+            Solman Request Number is required.
+          </div>
+          <div *ngIf="formRequest.get('solman')?.errors?.['pattern']">
+            Solman Request Number must contain only numbers.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <label for="contact" class="form-label">Contact</label>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="email"
+            value="option1"
+            formControlName="contact"
+            required
+          />
+          <label class="form-check-label" for="email">Email</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="Phone"
+            value="option2"
+            formControlName="contact"
+          />
+          <label class="form-check-label" for="Phone">Phone</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="solman"
+            value="option3"
+            formControlName="contact"
+          />
+          <label class="form-check-label" for="solman">SOLMAN</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            id="request"
+            value="option4"
+            formControlName="contact"
+          />
+          <label class="form-check-label" for="request">Request</label>
+        </div>
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('contact')?.errors) ||
+            (formRequest.get('contact')?.invalid &&
+              (formRequest.get('contact')?.dirty ||
+                formRequest.get('contact')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('contact')?.errors?.['required']">
+            Contact is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="code" class="form-label">Code</label>
+        <input
+          [ngClass]="{
+            'is-invalid': submitted && formRequest.get('code')?.errors
+          }"
+          type="text"
+          class="form-control"
+          style="height: 150px"
+          id="code"
+          formControlName="code"
+          required
+        />
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('code')?.errors) ||
+            (formRequest.get('code')?.invalid &&
+              (formRequest.get('code')?.dirty ||
+                formRequest.get('code')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('code')?.errors?.['required']">
+            Code is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="root" class="form-label">Root cause</label>
+        <input
+          [ngClass]="{
+            'is-invalid': submitted && formRequest.get('root')?.errors
+          }"
+          type="text"
+          class="form-control"
+          id="root"
+          style="height: 100px"
+          formControlName="root"
+          required
+        />
+
+        <div
+          *ngIf="
+            (submitted && formRequest.get('root')?.errors) ||
+            (formRequest.get('root')?.invalid &&
+              (formRequest.get('root')?.dirty ||
+                formRequest.get('root')?.touched))
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="formRequest.get('root')?.errors?.['required']">
+            Root cause is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="gridCheck"
+            formControlName="routine"
+            required
+          />
+          <label class="form-check-label" for="gridCheck"> Routine </label>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="buttons">
+          <p-toast
+            [style.margin-top.px]="50"
+            [showTransformOptions]="'translateY(100%)'"
+            [showTransitionOptions]="'1000ms'"
+            [hideTransitionOptions]="'1000ms'"
+            [showTransformOptions]="'translateX(100%)'"
+          ></p-toast>
+
+          <button
+            class="btn btn-submit"
+            pButton
+            pRipple
+            type="submit"
+            (click)="addInfo()"
+            [disabled]="isSubmitting"
+            label="Show"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <p class="copyright pt-2" disabled>Copyright &copy; CIC LLC</p>
 </div>
