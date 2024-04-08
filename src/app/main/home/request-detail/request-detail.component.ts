@@ -47,7 +47,7 @@ export class RequestDetailComponent implements OnInit {
   public status$!: Observable<Status[]>;
   private myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   // comments$: Observable<AppComment[]> = this.myData.asObservable();
-  myComments$: Observable<any> = this.myData.asObservable();
+  myComments$!: Observable<any>;
   getCommentSubject = new BehaviorSubject<any>(true);
   getComment$ = this.getCommentSubject.asObservable();
 
