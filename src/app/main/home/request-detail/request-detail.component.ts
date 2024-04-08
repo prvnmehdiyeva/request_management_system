@@ -31,9 +31,8 @@
     public request$!: Observable<InquiriesInfo[]> ;
     public lastComment$!: Observable<any>;
     public status$!: Observable<Status[]> ;
-    // private myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-    // comments$: Observable<AppComment[]> = this.myData.asObservable();
-    comments$!: Observable<AppComment[]>;
+    private myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+    comments$: Observable<AppComment[]> = this.myData.asObservable();
 
     now:string=''
     activeItem: string = 'commentButton';
@@ -139,7 +138,7 @@
       this.comments$ = this.commentsService.addComment(newComment).pipe(
         switchMap(() => this.commentsService.getComments())
       );
-    
+  // use toast here !reminder for me
       this.form.reset();
     }
     
