@@ -22,7 +22,6 @@ import { PasswordComponent } from './main/password/password.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // RoutingModule,
     FontAwesomeModule, 
     MatPaginatorModule,
     BrowserAnimationsModule,

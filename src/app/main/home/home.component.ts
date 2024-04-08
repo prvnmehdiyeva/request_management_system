@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { InquiriesInfo } from '../../models/inquiries-info';
@@ -13,6 +13,7 @@ import { fadeOpacityAnimation } from '../../animations/fade.animation';
 import { Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({ 
   selector: 'app-home',
@@ -43,8 +44,10 @@ export class HomeComponent implements OnInit {
   statusCounts: any = {};
 
   constructor(public authService:AuthService, public requestService:RequestsService, private dialog: MatDialog,private route: ActivatedRoute,
-    private router:Router){}
+    private router:Router,@Inject(PLATFORM_ID) private platformId: Object){}
     ngOnInit(): void {  
+      if (isPlatformBrowser(this.platformId)) {
+
       const currentUserString = sessionStorage.getItem('currentUser');
       if (currentUserString) {
         const currentUser = JSON.parse(currentUserString)
@@ -55,7 +58,7 @@ export class HomeComponent implements OnInit {
         this.getInquiries(); 
         this.getStatus();
         this.getStatusCounts()
-    } 
+    } }
     selectMenuItem(menuItem: string) {
       this.menuItemSelected.emit(menuItem);
     }

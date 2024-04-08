@@ -6,23 +6,36 @@
   align-items: center;
   color: white;
   font-weight: normal;
-  transition: color 0.3s;
+  transition: opacity 0.3s, color 0.3s, box-shadow 0.3s;
+  opacity: 0.8;
+  position: relative; 
+  z-index: 1; 
 
-  opacity: 80%;
-  &.active {
-    opacity: 100%;
-
+  &:hover {
+    opacity: 1;
+    
     i {
-      color:#00ff00; 
+      color: #00ff00;
+      text-shadow: 0 0 8px #00ff00;
+
     }
   }
+
   i {
     background-color: #6a69a8;
     border-radius: 5px;
     padding: 12px;
     transition: color 0.3s;
+    position: relative;
   }
+
+  
 }
+
+
+
+
+
 .navbar{
   display: none;
 }

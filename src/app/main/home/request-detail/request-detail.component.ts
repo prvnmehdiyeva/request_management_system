@@ -138,7 +138,7 @@
       this.comments$ = this.commentsService.addComment(newComment).pipe(
         switchMap(() => this.commentsService.getComments())
       );
-  // use toast here !reminder for me
+      this.showToastMessage()
       this.form.reset();
     }
     

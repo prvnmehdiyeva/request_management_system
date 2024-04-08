@@ -60,7 +60,7 @@ import { MessageService } from 'primeng/api';
     MatSnackBarModule,
     MatSlideToggleModule,
     MatMenuModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [
     MessageService, 

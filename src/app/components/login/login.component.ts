@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionstorageService } from '../../services/sessionstorage.service';
 import { fadeDelayedAnimation } from '../../animations/fade.animation';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   
 
-  constructor(private authService:AuthService,private fb: FormBuilder,private router:Router,private sessionStorageService:SessionstorageService){
+  constructor(private authService:AuthService,private fb: FormBuilder,private router:Router,private sessionStorageService:SessionstorageService, @Inject(PLATFORM_ID) private platformId: Object){
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       password: ['', Validators.required]
@@ -27,22 +28,21 @@ export class LoginComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    setTimeout(() => {
-      this.overlayVisible = false; 
+    if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => {
-          const overlay = document.querySelector('.overlay');
-          if (overlay) {
-              overlay.remove();
-          }
+        const overlay = document.querySelector('.overlay');
+        if (overlay) {
+          overlay.remove();
+        }
       }, 2000);
-  }, 2000);
-  
+    }
   }
   onSubmit() {
     this.isSubmitting = true;
   const name = this.myForm.get('name')?.value;
   const password = this.myForm.get('password')?.value;
   console.log(name , password);
+  if (isPlatformBrowser(this.platformId)) {
   this.authService.getUsers().subscribe(data=> {
     console.log("🚀 ~ LoginComponent ~ this.authService.getUsers ~ data:", data)
     const user = data.find((user: any) => user.name === name && user.password === password)
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       setTimeout(() => {
         this.myForm.reset();
         this.isSubmitting = false;
-        this.router.navigate(['main/requests'],{queryParams:{name:user.name}});
+        this.router.navigate(['main/requests']);
       }, 2000);
     } else{
       console.log("error");
@@ -69,5 +69,5 @@ export class LoginComponent implements OnInit {
     // Handle error (e.g., show error message to user)
   })
   }
-  
+  }
 }
