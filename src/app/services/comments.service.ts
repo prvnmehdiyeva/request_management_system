@@ -13,8 +13,9 @@ export class CommentsService {
 
   constructor(private http: HttpClient) { }
 
-  getComments(){
-    return this.http.get<any>(`${this.baseUrl}/comments`);
+  getComments(requestId: string){
+    const url = `${this.baseUrl}/comments?request_id=${requestId}`;
+  return this.http.get<any[]>(url);
   }
   
 // post

@@ -1,6 +1,6 @@
 <nav  [@fadeInAnimation] class="navbar shadow-head fixed-top bg-body-tertiary">
   <div class="container-own container-fluid">
-    <a href=""  [routerLink]="['/main/requests']">
+    <a href=""  [routerLink]="['/main/account','requests']">
       <img src="/assets/logocolorful.png" alt="logocic" >
     </a>
     <form class="d-flex" role="search">
@@ -10,8 +10,8 @@
           {{name}}
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" [routerLink]="['/main/requests', 'profile']">Profil</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/main/requests', 'password']">Change your password</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/main/account', 'profile']">Profil</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/main/account', 'password']">Change your password</a></li>
           <li><a class="dropdown-item" [routerLink]="['/main']">Log out</a></li>
         </ul>
       </div>
@@ -30,19 +30,19 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a [routerLink]="['/main/requests']"  class="nav-link icon-link text-decoration-none gap-3" >
+                  <a [routerLink]="['/main/account','requests']"  class="nav-link icon-link text-decoration-none gap-3" >
                     <i class="fas fa-file"></i>
-                    Inquiries 
+                    Requests 
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/main/requests']"  class="nav-link icon-link text-decoration-none gap-3" href="#" >
+                  <a [routerLink]="['/main/account','reports']"  class="nav-link icon-link text-decoration-none gap-3" href="#" >
                     <i class="fas fa-flag"></i>
                     Reports
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a [routerLink]="['/main/requests', 'profile']"   class="nav-link icon-link text-decoration-none gap-3" >
+                  <a [routerLink]="['/main/account', 'profile']"   class="nav-link icon-link text-decoration-none gap-3" >
                     <i class="fas fa-user"></i>
                     Profil
                 </a> 
@@ -52,8 +52,8 @@
                     Account
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" [routerLink]="['/main/requests', 'profile']">Profil</a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/main/requests', 'password']">Change your password</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/main/account', 'profile']">Profil</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/main/account', 'password']">Change your password</a></li>
                     <li>
                       <hr class="dropdown-divider">
                     </li>

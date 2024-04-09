@@ -45,11 +45,11 @@ export class RequestDetailComponent implements OnInit {
   public request$!: Observable<InquiriesInfo[]>;
   public lastComment$!: Observable<any>;
   public status$!: Observable<Status[]>;
-  private myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  // comments$: Observable<AppComment[]> = this.myData.asObservable();
-  myComments$: Observable<any> = this.myData.asObservable();
+  // private myData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  myComments$!: Observable<any>;
   getCommentSubject = new BehaviorSubject<any>(true);
   getComment$ = this.getCommentSubject.asObservable();
+
 
   now: string = '';
   activeItem: string = 'commentButton';
@@ -113,7 +113,6 @@ export class RequestDetailComponent implements OnInit {
             .pipe(
               map((request) => (Array.isArray(request) ? request : [request]))
             );
-          // this.getComments();
           this.nowDate();
         } else {
           console.error('currentUser not found in sessionStorage.');
@@ -123,12 +122,24 @@ export class RequestDetailComponent implements OnInit {
     this.getStatus();
 
     this.myComments$ = this.getComment$.pipe(
-      switchMap((_) => {
-        let data = this.commentsService.getComments();
+      switchMap((x) => {
+        console.log(x)
+        let data = this.commentsService.getComments(this.requestId);
         return data;
       })
     );
+
+    this.lastComment$ = this.commentsService.getComments(this.requestId).pipe(
+      map(comments => {
+        if (comments.length > 0) {
+          return comments[comments.length - 1]; // Return the last comment
+        } else {
+          return null; // Return null if no comments are available
+        }
+      })
+    );
   }
+
 
   nowDate() {
     const now = new Date();
@@ -149,15 +160,6 @@ export class RequestDetailComponent implements OnInit {
   getStatus() {
     this.status$ = this.authService.getStatus();
   }
-
-  // getComments() {
-  //   this.comments$ = this.commentsService.getComments();
-  //   this.lastComment$ = this.comments$.pipe(
-  //     map((comments) =>
-  //       comments.length > 0 ? comments[comments.length - 1] : null
-  //     )
-  //   );
-  // }
 
   addComment() {
     const newComment: AppComment = {
@@ -186,7 +188,7 @@ export class RequestDetailComponent implements OnInit {
             this.requestService
               .updateRequestStatusById(this.requestId, newStatus, request)
               .subscribe(() => {
-                this.router.navigate(['/main/requests']);
+                this.router.navigate(['/main/account','requests']);
               });
             return updatedRequest;
           }
@@ -257,7 +259,7 @@ export class RequestDetailComponent implements OnInit {
                 this.showToast();
                 this.isSubmitting = true;
                 setTimeout(() => {
-                  this.router.navigate(['/main/requests']);
+                  this.router.navigate(['/main/account','requests']);
                 }, 3000);
               });
           }

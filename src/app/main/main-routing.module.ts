@@ -14,7 +14,7 @@ import { MessageService } from 'primeng/api';
     { path: '', redirectTo: '/login', pathMatch: 'full' }, 
     { path: 'login', component: LoginComponent },
     { 
-      path: 'requests',
+      path: 'account',
       component: MainComponent,
       children:[
         { 
@@ -23,10 +23,13 @@ import { MessageService } from 'primeng/api';
           pathMatch: 'full' 
         },
         { 
-          path: '', 
+          path: 'requests',
           component: HomeComponent,
         },
-        { path: 'report', component: ReportComponent },
+        { 
+          path: 'reports',
+          component: ReportComponent 
+        },
         { path: 'create-new', component: CreateNewComponent },
         { path: 'profile', component: ProfileComponent }, 
         { path: 'password', component: PasswordComponent },

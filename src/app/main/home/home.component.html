@@ -8,7 +8,7 @@
           </div>
           <div class="col col-btn p-0">
             <button mat-fab extended class="btn btn-create text-light"
-            color="primary" [routerLink]="['/main/requests', 'create-new']">
+            color="primary" [routerLink]="['/main/account', 'create-new']">
            <mat-icon ><i class="fas fa-plus text-light btn-title"></i></mat-icon>
             Create request
           </button></div>
@@ -77,7 +77,7 @@
                     </select>
                     </td>
                   </tr>
-                  <tr *ngFor="let card of filteredRequests$ | async"  [routerLink]="['/main/requests', card.id]">
+                  <tr *ngFor="let card of filteredRequests$ | async"  [routerLink]="['/main/account', card.id]">
                     <td>{{card.request_id}}</td>
                     <td>{{card.Sender}}</td>
                     <td>{{card.Title}}</td>

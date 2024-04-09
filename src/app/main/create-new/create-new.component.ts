@@ -90,7 +90,7 @@ if (controlsToCheck.some(controlName => this.form.get(controlName)?.invalid)) {
           this.showToast()
           this.isSubmitting=true
           setTimeout(() => {
-            this.router.navigate(['/main/requests']);
+            this.router.navigate(['/main/account','requests']);
           }, 3000);
           return inquiries;
         })
