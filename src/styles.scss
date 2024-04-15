@@ -1,7 +1,9 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-$primary-color: #55539F; 
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+$primary-color: #55539F;
 body{
   overflow-x: hidden;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -22,7 +24,7 @@ body{
   overflow: hidden;
 }
 input::placeholder {
-  font-size: 13px; 
+  font-size: 13px;
 }
 .copyright{
   font-size: 11px;
