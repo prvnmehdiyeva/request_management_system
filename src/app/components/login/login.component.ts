@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SessionstorageService } from '../../services/sessionstorage.service';
 import { fadeDelayedAnimation } from '../../animations/fade.animation';
 import { isPlatformBrowser } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   
 
-  constructor(private authService:AuthService,private fb: FormBuilder,private router:Router,private sessionStorageService:SessionstorageService, @Inject(PLATFORM_ID) private platformId: Object){
+  constructor(private authService:AuthService,private fb: FormBuilder,private router:Router,private sessionStorageService:SessionstorageService, @Inject(PLATFORM_ID) private platformId: Object, private snackBar: MatSnackBar
+){
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       password: ['', Validators.required]
@@ -50,23 +52,26 @@ export class LoginComponent implements OnInit {
       this.sessionStorageService.setItem("currentUser",user)
       this.isSubmitting = true;
       console.log("success");
-      setTimeout(() => {
-        this.myForm.reset();
-        this.isSubmitting = false;
-        this.router.navigate(['main/account','requests']);
-      }, 2000);
-    } else{
-      console.log("error");
+      this.snackBar.open('Login Successful', 'Close', { duration: 2000 });
 
       setTimeout(() => {
         this.myForm.reset();
         this.isSubmitting = false;
-      }, 2000);
+        this.router.navigate(['main/account','requests']);
+      }, 1500);
+    } else{
+      console.log("error");
+      this.snackBar.open('Invalid Form', 'Close', { duration: 2000 });
+
+
+      setTimeout(() => {
+        this.myForm.reset();
+        this.isSubmitting = false;
+      }, 200);
     }
   },
   (error) => {
     console.error("Error getting user data:", error);
-    // Handle error (e.g., show error message to user)
   })
   }
   }
