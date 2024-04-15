@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService:AuthService,private fb: FormBuilder,private router:Router,private sessionStorageService:SessionstorageService, @Inject(PLATFORM_ID) private platformId: Object, private snackBar: MatSnackBar
 ){
     this.myForm = this.fb.group({
-      name: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
     
@@ -42,12 +42,13 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.isSubmitting = true;
   const name = this.myForm.get('name')?.value;
+  const email = this.myForm.get('email')?.value;
   const password = this.myForm.get('password')?.value;
   console.log(name , password);
   if (isPlatformBrowser(this.platformId)) {
   this.authService.getUsers().subscribe(data=> {
     console.log("🚀 ~ LoginComponent ~ this.authService.getUsers ~ data:", data)
-    const user = data.find((user: any) => user.name === name && user.password === password)
+    const user = data.find((user: any) => user.email === email && user.password === password)
     if(user){
       this.sessionStorageService.setItem("currentUser",user)
       this.isSubmitting = true;

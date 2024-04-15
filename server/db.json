@@ -6,6 +6,7 @@
       "internalTelephone": "055555555",
       "mobileTelephone": "+1234567890",
       "name": "John Doe",
+      "email":"john.doecic@gmail.com",
       "userJob": "Software Developer",
       "password": "New123456",
       "image": "C:\\fakepath\\3.jpg",
@@ -14,6 +15,7 @@
     {
       "id": "2",
       "name": "Jane Smith",
+      "email":"jane.smithcic@gmail.com",
       "userJob": "Software Developer",
       "password": "password2",
       "department": "Engineering",
@@ -25,6 +27,7 @@
     {
       "id": "3",
       "name": "Alice Johnson",
+      "email":"alice.johnsoncic@gmail.com",
       "userJob": "Software Developer",
       "password": "password3",
       "department": "Engineering",
@@ -158,97 +161,6 @@
       "Status": "Opened",
       "Prioritet": "medium",
       "Type": "General Inquiry"
-    },
-    {
-      "id": "YwBKDfe",
-      "request_id": "485308",
-      "Sender": "John Doe",
-      "Title": "Status",
-      "Text": "status\n",
-      "Executor": "John Doe",
-      "Category": "Finance",
-      "Date": "2024-03-29",
-      "Status": "Closed",
-      "Prioritet": "high",
-      "Type": "Technical Support"
-    },
-    {
-      "id": "DlYrntw",
-      "request_id": "919425",
-      "Sender": "John Doe",
-      "Title": "title",
-      "Text": "text text",
-      "Executor": "John Doe",
-      "Category": "Finance",
-      "Date": "2024-04-05",
-      "Status": "Execution",
-      "Prioritet": "medium",
-      "Type": "Technical Support"
-    },
-    {
-      "id": "IDu2v_l",
-      "request_id": "992998",
-      "Sender": "John Doe",
-      "Title": "Title",
-      "Text": "text",
-      "Executor": "John Doe",
-      "Category": "Finance",
-      "Date": "2024-04-08",
-      "Status": "Execution",
-      "Prioritet": "medium",
-      "Type": "Feature Request"
-    },
-    {
-      "id": "Be6r9IV",
-      "request_id": "115549",
-      "Sender": "John Doe",
-      "Title": "aaaa",
-      "Text": "aa",
-      "Executor": "John Doe",
-      "Category": "Finance",
-      "Date": "2024-04-08",
-      "Status": "Closed",
-      "Prioritet": "low",
-      "Type": "Feature Request"
-    },
-    {
-      "id": "k2SAR-m",
-      "request_id": "568016",
-      "Sender": "John Doe",
-      "Title": "fix",
-      "Text": "fix text",
-      "Executor": "John Doe",
-      "Category": "Human Resources",
-      "Date": "2024-04-09",
-      "Status": "Hold",
-      "Prioritet": "medium",
-      "Type": "General Inquiry"
-    },
-    {
-      "id": "2uV7kIF",
-      "request_id": "384481",
-      "Sender": "John Doe",
-      "Title": "title",
-      "Text": "fix the bug",
-      "Executor": "John Doe",
-      "Category": "Human Resources",
-      "Date": "2024-04-09",
-      "Status": "Closed",
-      "Prioritet": "low",
-      "Type": "Technical Support"
-    },
-    {
-      "id": "w3Cbe4O",
-      "request_id": "352048",
-      "Sender": "John Doe",
-      "Title": "title",
-      "Text": "texttt",
-      "Executor": "John Doe",
-      "Category": "Finance",
-      "Date": "2024-04-15",
-      "Status": "Closed",
-      "Prioritet": "medium",
-      "Type": "Technical Support"
     }
   ],
   "status": [
@@ -287,8 +199,8 @@
       "user_id": "1",
       "request_id": "bc1d",
       "name": "John Doe",
-      "title": "title",
-      "text": "text",
+      "title": "Great job on the project!",
+      "text": "I really appreciate the effort you've put into this. Keep up the good work.",
       "id": "SrSNjZv"
     },
     {
@@ -296,8 +208,8 @@
       "user_id": "1",
       "request_id": "02a4",
       "name": "John Doe",
-      "title": "ssss",
-      "text": "sss",
+      "title": "Impressive work!",
+      "text": "The quality of your work is exceptional. I'm looking forward to seeing more from you.",
       "id": "VcRP5Ws"
     },
     {
@@ -305,45 +217,9 @@
       "user_id": "1",
       "request_id": "bf77",
       "name": "John Doe",
-      "title": "title",
-      "text": "text bf77",
+      "title": "Well done!",
+      "text": "I'm impressed by how quickly you were able to deliver results. Keep it up!",
       "id": "-seJiFg"
-    },
-    {
-      "ID": "b165a896-7c51-4783-a5e3-8db707954501",
-      "user_id": "1",
-      "request_id": "bf77",
-      "name": "John Doe",
-      "title": "title",
-      "text": "comment",
-      "id": "ldcoYWE"
-    },
-    {
-      "ID": "ec7f75fd-1f96-44cd-8c66-6f7648e93c43",
-      "user_id": "1",
-      "request_id": "bf77",
-      "name": "John Doe",
-      "title": "application",
-      "text": "bug fix",
-      "id": "4U3alwk"
-    },
-    {
-      "ID": "2c50caf6-6c32-41e6-98f6-bc08620690a2",
-      "user_id": "1",
-      "request_id": "bf77",
-      "name": "John Doe",
-      "title": "tir",
-      "text": "",
-      "id": "_ikBmC0"
-    },
-    {
-      "ID": "ddb00e78-e060-4fa3-9ffd-5d8a6c1bff14",
-      "user_id": "1",
-      "request_id": "bf77",
-      "name": "John Doe",
-      "title": "title",
-      "text": "comment",
-      "id": "F6StAuq"
     }
   ]
 }
