@@ -6,7 +6,7 @@
       "internalTelephone": "055555555",
       "mobileTelephone": "+1234567890",
       "name": "John Doe",
-      "email":"john.doecic@gmail.com",
+      "email": "john.doecic@gmail.com",
       "userJob": "Software Developer",
       "password": "New123456",
       "image": "C:\\fakepath\\3.jpg",
@@ -15,7 +15,7 @@
     {
       "id": "2",
       "name": "Jane Smith",
-      "email":"jane.smithcic@gmail.com",
+      "email": "jane.smithcic@gmail.com",
       "userJob": "Software Developer",
       "password": "password2",
       "department": "Engineering",
@@ -27,7 +27,7 @@
     {
       "id": "3",
       "name": "Alice Johnson",
-      "email":"alice.johnsoncic@gmail.com",
+      "email": "alice.johnsoncic@gmail.com",
       "userJob": "Software Developer",
       "password": "password3",
       "department": "Engineering",

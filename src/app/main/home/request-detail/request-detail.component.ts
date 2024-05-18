@@ -161,13 +161,26 @@ export class RequestDetailComponent implements OnInit {
   }
 
   addComment() {
+    const controlsCheck = [
+      'title',
+      'text',
+    ];
+
+    if (
+      controlsCheck.some(
+        (controlName) => this.form.get(controlName)?.invalid
+      )
+    ) {
+      this.openSnackBar('Please fill in title and comment fields', 'Close');
+      return;
+    }
     const newComment: AppComment = {
       ID: uuidv4(),
       user_id: this.id,
       request_id: this.requestId,
       name: this.userName,
-      title: this.form.value.title,
-      text: this.form.value.text,
+      title: this.form.get('title')?.value || '',
+      text: this.form.get('text')?.value || '',
     };
     this.commentsService
       .addComment(newComment)

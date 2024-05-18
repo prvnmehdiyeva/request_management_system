@@ -153,6 +153,19 @@
           formControlName="title"
           required
         />
+        <div
+        *ngIf="
+          (submitted && form.get('title')?.errors) ||
+          (form.get('title')?.invalid &&
+            (form.get('title')?.dirty ||
+              form.get('title')?.touched))
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="form.get('title')?.errors?.['required']">
+          Title is required.
+        </div>
+       </div>
       </div>
       <div class="comment">
         <label for="text">Comment</label>
@@ -163,6 +176,19 @@
           formControlName="text"
           required
         />
+        <div
+        *ngIf="
+          (submitted && form.get('text')?.errors) ||
+          (form.get('text')?.invalid &&
+            (form.get('text')?.dirty ||
+              form.get('text')?.touched))
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="form.get('text')?.errors?.['required']">
+          Comment is required.
+        </div>
+       </div>
       </div>
       <div class="input-group mt-4 mb-5">
         <input type="file" class="form-control" id="upload" />
@@ -186,6 +212,7 @@
           mat-align="center"
           routerLinkActive="router-link-active"
           (click)="addComment()"
+          [disabled]="isSubmitting"
         >
           Submit
         </button>

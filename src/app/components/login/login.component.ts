@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
       setTimeout(() => {
         this.myForm.reset();
-        this.isSubmitting = false;
+        // this.isSubmitting = false;
         this.router.navigate(['main/account','requests']);
       }, 1500);
     } else{
