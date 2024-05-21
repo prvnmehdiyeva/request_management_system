@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "npm run build"
+  command = "ng build"
   functions = "netlify/functions"
   publish = "dist\request_management_system\browser"
   environment = { NETLIFY_AUTH_TOKEN = "nfp_hbwnHqw6v3RhwdHdVDrteEFWJuF1MSRR8bbf" }
