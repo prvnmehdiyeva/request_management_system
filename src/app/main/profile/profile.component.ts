@@ -18,6 +18,7 @@ import { Observable } from 'rxjs';
 export class ProfileComponent implements OnInit {
   currentComponent: string = 'profile'; 
   @Input() id: string = '';
+  @Input() email: string = '';
   @Input() name: string = '';
   @Input() userJob: string = '';
   @Input() department: string = '';
@@ -61,6 +62,7 @@ export class ProfileComponent implements OnInit {
         const currentUser = JSON.parse(currentUserString);
         
         this.id = currentUser.id || '';
+        this.email = currentUser.email || '';
         this.name = currentUser.name || '';
         this.userJob = currentUser.userJob || '';
         this.department = currentUser.department || '';
@@ -88,6 +90,7 @@ export class ProfileComponent implements OnInit {
     const newImage = this.changeProfileForm.get('newImage')?.value;
     const updatedProfileData = {
       id: this.id,
+      email:this.email,
       department: newDepartment !== '' ? newDepartment : this.department,
       mission: newMission !== '' ? newMission : this.mission,
       internalTelephone: newInternalTelephone !== '' ? newInternalTelephone : this.internalTelephone,

@@ -1,3 +1,7 @@
+td {
+  cursor: pointer;
+}
+
 .example-container {
   width: 500px;
   height: 300px;
@@ -14,6 +18,7 @@
 .example-sidenav {
   padding: 20px;
 }
+
 .mat-mdc-paginator-container {
   display: flex;
   align-items: center;
@@ -24,136 +29,159 @@
   justify-content: space-between;
 }
 
-  .header1{
-    margin: 2rem 0 2rem 0;
-  }
-  .col-12{
-    padding-top: 10px;
-  }
-  .list-group{
-    --bs-list-group-border-radius:0;
-    .grid-container{
-      display: grid;
-      grid-template-columns: repeat(7,1fr);
-      justify-content: space-between;
-        .list-group-item{
-        color:#6045E2;
-        gap: 31px;
-        padding:0.5rem;
-        padding:0.5rem 1.5rem;
-        border: none;
-        border-bottom: 1px solid #6045E2;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-          &.active{
-            color:#6045E2;
-            background: none;
-            border-top: 1px solid #6045E2;
-            border-right: 1px solid #6045E2;
-            border-left: 1px solid #6045E2;
-            border-bottom: none;
-          }
-          .badge {
-            background-color: #ebebfa;
-            color: #6045E2;
-            font-weight: 500;
-         }
+.header1 {
+  margin: 2rem 0 2rem 0;
+}
+
+.col-12 {
+  padding-top: 10px;
+}
+
+.list-group {
+  --bs-list-group-border-radius: 0;
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: space-between;
+
+    .list-group-item {
+      color: #6045E2;
+      gap: 31px;
+      padding: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-bottom: 1px solid #6045E2;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+
+      &.active {
+        color: #6045E2;
+        background: none;
+        border-top: 1px solid #6045E2;
+        border-right: 1px solid #6045E2;
+        border-left: 1px solid #6045E2;
+        border-bottom: none;
+      }
+
+      .badge {
+        background-color: #ebebfa;
+        color: #6045E2;
+        font-weight: 500;
       }
     }
-    
   }
-// 
+}
+
 .table-bordered th,
 .table-bordered td {
   border: 1px solid #dee2e6;
 }
 
-
 .table-bordered td {
   vertical-align: middle;
-  
 }
 
-.table{
+.table {
   .custom-select-bg option:checked {
     background-color: #6045E2;
     color: #fff;
   }
-  .search-head{
+
+  .search-head {
     font-weight: 500;
     font-size: 14px;
   }
 }
+
+.fixed-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.fixed-table th,
+.fixed-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Pagination
-.form-select-pagination{
+.form-select-pagination {
   width: 10%;
   display: inline;
 }
 
 // btn
-.btn-create-table{
-  padding:0rem 2.5rem;
+.btn-create-table {
+  text-align: center;
+  margin: 0.5rem 0;
+  padding: 0rem 1.5rem;
   border-radius: 5px;
 }
-.btn-create{
-  background-color:#55539F;
+
+.btn-create {
+  background-color: #55539F;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   border-radius: 5px;
 }
-.mdc-fab{
+
+.mdc-fab {
   gap: 10px;
 }
 
-.mat-icon{
+.mat-icon {
   display: contents;
   padding-right: 0.5rem;
 }
+
 .col-btn {
   display: flex;
   justify-content: flex-end;
 }
-.form-select{
+
+.form-select {
   height: 100%;
 }
-.responsive-btn{
-display: none;
-}
-.none{
-display: none;
+
+.responsive-btn {
+  display: none;
 }
 
-@media screen and (max-width: 768px){
-  
+.none {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+
   .table-responsive {
-    max-height: calc(75vh - 100px); 
+    max-height: calc(75vh - 100px);
     overflow-x: auto;
     overflow-y: auto;
   }
 
   .list-group-horizontal {
     flex-direction: column !important;
+  }
+
+  .list-group {
+    display: none;
+  }
+
+  .responsive-btn {
+    display: flex;
+  }
+
+  .header1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin: 0;
+
+    .btn-create {
+      background-color: #55539F;
+      padding: 0.6rem;
+      border-radius: 5px;
+    }
+  }
 }
-
-.list-group{
-  display: none;
-}
-
-.responsive-btn{
-  display: flex;
-}
-.header1{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  margin: 0;
-
- .btn-create{
-  background-color:#55539F;
-  padding: 0.6rem;
-  border-radius: 5px;
-}
- }
-}
-
-
-

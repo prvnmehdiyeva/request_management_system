@@ -31,7 +31,6 @@ export class PasswordComponent implements OnInit {
       currentPassword: ['', Validators.required],
       newPassword: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/) ],],
       confirmPassword: ['', Validators.required],
-      name: ['']
     });
   }
 

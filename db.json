@@ -1,19 +1,225 @@
 {
-  "posts": [
+  "user": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "department": "Engineering",
+      "mission": "Create innovative software solutions",
+      "internalTelephone": "055555555",
+      "mobileTelephone": "+1234567890",
+      "name": "John Doe",
+      "email": "john.doecic@gmail.com",
+      "userJob": "Software Developer",
+      "password": "New123456",
+      "image": "C:\\fakepath\\3.jpg",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane.smithcic@gmail.com",
+      "userJob": "Software Developer",
+      "password": "password2",
+      "department": "Engineering",
+      "mission": "Develop scalable software applications",
+      "internalTelephone": "234567",
+      "mobileTelephone": "+1987654321",
+      "image": "jane_smith.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Alice Johnson",
+      "email": "alice.johnsoncic@gmail.com",
+      "userJob": "Software Developer",
+      "password": "password3",
+      "department": "Engineering",
+      "mission": "Optimize software performance",
+      "internalTelephone": "345678",
+      "mobileTelephone": "+1122334455",
+      "image": "alice_johnson.jpg"
+    }
+  ],
+  "requests": [
+    {
+      "Status": "Opened",
+      "Sender": "Michael Wilson",
+      "Title": "Complaint",
+      "Text": "Experiencing issues with the product",
+      "Category": "Customer Support",
+      "Executor": "David Brown",
+      "Date": "2024-02-18",
+      "id": "bf77",
+      "request_id": "567890",
+      "requestInformation": {
+        "prioritet": "Low",
+        "requesttype": "APP Change",
+        "result": "result",
+        "solution": "solution",
+        "execution": "21:10",
+        "planned": "00:10",
+        "type": "",
+        "sender": "sender",
+        "solman": "678",
+        "contact": "",
+        "code": "code",
+        "root": "root",
+        "routine": false
+      }
+    },
+    {
+      "Sender": "Sophia Martinez",
+      "Title": "Question",
+      "Text": "Seeking clarification on a feature",
+      "Category": "General Inquiry",
+      "Executor": "Olivia Garcia",
+      "Date": "2024-02-17",
+      "Status": "Refused",
+      "id": "bc1d",
+      "request_id": "678901"
+    },
+    {
+      "Sender": "Sophia Martinez",
+      "Title": "Question",
+      "Text": "Seeking clarification on a feature",
+      "Category": "General Inquiry",
+      "Executor": "Olivia Garcia",
+      "Date": "2024-02-17",
+      "Status": "Refused",
+      "id": "8489",
+      "request_id": "789012",
+      "requestInformation": {
+        "prioritet": "Low",
+        "requesttype": "APP Change",
+        "result": "result",
+        "solution": "solution",
+        "execution": "09:12",
+        "planned": "21:12",
+        "type": "",
+        "sender": "sender",
+        "solman": "789",
+        "contact": "",
+        "code": "code",
+        "root": "root",
+        "routine": true
+      }
+    },
+    {
+      "Sender": "Emma Johnson",
+      "Title": "Technical Support",
+      "Text": "Need help with technical issue",
+      "Category": "Technical",
+      "Executor": "John Smith",
+      "Date": "2024-02-16",
+      "Status": "Approved",
+      "id": "02a4",
+      "request_id": "890123",
+      "requestInformation": {
+        "prioritet": "Low",
+        "requesttype": "APP Change",
+        "result": "ddd",
+        "solution": "ddd",
+        "execution": "10:06",
+        "planned": "00:07",
+        "type": "",
+        "sender": "ddd",
+        "solman": "333",
+        "contact": "",
+        "code": "ccc",
+        "root": "ccc",
+        "routine": true
+      }
+    },
+    {
+      "Status": "Opened",
+      "Sender": "David Brown",
+      "Title": "New Feature Proposal",
+      "Text": "Suggesting a new feature",
+      "Category": "Feature Request",
+      "Executor": "Michael Wilson",
+      "Date": "2024-02-15",
+      "id": "8f0e",
+      "request_id": "901234"
+    },
+    {
+      "Sender": "Olivia Garcia",
+      "Title": "Login Issue",
+      "Text": "Unable to login to the system",
+      "Category": "Technical",
+      "Executor": "Sophia Martinez",
+      "Date": "2024-02-14",
+      "Status": "Closed",
+      "id": "8178",
+      "request_id": "012345"
+    },
+    {
+      "id": "DpingAt",
+      "request_id": "811339",
+      "Sender": "John Doe",
+      "Title": "Login Issue",
+      "Text": "Unable to login to the system",
+      "Executor": "John Doe",
+      "Category": "Finance",
+      "Date": "2024-03-15",
+      "Status": "Opened",
+      "Prioritet": "medium",
+      "Type": "General Inquiry"
+    }
+  ],
+  "status": [
+    {
+      "id": "1",
+      "name": "All"
+    },
+    {
+      "id": "2",
+      "name": "Opened"
+    },
+    {
+      "id": "3",
+      "name": "Execution"
+    },
+    {
+      "id": "4",
+      "name": "Closed"
+    },
+    {
+      "id": "5",
+      "name": "Hold"
+    },
+    {
+      "id": "6",
+      "name": "Approved"
+    },
+    {
+      "id": "7",
+      "name": "Refused"
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "ID": "f6310333-157b-496e-b321-6c1bedec3949",
+      "user_id": "1",
+      "request_id": "bc1d",
+      "name": "John Doe",
+      "title": "Great job on the project!",
+      "text": "I really appreciate the effort you've put into this. Keep up the good work.",
+      "id": "SrSNjZv"
+    },
+    {
+      "ID": "13c937cb-5d6c-421b-ac40-3b51eee8f1f6",
+      "user_id": "1",
+      "request_id": "02a4",
+      "name": "John Doe",
+      "title": "Impressive work!",
+      "text": "The quality of your work is exceptional. I'm looking forward to seeing more from you.",
+      "id": "VcRP5Ws"
+    },
+    {
+      "ID": "0b9e6b74-ebdd-4d72-95df-446799163f3f",
+      "user_id": "1",
+      "request_id": "bf77",
+      "name": "John Doe",
+      "title": "Well done!",
+      "text": "I'm impressed by how quickly you were able to deliver results. Keep it up!",
+      "id": "-seJiFg"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

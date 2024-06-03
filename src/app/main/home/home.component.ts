@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
           } else {
             return i[filterData].toLowerCase().includes(searchData.toLowerCase());
           }
-        }))
+        })) 
       );
     }
 

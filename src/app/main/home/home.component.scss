@@ -71,19 +71,15 @@ td {
       }
     }
   }
-
 }
 
-// 
 .table-bordered th,
 .table-bordered td {
   border: 1px solid #dee2e6;
 }
 
-
 .table-bordered td {
   vertical-align: middle;
-
 }
 
 .table {
@@ -98,6 +94,18 @@ td {
   }
 }
 
+.fixed-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.fixed-table th,
+.fixed-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Pagination
 .form-select-pagination {
   width: 10%;
@@ -106,7 +114,9 @@ td {
 
 // btn
 .btn-create-table {
-  padding: 0rem 2.5rem;
+  text-align: center;
+  margin: 0.5rem 0;
+  padding: 0rem 1.5rem;
   border-radius: 5px;
 }
 
